@@ -1,7 +1,7 @@
 var all_videos=[], playlists = [["Winter", "6084294A5D95E68A"], ["Summer", "9EC431ED03A07CC7"]];
 
 $(document).ready(function(){
-
+	console.log("!");
 	for(var i=0, len=playlists.length;i<len;i++) {
 		
 		var pl = playlists[i], 
@@ -17,13 +17,13 @@ $(document).ready(function(){
 		get_videos(pl, i);
 	}
 	
-	setTimeout("bind()", 2000);
+	setTimeout("bind()", 5000);
 	
 });
 
 function load_playlist(playlist, videos) {
 	var html="";
-	for(v=0;v<videos.length;v++) {
+	for(var v=0;v<videos.length;v++) {
 		
 		var video = videos[v], 
 			title = video.title.$t, 
@@ -52,7 +52,6 @@ function load_playlist(playlist, videos) {
 }
 
 function play_video(video, autoplay){
-	
 	var path = video.url + "&rel=1&border=0&fs=1&autoplay=" + autoplay;
 	swfobject.embedSWF(path, 'video', '640', '390', '9.0.0', false, false, {allowfullscreen: 'true', wmode: 'opaque'});
 	
@@ -77,7 +76,6 @@ function find_first_video() {
 		var video = all_videos[f];
 		if(video.category == "winter") {
 			return video;
-			break;
 		}
 	}
 }
@@ -89,8 +87,8 @@ function bind(){
 		play_video(video, 1);
 		return false;
 	});
-	var first_video = find_first_video();
-	play_video(first_video, 0);
+	/*var first_video = find_first_video();
+	play_video(first_video, 0);*/
 }
 
 /*function list_videos(json) {
