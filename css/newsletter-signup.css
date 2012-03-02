@@ -1,0 +1,75 @@
+.newsletter-signup {
+	width: 697px;
+	clear: both;
+}
+
+.newsletter-signup .field {
+	float: left;
+	clear: none;
+	width: 328px;
+	height: 45px;
+	padding: 10px;
+	margin: 0;
+	border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+	background: #e5e5e5;
+}
+
+.newsletter-signup .field.check {
+	height: auto;
+}
+
+.newsletter-signup .field.long {
+	width: 677px;
+}
+
+	.newsletter-signup .field:nth-child(even) {
+		border-right: 0;
+	}
+
+.newsletter-signup legend {
+	display: block;
+	width: 687px;
+	padding: 10px 5px;
+	background: #B7E0E7;
+	color: #333366;
+	font-weight: bold;
+}
+
+.newsletter-signup input.text {
+	width: 200px;
+}
+
+.field.full {
+	width: 677px;
+}
+
+.field.check label, .field.check input {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+p#signup-error, p#preferences-error {
+	margin: 0;
+	padding: 10px;
+	border-bottom: 1px solid #fff;
+	color: #ff0000;
+	background: #e5e5e5;
+}
+
+.submit-button {
+	width: 697px;
+	padding: 20px 0;
+	clear: left;
+	text-align: center;
+}
+
+.submit-button input {
+	color: #ffffff;
+	display: inline-block;
+	font: 11px Verdana;
+	letter-spacing: 0.5px;
+	padding: 6px 10px;
+	text-align: center;
+	background: none repeat scroll 0% 0% #333366;
+}

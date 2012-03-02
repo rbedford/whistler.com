@@ -1,0 +1,409 @@
+label { 
+	font: 11px Verdana; 
+	color: #336; 
+	letter-spacing: 0.1px;}
+	
+.selector,
+.checker,
+.button,
+.radio,
+.uploader {
+  display: -moz-inline-box;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  *display: inline;}
+
+.selector select:focus, 
+.radio input:focus, 
+.checker input:focus, 
+.uploader input:focus {
+  outline: 0;}
+  
+div.selector, 
+div.selector span, 
+div.checker span,
+div.radio span, 
+div.uploader, 
+div.uploader span.action {
+  background: url("images/sprite.png") no-repeat;
+  -webkit-font-smoothing: antialiased;}
+
+.selector, 
+.radio, 
+.checker, 
+.uploader,
+.button, 
+.selector *, 
+.radio *, 
+.checker *, 
+.uploader *,
+.button *{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;}
+
+/* INPUT & TEXTAREA */
+
+input.text,
+input.email,
+input.password,
+textarea.uniform {
+  font: 11px Verdana, Arial;
+  color: #666;
+  padding: 4px; 
+  border: 1px solid #78cad8;
+  outline: 0;
+  background: #bce5ec;
+  margin: 0;}
+
+input.text:focus,
+input.email:focus,
+input.password:focus,
+textarea.uniform:focus {
+	background: #d9eff3;}
+
+/* SPRITES */
+
+
+  
+  
+
+/* Checkbox */
+
+div.checker {
+  width: 19px;
+  height: 19px;}
+
+div.checker input {
+  width: 19px;
+  height: 19px;}
+
+div.checker span {
+  background-position: 0px -260px;
+  height: 19px;
+  width: 19px;}
+
+div.checker:active span, 
+div.checker.active span {
+  background-position: -19px -260px;}
+
+div.checker.focus span,
+div.checker:hover span {
+  background-position: -38px -260px;}
+
+div.checker.focus:active span,
+div.checker:active:hover span,
+div.checker.active:hover span,
+div.checker.focus.active span {
+  background-position: -57px -260px;}
+
+div.checker span.checked {
+  background-position: -76px -260px;}
+
+div.checker:active span.checked, 
+div.checker.active span.checked {
+  background-position: -95px -260px;}
+
+div.checker.focus span.checked,
+div.checker:hover span.checked {
+  background-position: -114px -260px;}
+
+div.checker.focus:active span.checked,
+div.checker:hover:active span.checked,
+div.checker.active:hover span.checked,
+div.checker.active.focus span.checked {
+  background-position: -133px -260px;}
+
+div.checker.disabled span,
+div.checker.disabled:active span,
+div.checker.disabled.active span {
+  background-position: -152px -260px;}
+
+div.checker.disabled span.checked,
+div.checker.disabled:active span.checked,
+div.checker.disabled.active span.checked {
+  background-position: -171px -260px;}
+
+
+
+/* Radio */
+
+div.radio {
+  width: 18px;
+  height: 18px;}
+
+div.radio input {
+  width: 18px;
+  height: 18px;}
+
+div.radio span {
+  height: 18px;
+  width: 18px;
+  background-position: 0px -279px;}
+
+div.radio:active span, 
+div.radio.active span {
+  background-position: -18px -279px;}
+
+div.radio.focus span, 
+div.radio:hover span {
+  background-position: -36px -279px;}
+
+div.radio.focus:active span,
+div.radio:active:hover span,
+div.radio.active:hover span,
+div.radio.active.focus span {
+  background-position: -54px -279px;}
+
+div.radio span.checked {
+  background-position: -72px -279px;}
+
+div.radio:active span.checked,
+div.radio.active span.checked {
+  background-position: -90px -279px;}
+
+div.radio.focus span.checked, div.radio:hover span.checked {
+  background-position: -108px -279px;}
+
+div.radio.focus:active span.checked,
+div.radio:hover:active span.checked,
+div.radio.focus.active span.checked,
+div.radio.active:hover span.checked {
+  background-position: -126px -279px;}
+
+div.radio.disabled span,
+div.radio.disabled:active span,
+div.radio.disabled.active span {
+  background-position: -144px -279px;}
+
+div.radio.disabled span.checked,
+div.radio.disabled:active span.checked,
+div.radio.disabled.active span.checked {
+  background-position: -162px -279px;}
+
+
+
+
+/* Uploader */
+
+div.uploader {
+  background-position: 0px -297px;
+  height: 28px;}
+
+div.uploader span.action {
+  background-position: right -409px;
+  height: 24px;
+  line-height: 24px;}
+
+div.uploader span.filename {
+  height: 24px;
+  /* change this line to adjust positioning of filename area */
+  margin: 2px 0px 2px 2px;
+  line-height: 24px;}
+
+div.uploader.focus,
+div.uploader.hover,
+div.uploader:hover {
+  background-position: 0px -353px;}
+
+div.uploader.focus span.action,
+div.uploader.hover span.action,
+div.uploader:hover span.action {
+  background-position: right -437px;}
+
+div.uploader.active span.action,
+div.uploader:active span.action {
+  background-position: right -465px;}
+
+div.uploader.focus.active span.action,
+div.uploader:focus.active span.action,
+div.uploader.focus:active span.action,
+div.uploader:focus:active span.action {
+  background-position: right -493px;}
+
+div.uploader.disabled {
+  background-position: 0px -325px;}
+
+div.uploader.disabled span.action {
+  background-position: right -381px;}
+  
+  
+
+/* PRESENTATION */
+
+
+
+/* Button */
+
+div.button { 
+	margin: 5px 0; 
+	background: #336;
+	cursor: pointer;
+ 	position: relative;}
+
+div.button span {
+  font: normal 11px Verdana;
+  color: #fff;
+  letter-spacing: 0.5px;
+  padding: 6px 10px;  
+  display: -moz-inline-box;
+  display: inline-block;
+  text-align: center;}
+
+div.button a,
+div.button button,
+div.button input {
+  position: absolute;}
+  
+.btnSearch { 
+	margin: 5px 0; 
+	background: #336;
+	cursor: pointer;
+ 	position: relative;
+	font: bold 12px Verdana;
+ 	color: #fff;
+  	letter-spacing: 0.5px;
+	padding: 5px 8px; }
+
+
+/* Select */
+div.selector { 
+	background: #bce5ec;
+  	font: 11px Verdana, Arial;
+  	color: #666;
+  	border: 1px solid #78cad8;
+	position: relative;
+ 	overflow: hidden;}
+
+div.selector select {
+  cursor: pointer;
+  font: normal 11px Verdana;
+  color: #333;
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity:0);
+  height: 16px;
+    /* change these to adjust positioning of select element */
+  top: 8px;
+  left: 0;}
+  
+div.selector select option {
+ 	padding: 5px 10px; 
+	display: block;}
+
+div.selector span {
+  	padding: 0 30px 0 8px;
+ 	cursor: pointer;
+ 	color: #666;
+  	display: block;
+  	overflow: hidden;
+  	background-position: right -4px;
+  	line-height: 23px;
+	height: 23px;}
+
+div.selector.disabled span {
+  color: #bbb;}
+
+
+
+/* Checker */
+div.checker {
+  margin-right: 5px;
+  position: relative;}
+
+div.checker span {
+  display: -moz-inline-box;
+  display: inline-block;
+  text-align: center;}
+
+div.checker input {
+  opacity: 0;
+  filter: alpha(opacity:0);
+  display: inline-block;
+  background: none;}
+  
+  
+  
+/* Radio */
+div.radio {
+  margin-right: 3px;
+  position: relative;}
+
+div.radio span {
+  display: -moz-inline-box;
+  display: inline-block;
+  text-align: center;}
+
+div.radio input {
+  opacity: 0;
+  filter: alpha(opacity:0);
+  text-align: center;
+  display: inline-block;
+  background: none;}
+  
+  
+
+/* Uploader */
+div.uploader {
+  width: 190px;
+  cursor: pointer; 
+  position: relative;
+  overflow: hidden;
+  cursor: default;}
+
+div.uploader span.action {
+	  width: 85px;
+	  text-align: center;
+	  text-shadow: #fff 0px 1px 0px;
+	  background-color: #fff;
+	  font-size: 11px;
+	  font-weight: bold;
+	  float: left;
+	  display: inline;
+	  padding: 2px 0px;
+	  overflow: hidden;
+	  cursor: pointer;}
+
+div.uploader span.filename {
+  color: #777;
+  width: 82px;
+  border-right: solid 1px #bbb;
+  font-size: 11px;
+  padding: 0px 10px;
+  float: left;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: default;}
+
+div.uploader input {
+  width: 190px;
+  opacity: 0;
+  filter: alpha(opacity:0);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  float: right;
+  height: 25px;
+  border: none;
+  cursor: default;}
+
+div.uploader.disabled span.action {
+  color: #aaa;}
+
+div.uploader.disabled span.filename {
+  border-color: #ddd;
+  color: #aaa;}
+  
+  
+legend { font: bold 11px Verdana; color: #333; letter-spacing: 0.1px; position: relative; top: -2px; }
+
+/* ERRORS */
+
+input.error, 
+textarea.error {
+	border: 1px solid #ff0000;
+	-moz-box-shadow: 0 0 4px #ff0000;
+}

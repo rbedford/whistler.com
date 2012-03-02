@@ -1,0 +1,69 @@
+html {
+	width:100%;
+}
+
+body
+{
+}
+h1 
+{
+    font-size: 18px;
+}
+h2,h3,h4 {
+	font-size:16px;
+}
+fieldset 
+{
+    width:800px;
+ 	border-color:Black;
+	border-width:1px;
+	border-style:solid;
+	padding:5px;
+}
+
+table th
+{
+ 	font-size: 14px;
+	text-align:left;
+	 font-style:italic;
+}
+table td
+{
+ 	font-size: 14px;
+	text-align:left;
+}
+p, ul, ol, dt {
+	font-size: 0.8125em;
+}
+#headbar 
+{
+    display:none;
+}
+#header
+{
+    display:none;
+}
+#sidebar_holder
+{
+    width:0;
+    padding:0;
+    display:none;
+}
+#footer
+{
+    display:none;
+}
+#process
+{
+    display:none;
+}
+#content
+{
+    float:left;
+    width: 760px;
+}
+
+#print_link
+{
+    display:none;
+}

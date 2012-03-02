@@ -1,0 +1,138 @@
+/*CSS Tourism Whistler Widget Style Sheet
+
+1. Generic
+2. Nav
+3. Twitter Feed
+4. Deals
+5. Social Links
+6. Trip Advisor
+
+/*************************************** 1. Generic Widget Styles ***************************************/ 
+
+#vacation_builder {display: none;}
+
+
+.widget {
+	width: 210px;
+	float: left;
+	padding: 17px 0;
+	position: relative;
+	display: inline;
+	border-bottom: 1px solid #e5e5df;
+	z-index: 0;}
+	
+.widget h3 { 		
+	background: #78cad8;
+	color: #FFF;
+	font: 14px "FG-Demi", "FG-Demi-ie", Arial;
+	display: block;
+	width: 190px;
+	padding: 5px 10px;
+	text-align: center;
+	float: left;
+	margin: 0;}	
+
+.widget h4 	{ font: 14px/18px "FG-Demi", "FG-Demi-ie", Arial; color: #336; letter-spacing: 0.3px; margin: 5px 0 0 0;}
+
+
+
+	
+/*************************************** 2.  Nav Widget Styles ***************************************/ 	
+
+
+#widget_nav li { list-style: none;}
+#widget_nav h4 { margin-bottom: 10px;}
+
+#widget_nav a { 
+	width: 190px;
+	color: #336;
+	font: bold 11px Verdana, Arial;
+	background: url("images/arrow-blue.png") no-repeat 1px 50%;
+	padding: 5px 10px;
+	float: left;
+	display: block;
+	border-bottom: 1px solid #f3f3f3;}	
+	
+#second_nav a:hover { background: #78cad8 url("images/arrow.png") no-repeat 1px 50%; color: #fff;}	
+	
+#third_nav a 		{ padding-left: 30px; width: 170px; background: url("images/arrow-blue.png") no-repeat 21px 50%;}
+#third_nav a:hover 	{ background: #78cad8 url("images/arrow.png") no-repeat 21px 50%;}
+
+#fourth_nav a 		{ padding-left: 50px; width: 150px; background: url("images/arrow-blue.png") no-repeat 41px 50%; }
+#fourth_nav a:hover { background: #78cad8 url("images/arrow.png") no-repeat 41px 50%;}	
+	
+#second_nav .widget_nav_on 	{ background: #78cad8 url("images/arrow.png") no-repeat 1px 50%; color: #fff;}
+#third_nav 	.widget_nav_on 	{ background: #78cad8 url("images/arrow.png") no-repeat 21px 50%;}	
+#fourth_nav .widget_nav_on 	{ background: #78cad8 url("images/arrow.png") no-repeat 41px 50%;}	
+	
+
+
+
+/*************************************** 3. Twitter Feed Widget Styles ***************************************/ 
+
+#twitter_feed h3 {
+	background: #78cad8;
+	color: #FFF;
+	font: 14px "FG-Demi", "FG-Demi-ie", Arial;
+	display: block;
+	width: 190px;
+	padding: 5px 10px;
+	text-align: center;
+	float: left;
+	margin:0 0 10px 0;}
+
+
+/*************************************** 4. Deals ***************************************/ 
+
+#widget_deals {
+	background: #efefef;
+	width: 190px;
+	padding: 0 10px 10px;
+	text-align: center;
+	float: left;
+	margin: 0 0 10px 0;
+	border: none;}
+	
+#widget_deals h2 {
+	color: #333366; 
+	font: 15px "Geometric","Geometric-ie",Verdana,Arial;
+	margin: 10px 0 5px 0;}
+	
+#widget_deals a {
+	color: #ce4f0f; 
+	font: bold 12px "Geometric","Geometric-ie",Verdana,Arial;}
+
+#widget_deals .separator { 
+	background-color: none; 
+	width: 100%; 
+	height: 1px; 
+	float: left; 
+	clear: both; 
+	margin: 10px 0 8px 0;
+	border-top: 2px dotted #78cad8;}
+
+
+/*************************************** 5.  Social Links Widget Styles ***************************************/ 	
+
+
+#widget_social p a { width: 29px; height: 29px; display: block; float: left; margin-left: 5px;}
+	
+#widget_social a#facebook_link	{ background: url("/css/images/social/facebook.gif");}
+#widget_social a#flickr_link	{ background: url("/css/images/social/flickr.gif");}
+#widget_social a#twitter_link 	{ background: url("/css/images/social/twitter.png");}
+#widget_social a#youtube_link	{ background: url("/css/images/social/youtube.gif");}
+#widget_social a#mobile_link	{ background: url("/css/images/social/mobile.gif");}
+#widget_social a#blog_link		{ background: url("/css/images/social/blog.gif"); margin-right: 0;}
+
+#widget_social a#insider_link	{ 
+	background: url("/css/images/social/insider.gif"); 
+	width: 178px;
+	height: 29px; 
+	display: block; 
+	float: left;
+	margin: 0 0 10px 5px;}
+	
+/*************************************** 5.  Tripadvisor Widget Styles ***************************************/ 	
+
+#CDSWIDTCD {margin: 0 auto;} /*centers travellers choice graphic*/ 
+

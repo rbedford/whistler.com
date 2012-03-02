@@ -1,0 +1,438 @@
+/*CSS Tourism Whistler Style Sheet
+
+1. Fonts
+2. Breadcrumbs
+3. Tabled Content
+4. Tabbed Boxes
+5. Buckets
+6. Tiles
+7. Video player
+8. Accordian
+9. Scrollable Item
+10.Acommodations Page
+11.Social Media
+12.Packages/Boxes
+13.Dual Column
+14.Listings
+15.A-Z
+16.Room Prices
+17.Random
+
+/*************************************** 1. Fonts ***************************************/ 
+	body {width: 500px; margin: 0;}
+
+p 		{ font: 12px/20px Verdana, Arial; color: #666;}	
+a 		{ font: 12px Verdana, Arial; color: #333;}
+li 		{ font: 12px/20px Verdana, Arial; color: #333;}	
+h1		{ font: 26px "Museo300", "Museo300-ie", Verdana, Arial; color: #3e4073; margin: 10px 0;}
+h2		{ font: 22px "Museo300", "Museo300-ie", Verdana, Arial; color: #336; margin: 10px 0;}
+h3 		{ font: 15px "DroidSans", "DroidSans-ie", Arial; color: #336; margin-bottom: 10px;}
+h4 		{ font: 15px "DroidSans", "DroidSans-ie", Arial; color: #336; margin-bottom: 10px;}
+
+.sml_txt { font: 10px Verdana, Arial; color: #2f2c63;}
+.red 	{ color: #C00;}
+.green 	{ color: #090;}
+
+#content h1, #content_wide h1, 	 
+#content h2, #content_wide h2, 		
+#content h3, #content_wide h3					{ clear: both;} 	
+#content p, #content_wide p  					{ margin-bottom: 10px;} 	
+#content p a, #content_wide p a 				{ font: 12px/20px Verdana, Arial; color: #474775; text-decoration: underline;}
+#content p a:hover, #content_wide p a:hover,
+#content li a, #content_wide li a				{ text-decoration: underline;}
+#content ul, #content_wide ul 					{ margin: 10px 0 15px;}
+#content li, #content_wide li 					{ margin: 0 0 5px 20px; list-style-image: url("/css/images/bullit-summer.png");}
+
+.light_txt { font: 10px Verdana, Arial; color: #999;}
+
+#content .cta { 
+	display: inline-block; 
+	zoom: 1; 
+	*display: inline;
+	margin: 10px 0;
+	background: #336; 
+	color: #FFF; 
+	padding: 5px; 
+	font: bold 12px Verdana, Arial; 
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px;}
+
+#content .cta_red {
+	display: inline-block; 
+	zoom: 1; 
+	*display: inline;
+	background: #C00; 
+	color: #FFF; 
+	padding: 5px; 
+	font: bold 12px Verdana, Arial; 
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px;
+	margin: 10px 0;}
+	
+	
+/*************************************** 2. General Content  ***************************************/ 	
+	
+#content .thumb, 
+#content_wide .thumb { float: left; margin: 3px 10px 10px -3px;}
+#content .right, 
+#content_wide .right { float: right; display: block; margin: 0 0 10px 10px;}
+
+.advert_wide { float: left;}
+
+.separator { background-color: #f1f1f1; width: 100%; height: 1px; float: left; clear: both; margin: 15px 0;}
+
+.holder { float: left; clear: both; width: 490px;}
+
+
+
+/*************************************** 3. Tabled Content Styles ***************************************/ 
+
+#content table, #content_wide table									{ margin: 0 0 10px 0; text-align: left; padding: 5px;}
+#content table a, #content_wide table a	 							{ font: 12px/20px Verdana, Arial; color: #474775; text-decoration: underline;}
+#content table p, #content_wide table p								{ margin: 0;}
+#content td	, #content_wide td										{ background: #e5e5e5; padding: 5px;}
+#content td p, #content td, #content_wide td p, #content_wide td	{ font: 11px/18px Verdana, Arial, Helvetica, sans-serif; color: #2b332e;}
+#content th p, #content th, #content_wide th p, #content_wide th	{ font: bold 11px/18px Verdana, Arial, Helvetica, sans-serif; color: #2b332e;}
+#content th, #content_wide th										{ background: #bfcd99; padding: 5px;}
+
+#content table input, #content table select, #content table textarea { border: 1px solid  #ccc;}
+#content .sitemap table , #content .sitemap td { padding:0; margin: 0 0 0 0;}
+
+#find_zone th	{ background: #bfcd99; text-align: center;}
+#find_zone th a	{ color: #fff; text-decoration: none; font-weight: bold;}
+
+
+
+
+/*************************************** 4. Tabbed Boxes ***************************************/	
+
+#content .tab_holder, #content_wide .tab_holder { position: relative; float: left; clear: left; margin: 0 0 10px 0;}
+#content #tabs, #content_wide #tabs { position: absolute; left: 0; z-index: 1000;}
+#content #chapters, #content_wide #chapters { padding-top: 42px; clear: both; float: left;}
+
+#content #tabs li,
+#content_wide #tabs li {
+	list-style: none;
+	display: inline;
+	float: left;
+	margin: 7px 1px 0 0;
+	height: 45px;}
+	
+#content #tabs a, 
+#content_wide #tabs a {
+	height: 14px;
+	padding: 5px 15px;
+	display: block;
+	float: left;
+	color: #FFF;
+	font: 14px "DroidSans", "DroidSans-ie", Arial;
+	letter-spacing: 0.5px;
+	background: #bfcd99;
+	text-decoration: none;
+	outline: none;}
+	
+#content #tabs a.on, 
+#content_wide #tabs a.on { background: url("/css/images/tab-arrow-summer.png") no-repeat; text-decoration: none; height: 29px;}
+
+.toggle {
+	width: 380px;
+	border: 10px solid #e5e5e5;
+	padding: 20px;
+	float: left;}
+
+
+/*************************************** 5. Bucket Styles ***************************************/	
+
+.bucket { position: relative; float: left;}
+
+.bucket h2, 
+.bucket h3,
+.bucket p { color: #fff; margin: 0;}
+
+.bucket a { 
+	padding: 8px 10px; 
+	display: block; 
+	background: #809b34; 
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+	position: absolute; 
+	bottom: 0; 
+	left: 0;}
+	
+.bucket a:hover 	{ text-decoration: none; opacity: 1; filter: alpha(opacity=100);}	
+
+
+
+
+
+/*************************************** 6. Tile Styles ***************************************/	
+
+.tile { 
+	float: left;
+	display: inline; 
+	position: relative; 
+	top: 0; 
+	left: 0;}
+	
+.tile3 { width: 210px; margin: 0 11px 15px;}	
+.tile2 { width: 325px; margin: 0 11px 15px;}	
+
+.tile2 p { margin-top: 5px;}
+	
+.tile span {
+	padding: 10px;
+	background: #809b34;
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+	position: absolute;
+	display: block;
+	height: 35px;
+	top: 145px;
+	left: 0;
+	color: #fff;
+	font: 15px "DroidSans", "DroidSans-ie", Verdana;}
+	
+.tile:hover span	{ opacity: 1; filter: alpha(opacity=100);}	
+
+.tile3 span { width: 190px;}
+.tile2 span { width: 305px;}
+
+
+/*************************************** 7. Video Player Styles (index page) ***************************************/	
+
+
+.headerVP #player_ski 				{ background: url('/resources/video/apres-big.jpg');}
+.headerVP #player_terrain 			{ background: url('/resources/video/B20110930_Snowboard_Park03.jpg');}
+.headerVP #player_scandinave 		{ background: url('/images/spa/scandinave.jpg');}
+.headerVP #player_about 			{ background: url('/resources/video/High_Note_Trail.jpg');}
+.headerVP #player_road 				{ background: url('/resources/video/by_road.jpg');}
+.headerVP #player_nicklaus 			{ background: url('/resources/video/nick_north.jpg');}
+.headerVP #player_whistler_golf 	{ background: url('/resources/video/whistler_golf_club.jpg');}
+.headerVP #player_fairmont_golf 	{ background: url('/resources/video/fairmont.jpg');}
+.headerVP #player_big_sky			{ background: url('/resources/video/big_sky.jpg');}
+.headerVP #player_fibt				{ background: url('/resources/video/worldcup_fibt.jpg');}
+.headerVP #player_groups			{ background: url('/resources/video/High_Note_Trail.jpg');}
+.headerVP #player_village			{ background: url('/resources/video/High_Note_Trail.jpg');}
+.headerVP #player_nordic			{ background: url('/resources/video/nordic.jpg');}
+.headerVP #player_museum			{ background: url('/resources/video/museum.jpg');}
+.headerVP #player_olympics			{ background: url('/resources/video/about.jpg');}
+.headerVP #player_meetings			{ background: url('/resources/video/High_Note_Trail.jpg');}
+.headerVP #player_twssf				{ background: url('/resources/video/wssf.jpg');}
+
+.video_player {	
+	float: left;
+	position: relative;}
+	
+#player, .player { display: block; text-align: center; text-decoration: none;}
+
+.headerVP 			{ width: 490px;}
+.headerVP .player 	{ width: 490px; height: 350px;}
+.headerVP #player 	{ width: 490px; height: 350px;}
+.headerVP span 		{ width: 470px;}	
+.headerVP img 		{ margin-top: 140px;}
+	
+.video_player span.bg {
+	padding: 8px 10px; 
+	background: #809b34; 
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+	position: absolute; 
+	bottom: 0;
+	left: 0;
+	text-align: left;
+	color: #fff;}
+	
+.video_player:hover span.bg { opacity: 0.95; filter: alpha(opacity=95);}
+
+.video_player span.bg span { display: block;}
+
+.video_player span.h2 { font: 22px "Museo300","Museo300-ie",Verdana,Arial;}
+.video_player span.h3 { font: 15px "Museo300","Museo300-ie",Verdana,Arial;}
+
+#your-videos #player { clear: both; }
+	
+/*************************************** 8. Accordian Styles ***************************************/		
+	
+.accordian { margin: 10px 0 0 10px;}
+
+
+
+/*************************************** 9. scrollable Item Styles ***************************************/
+
+
+.scrollable_holder {
+	background: #bfcd99;
+	width: 490px;
+	height: 170px;
+	float: left;}
+	
+.scrollable_holder .scrollable {
+	position: relative;
+	overflow: hidden;
+	width: 390px;
+	height: 130px;
+	float: left;
+	margin-top: 20px;}
+
+.scrollable_holder .scrollable .items {
+	width: 20000em;
+	position: absolute;}
+
+.scrollable_holder .leftArrow, 
+.scrollable_holder .rightArrow {
+	width: 33px;
+	height: 33px;
+	margin: 65px 8px;
+	float: left;}
+
+.scrollable_holder .leftArrow 			{ background: url("/css/images/btns/scrollable_left.png") no-repeat; cursor: pointer;}	
+.scrollable_holder .leftArrow:hover 	{ background: url("/css/images/btns/scrollable_left_over.png") no-repeat;}
+
+.scrollable_holder .rightArrow 			{ background: url("/css/images/btns/scrollable_right.png") no-repeat; cursor: pointer;}	
+.scrollable_holder .rightArrow:hover 	{ background: url("/css/images/btns/scrollable_right_over.png") no-repeat;}
+	
+.scrollable_holder .items div {
+	float: left;
+	width: 490px;}
+	
+.scrollable_holder .items a 		{ float: left; margin-right: 12px;}
+.scrollable_holder .items .last 	{ margin-right: 0;}
+.scrollable_holder .items img 		{ border-top: 10px solid #fff; border-right: 10px solid #fff; border-bottom: 30px solid #fff; border-left: 10px solid #fff;}	
+	
+.scrollable_holder .items a p		{ width: 120px; position: relative; top: -27px; left: 10px; font: bold 10px Verdana, Arial; color: #474775;}
+
+.non_scrollable_holder 				{ background: #bfcd99; width: 697px; height: 170px; float: left; clear: both;}
+.non_scrollable_holder .scrollable 	{ width: 490px; margin: 20px auto 0;}
+.non_scrollable_holder .items 		{ width: 490px; text-align: center;}
+.non_scrollable_holder .items div 	{ display: inline-block; text-align: left; zoom: 1; *display: inline; }
+.non_scrollable_holder .items a 	{ float: left; margin-right: 12px;}
+.non_scrollable_holder .items .last { margin-right: 0;}
+.non_scrollable_holder .items img 	{ border-top: 10px solid #fff; border-right: 10px solid #fff; border-bottom: 30px solid #fff; border-left: 10px solid #fff;}		
+
+.non_scrollable_holder .items a p, 
+.non_scrollable_holder .items a span	{ display: block; width: 120px; position: relative; top: -27px; left: 10px; font: bold 10px Verdana, Arial; color: #474775;}
+
+	
+
+
+
+/*************************************** 11. Social Media Styles ***************************************/	
+	
+	
+#twitter_feed tr { 
+	display: block;
+	border-bottom: 5px solid #fff;}
+
+#twitter_feed td { 
+	background: #e5e5e5;
+	padding: 5px 10px;
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px;
+	font: 10px/14px Verdana, Arial; 
+	color: #666; }		
+	
+#twitter_feed a { font: bold 10px Verdana, Arial; color: #474775; text-decoration: none; margin: 0 0 5px 0; display: block;}
+#twitter_feed .follow { float: right; margin: 5px 0 0 0;}
+
+
+
+
+	
+
+
+
+
+
+/*************************************** 17. Random ***************************************/
+
+.divDate  {	position: relative;
+	display: inline;
+    z-index:100;}
+.divCal  {	position: relative;
+	display: inline;
+    z-index:100;}
+
+.divDate input {
+	width: 107px;
+    padding: 6px 10px;
+    border: 1px solid #d1d1d1;
+    margin: 0 30px 0 0;
+    box-shadow: 0 0 4px #dad8d8; -webkit-box-shadow: 0 0 4px #dad8d8; -moz-box-shadow: 0 0 4px #dad8d8;
+    -webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-border-radius: 3px;
+    font: 10px;
+    background: #FFF url("/css/images/calander.gif") 95% 50% no-repeat;}
+
+#checkAdvanced { 
+	background: #336; 
+	color: #FFF; 
+	padding: 5px; 
+	font: bold 12px Verdana, Arial; 
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px;
+	width: 150px;}
+
+/* required field validator class */
+span.r { color:Red}
+.btn1 {
+    background: #336; 
+	color: #FFF; 
+	padding: 5px; 
+	font: bold 12px Verdana, Arial; 
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px;
+	min-width: 150px;}
+#content .btn, 
+#content_wide .btn {
+    background: #336; 
+	color: #FFF; 
+	padding: 5px; 
+	font: bold 12px Verdana, Arial; 
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px;
+	width: 150px;
+	text-decoration: none;
+}
+
+input[type="submit"][disabled] {
+    background: Silver; 
+	color: Gray; 
+	padding: 5px; 
+	font: bold 12px Verdana, Arial; 
+	-moz-border-radius: 4px; -webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px;
+	width: 150px;
+	/*	border: 2px outset ButtonFace;*/}
+
+div.val 
+{
+margin-left:25px;
+color:Red;
+}
+
+#content a.btn1, #content_wide a.btn1 {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* embedded youtube video */
+
+.youtube {
+	width: 350px;
+	margin: 0 auto;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+

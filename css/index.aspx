@@ -1,0 +1,1 @@
+<%@ Page  Language="C#"  AutoEventWireup="true" %><%@ MasterType TypeName="BaseMaster" %><script runat="server">int PageID = 1153;protected void Page_PreInit(object sender, EventArgs e){     common c = new common();MasterPageFile = c.getMasterPage(PageID);}protected void Page_Load(object sender, EventArgs e){Master.PageID = PageID;}</script>

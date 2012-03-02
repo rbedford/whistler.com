@@ -1,0 +1,193 @@
+#sets {
+	float: right;
+	width: 260px;
+	margin: 0 0 10px 0;
+	border: 10px solid #E5E5E5;
+}
+
+#sets a.set {
+	display: block;
+	overflow: hidden;
+	padding: 10px;
+	font-weight: bold;
+	color: #474775;
+	outline: none;
+	font: 15px "FG-Demi", "FG-Demi-ie", Arial;
+	border-bottom: 1px solid #F1F1F1;
+}
+
+#sets a.set.active, 
+#sets a.set:hover {
+	color: #000;
+	background: #BBE3E2;	
+}
+
+#sets a.set img {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#sets #holder {
+	height: 426px;
+	overflow: auto;
+}
+
+#set-photos {
+	display: none;
+	float: left;
+	width: 620px;
+	max-height: 406px;
+	overflow: auto;
+	padding: 10px;
+	margin: 0 0 10px 0;
+	text-align: center;
+	border: 10px solid #E5E5E5;
+}
+
+#set-photos a {
+	width: 75px;
+	height: 75px;
+	margin: 0 5px 5px 0;
+}
+
+/* social page photo gallery */
+
+#social-photos #photo {
+	margin: 0 0 0 -10px;
+	height: auto;
+}
+
+#social-photos #set-photos {
+	border: 0;	
+}
+
+/* Your video tab */
+
+/* Videos */
+
+#player {
+	width: 617px;
+	height: 390px;
+	margin: 0 10px 10px 0;
+	padding: 10px;
+	background: #E5E5E5;
+}
+
+#video-description {
+	display: none;
+	float: left;
+	width: 617px;
+	padding: 10px;
+	margin: 0 0 10px 0;
+	background: #E5E5E5;
+}
+
+#videos {
+	float: left;
+	width: 637px;
+	margin: -10px 0 0 0;
+}
+
+.video {
+	overflow: hidden;
+	padding: 10px 0;
+	border-bottom: 1px solid #F1F1F1;
+}
+
+.video a {
+	color: #353163;
+	font-weight: bold;
+	font: 14px "DroidSans","DroidSans-ie",Arial;
+}
+
+.video img {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+.video h4 {
+	float: left;
+	width: 220px;
+}
+
+.video p {
+}
+
+.video a.owner {
+	font: 11px "DroidSans","DroidSans-ie",Arial;
+	margin: 5px 0 0 0;
+	color: #000;
+	display: block;
+}
+
+.video span {
+	float: left;
+	font: 11px "DroidSans","DroidSans-ie",Arial;
+	color: #666;
+	margin: 0 5px 0 0;
+}
+
+/* Video Uploader */
+
+#upload-video {
+	float: left;
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+	border-bottom: 1px solid #f1f1f1;
+	width: 637px;
+}
+
+#upload-video p {
+	float: left;
+	padding: 8px 0 0 0;
+	margin: 0 10px 0 0;
+}
+
+a.upload-video {
+	float: left;
+	display: block;
+	padding: 10px;
+	color: #fff;
+	height: 15px;
+	margin: 5px 0 0 0;
+	background: #78cad8;
+}
+
+a.upload-video:hover {
+	color: #000;
+	background: #e5e5e5;
+}
+
+#videos a.upload-video {
+	margin: 0 0 0 10px;
+}
+
+#upload-panel {
+	float: left;
+	width: 637px;
+	display: none;
+	min-height: 410px;
+	margin: 0 0 18px 0;
+	background: #e5e5e5;
+}
+
+/* YTD override classes */
+
+#ytdContainer-16001 {
+	width: 385px;
+	margin: 20px auto;
+}
+
+#loginInstruction {
+	color: #666;
+	font-family: 12px/20px Verdana,Arial;
+}
+
+#videosSelect {
+	width: 300px;
+}
+
+.inputBox {
+  margin-top:2px;
+  width:352px;
+}

@@ -1,0 +1,169 @@
+.winter_offer { float: left; margin: 0 9px 20px 8px;}
+
+#accommodation_only {
+	float: left; 
+	margin: 0 0 0 7px; 
+	background: url(/images/Packages/accommodation_only.gif); 
+	padding: 40px 0 0 30px; 
+	height: 80px; 
+	width: 195px; 
+	display: block; 
+	font:48px Geometric, Geometric-ie, Verdana, Arial; 
+	color: #809B34;}
+
+/*************************************** Winter Packages ***************************************/
+
+.winter-package {
+	float: left;
+	width: 175px;
+	padding: 10px;
+	margin: 0 10px 10px 0;
+	border: 5px solid #e5e5e5;
+	position: relative;}
+
+.winter-package.last {
+	margin-right: 0;}
+
+.winter-package h3 {
+	display: block;
+	width: 175px;
+	margin: 0 0 10px 0;
+	text-align: center;
+	color: #336;
+	font: 16px "Geometric","Geometric-ie",Verdana,Arial;}
+
+.winter-package .offer-price {
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	width: 81px;
+	height: 81px;}
+
+.winter-package strong {
+	color: #3E4073;
+	margin: 10px 16px 0 0;
+	font: 12px "FG-Demi","FG-Demi-ie",Verdana,Arial;}
+
+.winter-package .prices {
+	float: left;
+	margin: 10px 0 0 0;}
+
+.winter-package .prices dl {
+	float: left;
+	width: 175px;
+	margin: 0 0 5px 0;
+	padding: 0 0 3px 0;
+	border-bottom: 1px dashed #e5e5e5;}
+
+.winter-package .prices dl.last {
+	border-bottom: 0;}
+
+.winter-package .prices dl dt {
+	float: left;
+	width: 70px;
+	text-align: center;
+	color: #666;
+	font: 14px "GeometricM","GeometricM-ie",Verdana,Arial;}
+
+.winter-package .prices dl dd {
+	float: right;
+	width: 105px;
+	text-align: right;
+	color: #999;
+	font: 12px "GeometricM","GeometricM-ie",Verdana,Arial;}
+
+.winter-package .prices dl dd strong {
+	color: #31a4b8;
+	font-size: 16px;}
+
+.winter-package .bottom {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	width: 200px;
+	height: 20px;
+	background: transparent url("/images/winter_packages/bottom.gif") no-repeat 0 0;}
+
+.winter-package a.book-now {
+	color: #fff;
+	padding: 5px 10px;
+	background: #336;
+	position: absolute;
+	bottom: -60px;
+	left: 56px;
+	font: 14px "FG-Demi","FG-Demi-ie",Verdana;}
+	
+	
+	
+/*************************************** Get Away Packages ***************************************/	
+
+
+.get-away {
+	float: left;
+	width: 205px;
+	min-height: 205px;
+	padding: 5px 5px 0 5px;
+	border: 5px solid #e5e5e5;
+	margin: 0 10px 70px 0;
+	text-align: center;
+	position: relative;}
+
+.get-away.last {
+	margin: 0 0 10px 0;}
+
+.get-away h3 {
+	color: #809b34;
+	font: 18px "Geometric","Geometric-ie",Verdana,Arial;}
+
+	.get-away h3 em {
+		color: #809b34;
+		font-style: normal;}
+	
+	.get-away h3 span {
+		display: block;
+		font-family: "GeometricM","GeometricM-ie",Verdana,Arial;}
+	
+#accom-lift.get-away h4 {
+	margin: 10px 0 0 0;
+	font: 16px "Geometric","Geometric-ie",Verdana,Arial;}
+
+	#accom-lift.get-away h4 span {
+		display: block;
+		font: 14px "GeometricM","GeometricM-ie",Verdana,Arial;}
+
+#accom-only.get-away p strong {
+	display: block;
+	color: #809b34;
+	font: 4em "Geometric","Geometric-ie",Verdana,Arial;}
+
+#content .get-away p.info {
+	background: #809b34;
+	color: #fff;
+	margin: 0;
+	padding: 5px;
+	font: 12px "FG-Demi", "FG-Demi-ie", Arial;
+	line-height: 16px;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	bottom: 0;}
+
+.get-away .bottom {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	width: 215px;
+	height: 20px;
+	background: transparent url(/images/packages/bottom.gif) no-repeat 0 0;}
+
+.get-away a.button {
+	color: #fff;
+	padding: 5px 10px;
+	background: #333367;
+	position: absolute;
+	bottom: -60px;
+	left: 60px;
+	border: 1px solid #333367;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font: 14px "Geometric","Geometric-ie",Verdana,Arial;}

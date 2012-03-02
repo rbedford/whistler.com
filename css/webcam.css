@@ -1,0 +1,121 @@
+.webcam {
+	width: 640px;
+	height: 360px;
+	margin: 0 0 10px 0;
+	position: relative;
+}
+
+	#whistlercam {
+		background: #E7E7E7 url("../css/images/logo-trans.png") no-repeat 45% 50%;
+	}
+	
+	#blackcombcam {
+		background: #E7E7E7 url("../css/images/logo-trans.png") no-repeat 45% 50%;
+	}
+
+.webcam img {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.webcam img.current {
+	z-index: 2;
+	display: block;
+}
+
+.webcam img.next {
+	z-index: 1;
+	display: block;
+}
+
+.webcam img.hidden {
+	visibility: hidden;
+}
+
+#content .webcam ul.controls {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	width: 95px;
+	height: 20px;
+	margin: 0;
+	padding: 5px;
+	background: #78cad8;
+	z-index: 3;
+}
+
+#content .webcam ul.controls li {
+	list-style: none;
+	list-style-image: none;
+	float: left;
+	margin: 0;
+}
+
+.webcam ul.controls li a {
+	display: block;
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin: 0 5px 0 0;
+	text-indent: -9999px;
+	outline: none;
+	background: transparent url("images/webcam.gif") no-repeat 0 0;
+}
+
+.webcam ul.controls li a.last {
+	margin: 0;
+}
+
+.webcam ul.controls li a.rewind {
+	background-position: 0 0;
+}
+
+.webcam ul.controls li a.play {
+	background-position: -40px 0;
+}
+
+.webcam ul.controls li a.pause {
+	background-position: -20px 0;
+}
+
+.webcam ul.controls li a.fast-forward {
+	background-position: -60px 0;
+}
+
+.webcam ul.controls li a.view-all {
+	background-position: -80px 0;
+}
+
+.toggle .view-all-panel {
+	display: none;
+	position: absolute;
+	top: 20%;
+	left: 17%;
+	z-index: 999;
+	width: 450px;
+	padding: 10px 0 0 10px;
+	background: #76C7C6;
+}
+
+.toggle .view-all-panel img {
+	position: relative;
+	margin: 0 10px 10px 0;
+}
+
+.toggle .view-all-panel a {
+	outline: none;
+}
+
+.toggle .view-all-panel a.close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 10px;
+	height: 10px;
+	background: red;
+}
+
+#lost-lake p {
+	margin: 10px 0 0 0;
+}

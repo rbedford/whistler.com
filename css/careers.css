@@ -1,0 +1,23 @@
+.quote {
+	float: left;
+	width: 607px;
+	color: #666;
+	margin: 0 0 20px 0;
+	font: 12px/20px Verdana,Arial;
+	background: #e5e5e5;
+}
+
+	.quote.left {
+		padding: 10px 10px 10px 80px;
+		background: #e5e5e5 url(../images/careers/quote-left.gif) no-repeat 0 0;
+	}
+	
+	.quote.right {
+		padding: 10px 80px 10px 10px;
+		background: #e5e5e5 url(../images/careers/quote-right.gif) no-repeat 99% 0;
+	}
+	
+	.quote span {
+		display: block;
+		font-style: italic;
+	}

@@ -1,0 +1,31 @@
+
+#content .poll_table td { background: #fff;}
+
+.week {
+	width: 36px; 
+	height: 33px; 
+	display: block; 
+	text-align: center; 
+	padding: 12px 0 0 0; 
+	background: url(/css/images/poll_results/week.gif) no-repeat; 
+	font: 26px FG-Demi, FG-Demi-ie; 
+	color: #fff;}
+	 
+.bar_bg {
+	width: 100px; 
+	height: 8px; 
+	background: #d9d9ea;}
+	
+.bar {
+	background: #336; 
+	height: 8px; 
+	display: block;}
+	
+.percent {
+	 font: 20px GeometricM, GeometricM-ie, Verdana, Arial; 
+	 color: #336;}	
+	 
+#widget_poll table 		{ margin: 0 10px;}		
+#widget_poll .percent 	{ font: 16px GeometricM, GeometricM-ie, Verdana, Arial;}	 	
+#widget_poll h2 		{ line-height: 22px;}	
+#widget_poll .link 		{ color: #dc4400; font: bold 12px Verdana; margin-top: 15px; display: block;}

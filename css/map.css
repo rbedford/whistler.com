@@ -1,0 +1,164 @@
+#holder {
+	float: left;
+	width: 752px;
+}
+
+#content {
+	padding: 0;
+	width: 748px;
+	margin: 0 0 10px 0;
+	z-index: auto;
+}
+
+#content #tabs {
+	margin: 0;
+}
+
+#content #tabs li a {
+	outline: none;
+}
+
+#content #chapters {
+	padding-top: 32px;
+}
+
+#map {
+	float: left;
+	width: 740px;
+	height: 518px;
+	padding: 0;
+	border: solid 1px #999;
+	margin: 0 10px 0 0;}
+	
+#street-view {
+	width: 740px;
+	height: 518px;
+	padding: 0;
+	border: solid 1px #999;
+	float: left;
+}
+	
+#driving-directions {
+	display: none;
+	width: 723px;
+	margin: 10px 0 10px 0;
+	padding: 0;
+	left: 605px;
+	overflow: auto;
+	background: #e7e7e7;
+}
+
+#driving-directions ul {
+	height: 320px;
+	overflow: auto;
+	margin: 0;
+	border-bottom: 1px solid #333366;
+}
+
+.trip-overview {
+	color: #333;	
+}
+	
+.panel {
+	float: left;
+	clear: left;
+	width: 180px;
+	padding: 10px;
+	margin: 0 10px 10px 0;
+	background: #e7e7e7;
+}
+
+.panel a {
+	display: block;
+	color: #336;
+	font: 11px/18px Verdana, Arial;
+	text-decoration: none;}
+
+.column {
+	float: left;}
+
+#hotels {
+	height: 430px;
+	overflow: auto;
+	margin: 0 10px 0 0;
+}
+
+#controls a {
+	display: block;
+	float: left;
+	clear: left;
+	position: relative;
+	width: 180px;
+	outline: none;
+}
+
+#controls a span {
+	position: absolute;
+	right: 0;
+	text-transform: uppercase;
+}
+
+#controls a.on span {
+	color: #3C0;
+}
+
+#controls a.off span {
+	color: #ff0000;
+}
+
+#hotels a:hover {
+	text-decoration: underline;}
+
+#hotel-info {
+	width: 723px;
+	height: 127px;
+	float: left;
+	clear: both;
+	margin: 0 5px 0 210px;
+}
+
+#hotel-info h3 {
+	float: left;	
+}
+
+#get-driving-directions .text.error {
+	background: #FC8787;
+	border: 1px solid #666;
+}
+
+a.close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 16px;
+	height: 16px;
+	background: transparent url(/css/images/map/cross.png) no-repeat;}
+	
+.distances {
+	float: left;
+	clear: left;
+	width: 515px;
+}
+
+.distances div { width: 210px; margin-right: 20px; float: left; padding-right: 20px; border-right: 1px solid #CCC;}
+.distances div.black { margin: 0; padding: 0; }
+
+.directions { width: 180px; float: left;}
+
+a.view-property {
+	float: left;
+	clear: both;
+	width: 400px;
+}
+
+#lift_name {
+	display: none;
+	background: #E7E7E7;
+	border: 1px solid #000;
+	position: absolute;
+	padding: 5px;
+	z-index: 9999;
+	color: #333366;
+	font: 11px/18px Verdana,Arial;
+	font-weight: bold;
+}

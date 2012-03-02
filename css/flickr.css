@@ -1,0 +1,45 @@
+#pgallery {
+	background: #76C7C6;
+	clear: left;
+	height: 340px;
+	margin: 1em auto 0 auto;
+	overflow: hidden;
+	padding: 0;
+	width: 510px;
+}
+
+	#pgallery a {
+		position: relative !important;
+	}
+
+	#pgallery img {
+		border: none;
+		padding: 5px 0 0 5px;
+		margin: 0 auto;
+		display: block;
+	}
+ 
+div.flickrNav {
+	background: #76C7C6;
+	clear: both;
+	height: 43px;
+	margin: 0 auto 1em auto;
+	overflow: hidden;
+	padding: 0;
+	width: 510px;
+}
+
+.flickrNav a {
+	display: block;
+	float: right;
+	width: 20px;
+	height: 20px;
+	margin: 10px 5px 0 0;
+	text-indent: -9999px;
+	outline: none;
+	background: transparent url(../images/webcam/buttons.gif) no-repeat 0 0;
+}
+
+	.flickrNav a#next {
+		background-position: -60px 0;
+	}

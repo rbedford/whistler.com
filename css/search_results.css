@@ -1,0 +1,259 @@
+
+/*
+1. Refine Search
+2. Result Box
+3. Filter Results
+4. Page Numeration Stuff
+5. Pop Up Boxes
+*/
+
+div.ph_title { text-align: left; }
+div.ph_title b { display: block; margin-right: 80px; }
+div.ph_title span { float: right; }
+
+
+.sectionResults h1		{ margin: 10px 0;}
+
+
+.sectionResults .separator { background-color: #f1f1f1; width: 100%; height: 1px; float: left; clear: both; margin: 10px 0;}
+
+.big_red 	{ color: #C00; font-weight: bold;}
+.cross 		{ text-decoration: line-through;}
+
+#content td .purple_btn,
+#filter_results .purple_btn {
+	margin: 0; 
+	background: #336; 
+	color: #fff;
+	-webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; -moz-border-radius: 4px; 
+	cursor: pointer;
+	border: 0;
+	padding: 4px 6px;
+	text-decoration: none;
+	font: 11px verdana;} 
+	
+/******************************************************************** 1. Refine Search ************/
+
+.refine_search {
+	float: left;
+	width: 697px;
+	margin: 10px 0;
+	padding: 10px 0;
+	border-top: solid 1px #f7f7f7;
+	border-bottom: solid 1px #f7f7f7;
+	font: 12px Verdana, Arial;
+	color: #666;}
+	
+#content .refine_search td {
+	background: #fff;}
+
+.refine_search input {
+	padding: 6px;
+    border: 1px solid #d1d1d1; 
+    font: 11px Verdana, Arial;
+	color: #666;
+	-webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-border-radius: 3px;
+	box-shadow: 0 0 4px #dad8d8; -webkit-box-shadow: 0 0 4px #dad8d8; -moz-box-shadow: 0 0 4px #dad8d8;}
+	
+.refine_search #c2_txtA1,
+.refine_search #c2_txtA2 { 
+	width: 107px; 
+	background: #FFF url("/css/images/calander.gif") 94% 50% no-repeat; }
+		
+.refine_search #c2_txtAdult,
+.refine_search #c2_txtChild { 
+	width: 16px; 
+	text-align: center;}
+
+#update { width: 58px;}	
+
+
+/******************************************************************** 2. Result Box ************/
+
+.result_box {
+	width: 697px;
+	float: left;
+	position: relative;}
+	
+.result_box_offer {
+	width: 150px;
+	height: 104px;
+	padding: 10px;
+	background: #31a4b8;
+	position: absolute;
+	right: 0px;
+	top: -5px;
+	text-align: center;
+	-webkit-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; -moz-border-radius: 4px;}
+	
+#content .result_box_offer td {
+	background: #31a4b8;
+	padding: 0;
+	text-align: center;}
+	
+.result_box_offer h1 { font: 28px "Museo500", "Museo500-ie", Verdana, Arial;  color: #ceeae9; margin: 10px 0;}
+	
+#content .result_box_offer p { font: 11px Verdana, Arial; color: #fff; margin: 0;}
+	
+.result_header {
+	padding: 10px;
+	width: 677px;
+	background: #bae3e2;
+	float: left;
+	height: 75px;}
+	
+.result_header img {
+	float: left;}
+	
+.result_header_details  	{ float: left; padding: 0 10px;}
+.result_header_details h2 	{ margin: 0;}
+.result_header_details img 	{ margin: 5px 0 5px 0;}					
+	
+.results_holder {
+	margin: 0 10px 10px;
+	padding: 10px;
+	border-left: solid 10px #bae3e2;
+	border-right: solid 10px #bae3e2;
+	border-bottom: solid 10px #bae3e2;
+	width: 637px;}
+	
+#content .results_holder table {
+	margin: 0;
+	width: 637px;
+	margin-top: 10px;}
+	
+#content .results_holder table tr:hover td {
+	background: #f8f7f7;}
+	
+#content .results_holder table tr:hover td.on{
+	background: #fff;}
+		
+#content .results_holder table th {
+	background: #fff;}
+	
+#content .results_holder table td {
+	background: #fff;
+	border-top: 1px solid #f1f1f1;}
+
+#content .results_holder table td.on {
+	border-top: 1px solid #fff;}
+	
+#content .results_holder table h2 { font: 18px "Museo500", "Museo500-ie", Verdana, Arial; color: #336; margin: 5px 0;}
+#content .results_holder table h3 { font: 18px "Museo500", "Museo500-ie", Verdana, Arial; color: #999; margin: 5px 0;}		
+		
+#content .results_holder table table {
+	margin: 0;
+	width: 617px;}	
+		
+#content .results_holder table table td {
+	border: none;
+	background: #f8f7f7;
+	border-top: 1px solid #fff;}
+
+
+/******************************************************************** 3. Filter Results ************/
+
+/*#sidebar				{ z-index: -1; position: relative;}*/
+#filter_results p		{ clear: both;}
+#filter_results h2		{ margin: 0;}
+#filter_results ul 		{ list-style: none;}
+#filter_results li 		{ font: 11px verdana; color: #666; margin: 5px 0;}
+#filter_results td 		{ padding: 15px 0 0 0;}
+
+/******************************************************************** 4. Page Numeration Stuff ************/
+
+
+#results_page_options {
+	background: #f8f7f7;
+	float: left;
+	clear: both;
+	width: 677px;
+	padding: 10px 10px 0 10px;
+	margin: 0 0 10px 0;
+	position: relative;}
+
+#results_page_footer {
+	background: #f8f7f7;
+	float: left;
+	clear: both;
+	width: 677px;
+	padding: 10px 10px 0 10px;
+	text-align: center;
+	position: relative;}
+	
+#results_page_footer span {
+	padding: 0 60px 0 200px;}
+
+#results_page_options p a,	
+#results_page_footer p a {
+	font: 10px Verdana, Arial; color: #999;}
+	
+.previous_next {
+	position: relative;
+	top: 3px;
+	margin: 0 3px;}
+
+/******************************************************************** 5. Pop up boxes ************/	
+	
+#pop1 { 
+	position: fixed; 
+	z-index: 10000; 
+	width: 992px; 
+	top: 10%;
+	text-align:center;
+	height: 80%;
+	visibility: hidden;}
+	
+#pop1_holder {	
+	width: 70%;
+	border: 1px solid #336;
+	-moz-box-shadow: 0px 0px 30px #000;
+	-webkit-box-shadow: 0px 0px 30px #000;
+	box-shadow: 0px 0px 30px #000; 
+	background: #fff; 
+	height: 100%;
+	margin: 0 auto; }
+	
+#pop1_holder_close {	
+	position: absolute;
+	display: block;
+	width: 27px;
+	height: 27px;
+	top: -3px;
+	left: 146px;
+	background: url("/css/images/x.gif") no-repeat; 
+	cursor: pointer;}
+	
+#pop1_holder_open {	 
+	cursor: pointer;}		
+	
+#itinerary_window {
+	height: 100%;
+	width: 100%; }
+	
+.ratingStar {
+    font-size: 0pt;
+    width: 18px;
+    height: 13px;
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.filledRatingStar {
+    background-image: url(/css/images/ratings/FilledStar.png);
+
+}
+
+.emptyRatingStar {
+    background-image: url(/css/images/ratings/EmptyStar.png);
+}
+
+.savedRatingStar {
+    background-image: url(/css/images/ratings/FilledStar.png);
+}
+	
+	
+	

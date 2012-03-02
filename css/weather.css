@@ -1,0 +1,77 @@
+.current_conditions {
+	width: 100%;
+	float: left; 
+	background: #f6f6f6;}
+	
+.alpine_conditions {
+	width: 100%;
+	float: left; 
+	background: #f6f6f6;
+	margin-bottom: 5px;
+	padding: 0;}
+	
+.alpine_conditions img {
+	float: left;  
+	padding: 10px 0 0 10px;}
+	
+.alpine_conditions table,
+.current_weather table {
+	float: right; 
+	margin: 0;}
+
+.current_weather,
+#alpine_weather {
+	width: 150px;
+	float: left;
+	text-align: center;
+	padding-top: 20px;}
+	
+.current_weather img,
+#alpine_weather img {
+	height: 99px; 
+	width: 95px;}
+
+.current_info,
+#alpine_info {
+	float: left;
+	width: 480px;
+	margin-top: 10px;}
+	
+.current_info td, 
+.current_info th,
+#alpine_info td, 
+#alpine_info th {
+	padding: 2px 0 2px 5px;}
+
+#units {
+	position: absolute;
+	left: 635px;
+	top: 12px;}
+
+#forecast {
+	width: 100%;
+	margin-bottom: 5px;
+	float: left;}
+	
+#forecast td { background: #f6f6f6;}	
+
+#forecast img {
+	margin:0 0 5px 0;
+	height: 69px;
+	width: 66px;}
+	
+#historical { text-align: left;}	
+
+#forecast .deg_high { color: #C00; font-weight: bold;}
+#forecast .deg_low { color: #09F; font-weight: bold;}
+#forecast .pop { color: #000000; font-weight: bold;}
+
+/* png fixes */
+.w-icon img { behavior: url(/template_resources/css/iepngfix.htc);}
+
+/* Comments */
+
+#comments-box .comment p, 
+#comments-box .comment .info {
+	width: 525px;
+}

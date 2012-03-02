@@ -1,0 +1,122 @@
+
+
+p	{ color: #eee; font: 11px/18px Verdana;}	
+a 	{ color: #78cad8;}
+li 	{ color: #eee; font: 11px/18px Verdana;}
+h1 	{ color: #fff; font: 17px/20px "GeometricM", "GeometricM-ie", Verdana; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px;}
+
+#header {
+	height: 160px;}
+	
+#content {
+	width: 670px;
+	margin: 0 60px 0 0;
+	padding: 0;
+	background: none;}
+	
+.index_content {
+	width: 630px;
+	background: url("images/navbar.png");
+	margin: 0 0 5px 0;
+	padding: 10px 20px;
+	float: left;}
+	
+.index_insider {
+	height: 160px;
+	background: url("../images/index/insider_bg.png") no-repeat;}
+	
+.index_insider .story h1 	{ color: #fff; font: 17px "GeometricM", "GeometricM-ie", Verdana; display: block; margin: 10px 0 5px 0;}
+.index_insider .story .date { float: left; margin: 0 10px 30px 0;}
+	
+.story {
+	width: 610px;
+	height: 160px;
+	float: left;
+	padding: 0 0 0 20px;
+	position: relative;}
+	
+.story a:hover { text-decoration: underline;}
+	
+.story_image {
+	float: right;
+	margin: 0 0 0 20px;}
+	
+.more_link {
+	font:10px "NewsCycle", "NewsCycle-ie";
+	letter-spacing: 1px; 
+	color: #78cad8; 
+	padding: 2px 22px 2px 0; 
+	display: block; 
+	position:  absolute;
+	bottom: 14px;
+	background: url(images/more_link.png) no-repeat 100% 50%;}
+
+.index_adverts {
+	width: 292px;
+	background: url("images/navbar.png");
+	margin: 0 0 5px 0;
+	padding: 10px 20px;
+	float: left;}
+	
+.advert1 { margin: 0 6px 5px 0;}
+
+
+img.hidden { display: none;}
+
+.info-popup {
+	width: 660px;
+	background: #333;
+	position: relative;
+	top: -20px;
+	left: 244px;
+	height: 80px;
+	padding: 15px 50px 0 30px;
+	display: none;}
+
+.close 			{ position: absolute; right: 10px; top: 10px; background: url("images/close.png") no-repeat; display: block; width: 16px; height: 16px;}
+#info-popup p 	{ font: 9px/16px Verdana; color: #8e8e8e;}
+#info-popup b 	{ color: #fff;}
+
+/*sabbatical stuff*/
+
+.sabbatical_banner { background: url("../images/sabbatical/index-banner.png") no-repeat; height: 130px; width: 630px;}
+
+.sabbatical_link {
+	font:10px "NewsCycle", "NewsCycle-ie";
+	letter-spacing: 1px; 
+	color: #fff; 
+	padding: 2px 22px 2px 0; 
+	display: block; 
+	position: relative;
+	float: right;
+	clear: right;
+	top: 75px;
+	right: 20px;
+	margin: 0 0 2px 0;
+	background: url("images/more_link.png") no-repeat 100% 50%;}
+	
+.sabbatical_link:hover {
+	text-decoration: underline;}
+	
+	
+	/*sabbatical stuff2*/
+
+.sabbatical_banner2 { background: url("/images/WSP/banner_sabbatical.png") no-repeat; height: 130px; width: 630px;}
+
+.sabbatical_link2 {
+	font:10px "NewsCycle", "NewsCycle-ie"; 
+	letter-spacing: 1px;
+	color: #444444;
+	font-weight:bold; 
+	padding: 2px 18px 2px 0; 
+	display: block; 
+	position: relative;
+	float: right;
+	clear: right;
+	top: 85px;
+	right: 90px;
+	margin: 0 0 2px 0;
+	background: url("images/more_link2.png") no-repeat 100% 50%;}
+	
+.sabbatical_link2:hover {
+	text-decoration: underline;}

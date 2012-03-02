@@ -1,0 +1,198 @@
+
+/* tabs */
+
+ul#insider-tabs {
+	list-style: none;
+}
+
+#insider-tabs li {
+	list-style-image: none;
+	float: left;
+	margin: 0;
+	border-right: 1px solid #efefef;
+}
+
+#insider-tabs li a {
+	outline: none;
+	display: block;
+	color: #fff;
+	padding: 10px 10px 25px 10px;
+	width: 210px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font: 19px "Museo700","Museo700-ie",Verdana,Arial;
+	background-color: rgb(128, 155, 52);
+	background-image: url(../images/insider/arrows.png);
+	background-repeat: no-repeat;
+	background-position: -690px 62px;
+}
+
+		#insider-tabs li.mustdo a.on {
+			background-position: 0 62px;
+		}
+
+	#insider-tabs li.cultural a {
+		background-color: rgb(51, 51, 103);
+	}
+	
+		#insider-tabs li.cultural a.on {
+			background-position: -230px 62px;
+		}
+	
+	#insider-tabs li.festivals a {
+		background-color: rgb(205, 68, 0);
+	}
+	
+		#insider-tabs li.festivals a.on {
+			background-position: -460px 62px;
+		}
+
+	#insider-tabs li a span {
+		display: block;
+		font-size: 15px;
+	}
+
+/* tab panel content */
+
+#insider .panel {
+	float: left;
+	width: 653px;
+	padding: 10px;
+	border: 10px solid #efefef;
+}
+
+.featured {
+	float: left;
+	margin: 0 15px 0 0;
+	width: 440px;
+}
+
+	.featured img {
+		margin: 0 0 10px 0;
+	}
+	
+	.featured .date {
+		float: left;
+		margin: 0 10px 0 0;
+	}
+	
+	.featured p {
+		float: left;
+		color: #2d2f2c;
+		width: 390px;
+	}
+	
+	.featured a:link, 
+	.featured a:visited {
+		display: block;
+		float: left;
+		clear: left;
+		font-weight: bold;
+		font-size: 10px;
+		color: #CD4400;
+		margin: 0 0 0 50px;
+		width: 100px;
+	}
+
+.list {
+	float: left;
+	width: 195px;
+}
+
+.event {
+	float: left;
+	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;
+	width: 195px;
+	border-bottom: 1px dotted #809B34;
+}
+
+	.event img {
+		float: left;
+		margin: 0 10px 0 0;
+	}
+	
+	.event p {
+		float: left;
+		width: 140px;
+		font-size: 11px;
+		line-height: 16px;
+	}
+	
+		#insider .list .event p a:link, 
+		#insider .list .event p a:visited {
+			display: inline;
+			color: #333367;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 11px;
+			line-height: 16px;
+			margin: 0;
+		}
+		
+	.list .event a.read-more:link, 
+	.list .event a.read-more:visited {
+		display: block;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 11px;
+		color: #CD4400;
+		margin: 0 0 0 50px;
+	}
+
+/* Columns */
+
+#columns {
+	float: left;
+	width: 693px;
+	margin: 20px 0 0 0;
+	background: #efefef;
+}
+
+.column {
+	width: 230px;
+	float: left;
+}
+
+	.column h3 {
+		display: block;
+		padding: 10px 10px 24px 10px;
+		color: #fff;
+		text-transform: uppercase;
+		font: 20px "Museo700","Museo700-ie",Verdana,Arial;
+		background-position: 0 62px;
+		background-repeat: no-repeat;
+		background-image: url(../images/insider/arrows.png);
+	}
+	
+		.column h3 span {
+			display: block;
+			font-size: 15px;
+		}
+	
+
+#adventure.column h3 {
+	background-color: #809b34;
+}
+
+#family.column h3 {
+	background-color: #333367;
+	background-position: -230px 62px;
+}
+
+#freebies.column h3 {
+	background-color: #cd4400;
+	background-position: -460px 62px;
+}
+
+.column .list {
+	background: #fff;
+	padding: 10px;
+	margin: -10px 0 0 0;
+	width: 190px;
+	border: 10px  solid #efefef;
+}
+
+	.column .list .event {
+		width: 190px;
+	}

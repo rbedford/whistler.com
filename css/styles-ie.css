@@ -1,0 +1,15 @@
+/* IE7 an older styles */
+
+	
+#nav, 			
+#nav ul li, 	
+.index_content, 		
+.index_stories, 		
+.index_adverts, 		
+#index_insider { background: #666;}
+
+#nav ul li ul.dropdown 	{ background: #fff;}
+
+#bg_switch { background: #78cad8 url("images/bg_switch.png") no-repeat;} 
+#widget_closed, 
+#widget { background: #78cad8;}

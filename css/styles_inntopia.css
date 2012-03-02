@@ -1,0 +1,628 @@
+/*CSS Tourism Whistler Style Sheet
+
+1. @font-face import
+2. Main layout
+3. Nav
+4. Footer
+
+*/
+
+*, body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,a,blockquote,th,td,image { 
+	margin:0;
+	padding:0;
+	text-decoration: none;
+	border: none;
+	font-style: normal;
+	letter-spacing: 0;
+	outline: none;}
+
+
+
+/*************************************** 1 @font-face ***************************************/
+
+@font-face { font-family: "FG-Book-ie"; src: url("fonts/itcfranklingothicstd-Book.eot");} /* for IE */
+@font-face { font-family: "FG-Demi-ie"; src: url("fonts/itcfranklingothicstd-Demi.eot");} /* for IE */
+@font-face { font-family: "Geometric-ie"; src: url("fonts/Geometric.eot");} /* for IE */
+@font-face { font-family: "GeometricM-ie"; src: url("fonts/GeometricM.eot");} /* for IE */
+
+@font-face { font-family: "FG-Book"; src: url("fonts/ITCFranklinGothicStd-Book.otf");}
+@font-face { font-family: "FG-Demi"; src: url("fonts/ITCFranklinGothicStd-Demi.otf");}
+@font-face { font-family: "Geometric"; src: url("fonts/Geometric.ttf");}
+@font-face { font-family: "GeometricM"; src: url("fonts/GeometricM.ttf");}
+
+
+
+/*************************************** 2 Main Layout ***************************************/
+
+body { background: #000 url("images/bg/trees.jpg") no-repeat fixed; background-size: cover; }	
+body.anchored { position: relative;}
+
+/* alternate bg images */
+body#skier 		{ background: transparent url("images/bg/skier.jpg") no-repeat 0 0 fixed; background-size: cover;}
+body#sunset 	{ background: transparent url("images/bg/sunset.jpg") no-repeat 0 0 fixed; background-size: cover;}
+body#village 	{ background: transparent url("images/bg/village.jpg") no-repeat 0 0 fixed; background-size: cover;}
+
+#bg_switch {
+	width: 30px;
+	height: 30px;
+	background: url("images/bg_switch.png") no-repeat;
+	display: block;
+	right: 0px;
+	top: 50%;
+	z-index: 200;
+	position: fixed;
+	outline: none;}
+	
+#bg_switch.loading { background: #78cad8 url(images/loading.gif) no-repeat 50%;}
+	
+#headbar {
+	height: 20px;
+	background: #333;
+	width: 100%;
+	position: absolute;
+	left: 0;}
+
+#master_wrapper {
+	width: 992px;
+	margin: 0 auto;
+	z-index: -1}
+		
+#wrapper {
+	width: 992px;
+	margin: 0 auto;
+	position: relative;
+	float: left;
+	z-index: 10;}
+	
+#header {
+	position: relative;
+	width: 992px;
+	height: 135px;
+	float: left;
+	z-index: 1;}
+	
+#logo {
+	width: 230px;
+	height: 80px;
+	background: url("images/logo.png") no-repeat;
+	display: block;}
+	
+#content_wrapper {
+	width: 992px;
+	float: left;
+	position: relative;
+	z-index: -1;
+	margin-bottom: 45px;
+}
+	
+#sidebar_holder {
+	float: left;
+	width: 244px;
+	z-index: -1;}
+	
+#sidebar {
+	float: left;
+	width: 210px;
+	padding: 0 17px 20px;
+	background: #fff;
+	z-index: -2;}
+	
+#content {
+	position: relative;
+	float: right;
+	z-index: -1;
+	background: #fff;
+	width: 697px;
+	padding: 0 17px 17px;
+	margin: 0 0 0 0;}
+	
+#content_wide {
+	float: left;
+	z-index: -1;
+	background: #fff;
+	width: 958px;
+	padding: 0 17px 17px;
+	margin: 0 0 0 0;}	
+		
+/*************************************** 3 Nav ***************************************/		
+
+#header_links {
+	width: 500px;
+	height: 18px;
+	position: absolute;
+	top: 2px;
+	right: 0;
+	color: #999;
+	font: 10px Verdana;
+	text-align: right;}
+	
+#header_links a {
+	color: #999;
+	font: 10px Verdana;
+	margin: 0 8px;}	
+	
+#header_links a:hover {
+	color: #fff;}
+	
+#nav {
+	width: 992px;
+	background: url("images/navbar.png");
+	position: absolute;
+	top: 90px;
+	left: 0;
+	text-align: center;
+	height: 45px;
+	z-index: 1;}
+	
+#nav ul {	
+	float: left;
+	width: 992px;
+	position: relative;
+	left: -2px;}
+
+#nav ul li {	
+	position: relative;
+	float: left;
+	display: block;
+	background: url("images/nav-bg.png") no-repeat 0 50%;
+	padding: 0 10px;}
+	
+#nav ul li.about { background-image: none;}
+
+#nav ul li a {
+	float: left;
+	font: 14px "FG-Demi", "FG-Demi-ie";
+	color: #fff;
+	white-space: nowrap;
+	padding: 14px 0;
+	height: 17px;}
+
+/* fixed sizes */
+#nav ul li.about a 		{ width: 130px;}
+#nav ul li.places a 	{ width: 122px;}
+#nav ul li.deals a 		{ width: 145px;}
+#nav ul li.things a 	{ width: 107px;}
+#nav ul li.getting a	{ width: 110px;}
+#nav ul li.groups a 	{ width: 70px;}
+#nav ul li.last a 		{ width: 168px;}	
+#nav ul li:hover 		{ left: 2px; z-index: 200; background: #78cad8; padding: 0 12px 0 8px;}
+	
+/* dropdowns */
+#nav ul li:hover .dropdown { visibility: visible;}
+
+#nav ul li ul.dropdown {
+	width: 190px;
+	visibility: hidden;
+	position: absolute;
+	top: 45px;
+	left: -9px;
+	z-index: 1000;
+	text-align: left;
+	padding: 9px 0;
+	background: url("images/dropdown_bg.png") no-repeat bottom;}
+	
+#nav ul li ul.dropdown li { padding: 0; background: none;}
+	
+#nav ul li ul.dropdown li:hover {
+	padding: 0;
+	left:0;}
+
+#nav ul li ul.dropdown li a {
+	width: 157px;
+	color: #336;
+	font: 11px Verdana;
+	background: #fff;
+	padding: 5px 0px 5px 15px;
+	float: left;
+	margin: 0 9px;}
+	
+#nav ul li ul.dropdown a:hover { background: #e3f2f5;}
+	
+	
+	
+/****************************************** 4 Footer *********************************************/	
+
+/******************************************  Booking Widget *********/
+
+#booking_widget_holder {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 75px;
+	float: left;
+	border-bottom: 5px solid #78cad8;
+	margin: 0;
+	z-index: 100;}
+	
+body.anchored #booking_widget_holder {
+	position: relative;
+	bottom: 0;}
+
+#booking_widget {
+	width: 992px;
+	margin: 0 auto;
+	position: relative;
+	height: 75px;}
+			
+#widget_closed {
+	width: 260px;
+	height: 102px;
+	position: absolute;
+	left: -8px;
+	top: -27px;
+	background: url("images/booking_widget/closed.png");
+	display: none;}
+	
+#widget {
+	width: 260px;
+	position: absolute;
+	left: -8px;
+	bottom: 0;
+	padding: 0 0 40px 0;
+	background: url("images/booking_widget/open_bg.png");}
+	
+#widget h2 {
+	margin: 0 8px;
+	padding: 5px 0 5px 10px;
+	background-color: #31A4B8;
+	text-transform: uppercase;
+	color: #fff; font: 15px "GeometricM", "GeometricM-ie";
+}
+
+#widget h2 small {
+	border-left: 1px solid #fff;
+	margin: 0 0 0 5px;
+	padding: 0 0 0 5px;
+}
+
+#widget.closed {
+	padding: 0 0 63px 0;
+}
+	
+#booking_header { margin: 13px 0 0 8px;}
+
+.booking 		{ width: 224px; margin: 0 18px 0;}
+.booking th 	{ text-align: center;}
+.booking th h3	{ color: #fff; font: 18px "GeometricM", "GeometricM-ie"; padding: 0 0 5px 0; margin: 0; }
+.booking th p 	{ color: #fff; font: 10px Verdana; margin: 0 0 10px 0; border-top: 1px solid #bce5ec; padding: 5px 0 0 0;}
+.booking th a 	{ color: #fff; font: 10px Verdana; border-right: 1px solid #fff; padding: 0 5px 0 0; display: inline-block; }
+.booking th a.last 	{ border: 0; }
+.booking td  	{ padding: 0 0 5px 0;}
+.bpg_search 	{ border-top: 1px solid #bce5ec; border-bottom: 1px solid #bce5ec; width: 224px; margin: 5px 0 0 0; padding: 5px 0 0 0;}
+
+#toggle_booking_widget {
+	display: block;
+	width: 250px; 
+	margin: 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#widget #toggle_booking_widget {
+	height: 37px; 
+	background: url("images/booking_widget/close_arrow.gif") no-repeat 100% 0;
+}
+
+#widget.closed #toggle_booking_widget {
+	height: 63px; 
+	background: url("images/booking_widget/open-button.gif") no-repeat 10px 0;
+}
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+.ui-menu {
+	border: 0;
+	list-style:none;
+	padding: 0;
+	margin: 0;
+	display:block;
+	float: left;
+	background: #31A4B8;
+}
+
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+
+.ui-menu .ui-menu-item a {
+	display:block;
+	height: 20px;
+	padding: 2px 4px;
+	text-decoration:none;
+	line-height:1.5;
+	zoom:1;
+	font-size: 10px;
+	color:#ffffff;
+	cursor: pointer;
+}
+
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	color:#ffffff;
+	background-color:#76c7c6;
+	border: 0;
+}
+
+
+/******************************************  End Booking Widget *********/
+	
+#footer {
+	height: 278px;
+	background: #333;
+	border-bottom: 20px solid #212121;
+	padding: 20px 0 0 0;
+	clear: both;
+	width: 100%;
+	z-index: 10;}
+	
+#column_holder { 
+	width: 992px; 
+	margin: 0 auto;}
+	
+.columns { 
+	float: left; 
+	height: 265px; 
+	border-right: 1px solid #515151; }
+	
+.column1 { width: 169px; padding: 0 45px 0 15px;}
+.column2 { width: 189px; padding: 0 45px 0 45px;}
+.column3 { width: 204px; padding: 0 45px 0 45px;}
+.column4 { width: 124px; padding: 0 0 0 45px; border-right: none;}
+
+#footer h3 	 { 
+	font: 14px "GeometricM", "GeometricM-ie";
+	letter-spacing: 0.5px;
+	text-transform: uppercase; 
+	color: #bebdbd; 
+	margin: 0 0 5px 0;}
+
+#footer p, 
+#footer a { 
+	font: 10px/22px Verdana; 
+	color: #8e8e8e;}
+
+#footer a:hover { color: #fff;}
+
+#footer a.footer_link { 
+	font: bold 12px "FG-Demi", "FG-Demi-ie"; 
+	color: #bebdbd; 
+	padding: 2px 22px 2px 0; 
+	display: block; 
+	float: right; 
+	background: url(images/footer_link.png) no-repeat 100% 50%;}
+
+#weather { 
+	margin: 0 0 53px 0;}
+
+#weather_snippet {
+	 height: 40px; 
+	 border-top: solid 1px #515151; 
+	 border-bottom: solid 1px #515151; 
+	 margin: 0 0 5px 0;}
+	 
+#weather_snippet p { 
+	font: 14px "FG-Demi", "FG-Demi-ie";	 
+	color: #999; 
+	margin: 10px 0 0 0;}
+	
+#weather_snippet #temp 	{ margin: 0 0 0 5px;}		
+#weather_snippet img 	{ float: right;}
+
+#insider { margin: 0 0 50px 0;}
+	 
+#insider p { font: 9px/14px Verdana;}
+		
+a.like { 
+	height: 22px; 
+	display: block; 
+	float: left; 
+	padding: 0 0 0 60px; 
+	background: url("images/social/like.gif") no-repeat 0 50%;
+	margin: 5px 0 10px 0;
+	width: 125px;}
+		
+a.social { 
+	width: 23px; 
+	height: 23px; 
+	display: block; 
+	float: left; 
+	margin-right: 7px;
+	background: url("images/social/icons.png");}
+	
+a.facebook			{ background-position: 0 0; clear: left;}
+a.facebook:hover	{ background-position: 0 23px;}
+a.twitter 			{ background-position: -23px 0;}
+a.twitter:hover 	{ background-position: -23px 23px;}
+a.youtube			{ background-position: -46px 0;}
+a.youtube:hover		{ background-position: -46px 23px;}
+a.flickr			{ background-position: -69px 0;}
+a.flickr:hover		{ background-position: -69px 23px;}
+a.mobile			{ background-position: -92px 0;}
+a.mobile:hover		{ background-position: -92px 23px;}
+a.blog				{ background-position: -115px 0;}
+a.blog:hover		{ background-position: -115px 23px;}
+
+a#trip { 
+	height: 30px; 
+	display: block; 
+	float: left; 
+	padding: 20px 0 0; 
+	background: url("images/social/trip.png") no-repeat;
+	margin: 15px 0 10px;
+	clear: left;
+	width: 185px;
+	font: 9px/14px verdana;}
+	
+a#trip:hover { 
+	background: url("images/social/trip-over.png") no-repeat;}
+
+#international { 
+	margin: 0 0 28px 0; 
+	float: left;}
+	
+a.flag { 
+	width: 100px; 
+	padding: 0 0 0 30px; 
+	display: block;
+	float: left;
+	clear: left;
+	margin-top: 3px;
+	background-position: 0 50%;
+	background-repeat: no-repeat;}
+	
+.uk 			{ background-image: url("images/flags/uk-grey.gif");}
+.uk:hover 		{ background-image: url("images/flags/uk.gif");}
+.germany 		{ background-image: url("images/flags/ger-grey.gif");}
+.germany:hover 	{ background-image: url("images/flags/ger.gif");}
+.japan 			{ background-image: url("images/flags/jap-grey.gif");}
+.japan:hover 	{ background-image: url("images/flags/jap.gif");}
+.korea 			{ background-image: url("images/flags/korea-grey.gif");}
+.korea:hover 	{ background-image: url("images/flags/korea.gif");}
+.australia 		{ background-image: url("images/flags/aus-grey.gif");}
+.australia:hover{ background-image: url("images/flags/aus.gif");}
+.gay 			{ background-image: url("images/flags/gay-grey.gif");}
+.gay:hover 		{ background-image: url("images/flags/gay.gif");}
+.access 		{ background-image: url("images/flags/disabled-grey.gif");}
+.access:hover 	{ background-image: url("images/flags/disabled.gif");}
+
+#quick_search { margin: 22px 0 0 0;}
+
+#quick_search input { 
+	background: #484848;
+	width: 85px; 
+	font: 13px "FG-Book", "FG-Book-ie"; 
+	color: #8e8e8e; 
+	padding: 5px 6px; 
+	float: left; 
+	height: 14px;
+	border: none;}
+	
+#quick_search #search_btn { 
+	width: 15px;
+	height: 16px;
+	padding: 4px 6px; }
+
+#footer #copyright { 
+	font: 9px Verdana; 
+	color: #666;
+	float: right;
+	margin: 15px 18px 0 0;}
+
+/******************************************  Date Picker *********/
+
+.ui-datepicker-div, 
+.ui-datepicker-inline, 
+#ui-datepicker-div {
+	font: 12px Verdana;
+	background: #fff;
+	width: 188px;
+	padding: 35px 10px 10px 10px;
+	position: relative;
+	border: 1px solid #d1d1d1;
+	box-shadow: 0 0 4px #dad8d8; -webkit-box-shadow: 0 0 4px #dad8d8; -moz-box-shadow: 0 0 4px #dad8d8;
+    -webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-border-radius: 3px;}
+	
+.ui-datepicker-div, #ui-datepicker-div { z-index: 9999 !important; display: none;}
+.ui-datepicker-inline 	{ float: left; display: block;}	
+.ui-datepicker-control 	{ display: none;}
+.ui-datepicker-current 	{ display: none;}
+	
+.ui-datepicker-next, 
+.ui-datepicker-prev {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	cursor: pointer;
+	color: #31A4B8;}
+	
+.ui-datepicker-next {
+	left: 170px;}
+	
+.ui-datepicker-next:hover, 
+.ui-datepicker-prev:hover {
+	color: #31A4B8;}
+	
+#ui-datepicker-div table {
+	width: 188px;
+	text-align: center;
+	margin-top: 5px;}
+	
+#ui-datepicker-div table td {
+	background: #f1f1f1;
+	cursor: pointer;}
+	
+#ui-datepicker-div table td a {
+	padding: .2em;
+	display: block;
+	color: #fff;
+	background: #31A4B8;
+	cursor: pointer;
+	border: 1px solid #ffffff;}
+	
+#ui-datepicker-div table td a:hover {
+	border: 1px solid #31A4B8;
+	color: #31A4B8;
+	background: #fff;}
+	
+ui-datepicker-div table .ui-datepicker-title-row td {
+	padding: .2em;
+	text-align: center;
+	color: #222;}
+	
+/******************************************  In page widget *********/
+
+#content .widgetInPage {
+	background: #fff;
+	padding: 0 0 10px 0;
+	width: 240px;
+	border: 0;
+}
+
+#content .widgetInPage table tr td {
+	background: transparent;
+}
+#content a.widget_booking_tab {
+	width: 220px;
+	background: #31A4B8;
+	font: 15px "GeometricM","GeometricM-ie";
+	text-transform: uppercase;
+	color: #fff;
+}
+
+#content .widgetInPage #check {
+	margin-left: 10px;
+}
+
+#content .widgetInPage #activity_booking_div {
+	float: none;
+	width: 220px;
+	margin: 0 auto;
+}
+
+#content .widgetInPage table td table, #content .widgetInPage table td table td {
+	padding: 0;
+}
+
+#activities-page {
+	position: relative;
+}
+
+#activities-page #inpage-widget.widgetInPage {
+}
+
+.sectionPlacesToStay #inpage-widget.widgetInPage {
+	top: 60px;
+}

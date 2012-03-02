@@ -1,0 +1,165 @@
+#videos-gallery {
+	width: 958px;
+}
+
+#player {
+	float: left;
+	width: 640px;
+	margin: 10px 0 0 0;
+	padding: 10px;
+	background: #E5E5E5;
+}
+
+#player #screen, 
+#player #video {
+	display: block;
+	width: 640px;
+	height: 390px;
+	/*background: url("../css/images/logo-trans.png") no-repeat scroll 45% 50% #E7E7E7;*/
+}
+
+#videos {
+	float: right;
+	width: 280px;
+}
+
+.video {
+	overflow: hidden;
+	padding: 10px;
+	border-bottom: 1px solid #F1F1F1;
+}
+
+.video a {
+	color: #353163;
+	font-weight: bold;
+	font: 15px "FG-Demi","FG-Demi-ie",Arial;
+}
+
+.video img {
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+.video h4 {
+	float: left;
+	width: 220px;
+}
+
+.video a.owner {
+	font: 11px "DroidSans","DroidSans-ie",Arial;
+	margin: 5px 0 0 0;
+	color: #000;
+	display: block;
+}
+
+.video .submitted-by {
+	margin: 10px 0 0 0;
+}
+
+.video.user span {
+	display: block;
+	color: #353163;
+	font: 12px "DroidSans","DroidSans-ie",Arial;
+}
+
+#content_wide .video.user p {
+	margin-bottom: 0;
+}
+
+#videos .tab-holder {
+	margin: -13px 0 0 0;
+	border: 10px solid #E5E5E5;
+	background: #fff;
+	padding-top: 0;
+	float: none;
+	clear: none;
+}
+
+	#videos .toggle {
+		width: auto;
+		padding: 0;
+	}
+
+ul#tabs li a {
+	font: 12px Verdana,Arial;
+	font-weight: normal;
+	text-decoration: none;
+	padding: 5px 10px;
+}
+
+#videos .toggle {
+	clear: left;
+	padding: 10px 0 0 0;
+	width: 260px;
+	height: 540px;
+	overflow: auto;
+	background: #fff;
+}
+
+#video-description {
+	display: none;
+	float: left;
+	width: 640px;
+	padding: 10px;
+	margin: 0 0 10px 0;
+	background: #E5E5E5;
+}
+
+/* Video Upload */
+
+#upload-panel {
+	float: left;
+	width: 637px;
+}
+
+#ytdContainer-16001 {
+	width: 385px;
+	margin: 0 auto;
+	background: #E5E5E5;
+}
+
+#upload-video p {
+	float: left;
+	margin-top: 5px;
+}
+
+#upload-video .upload-button {
+	float: left;
+	margin: 0 0 0 20px;
+	background: #76C7C6;
+	height: 15px;
+	padding: 10px;
+	color: #fff;
+}
+
+#your-videos #player {
+	width: 617px;
+}
+
+#your-videos #player #screen, 
+#your-videos #player #video {
+	width: 617px;
+}
+
+#your-videos #video-description {
+	width: 617px;
+}
+
+#submitted-videos {
+	float: left;
+	width: 637px;
+}
+
+/* Comments */
+
+#content #comments-box {
+	float: left;
+	clear: none;
+	width: 677px;
+}
+
+#content_wide #comments-box {
+	float: left;
+	clear: none;
+	width: 640px;
+}

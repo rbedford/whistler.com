@@ -1,0 +1,54 @@
+.field {
+	clear: left;
+	margin: 0 0 10px 0;
+}
+
+.field label {
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+.field input.text {
+	width: 100px;
+}
+
+fieldset.luge-form {
+	padding: 10px;
+	border: 1px solid #78CAD8;
+}
+
+fieldset.luge-form .field {
+	float: left;
+	clear: none;
+	margin: 0 15px 10px 0;
+}
+
+fieldset.luge-form .text {
+	width: 150px;
+	padding: 6px;
+}
+
+fieldset.luge-form .field.buttons {
+	margin: 13px 0 10px 0;
+}
+
+fieldset.luge-form .error-message {
+	display: none;
+	color: red;
+}
+
+fieldset.luge-form #confirm {
+	display: none;
+}
+
+fieldset.luge-form #confirm a {
+	margin: 10px 0 0 0;
+}
+
+.blog-bubble {
+	display: block;
+	padding: 0 0 0 40px;
+	height: 25px;
+	font-weight: bold;
+	background: transparent url(../images/blog/blog-bubble.gif) no-repeat 0 0;
+}

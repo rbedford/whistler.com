@@ -1,0 +1,43 @@
+.map {
+	width: 400px;
+	height: 530px;
+	float: left;
+}
+
+.hotel-list {
+	float: left;
+	width: 237px;
+}
+
+.hotel-list h3 {
+	margin: 0 0 0 20px;
+	padding: 5px;
+	background: #e5e5e5;
+	font: 14px "Geometric","Geometric-ie",Verdana,Arial;
+	color: #336;
+}
+
+#hotel-list.hotel-list ul {
+	margin: 0 0 0 20px;
+}
+
+#hotel-list.hotel-list li {
+	margin: 0;
+	list-style: none;
+	list-style-image: none;
+	background: #e5e5e5;
+}
+
+#hotel-list.hotel-list li a {
+	display: block;
+	padding: 0 5px;
+	font-size: 0.9em;
+	color: #336;
+	text-decoration: none;
+}
+
+#hotel-list.hotel-list li a.active, 
+#hotel-list.hotel-list li a:hover {
+	background: #336;
+	color: #fff;
+}

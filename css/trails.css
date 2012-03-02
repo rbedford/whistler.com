@@ -1,0 +1,572 @@
+/*
+Map
+Map Tabs
+Trail Info
+*/
+
+#content_wrapper {
+	z-index: 1;
+}
+
+#content.trails, #sidebar.trails {
+	padding-top: 20px;
+}
+
+#content.loading, #sidebar.loading {
+	height: 300px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-image: url(../images/trails/loading.gif);
+}
+
+#content.loading *, #sidebar.loading * {
+	display: none;
+}
+
+/************************************** Map ***************************************/ 
+
+#breadcrumbs {
+	margin: 0 0 30px 0;
+	height: 20px;}
+	
+#trail_map {
+	width: 958px;
+	position: relative;
+	top:0;
+	float: left;
+	z-index: -10;
+	background: #FFF;
+	padding: 0 17px 17px 17px;
+	border-top: solid 5px #809b34;}
+	
+#map_canvas {
+	height: 430px;
+	width: 948px;
+	border: 5px solid #ccc;
+	float: left;
+	z-index: 10;
+	position: relative;
+}
+	
+#trail_label, #area_label {
+	display: none;upload
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	color: #fff!important;
+	padding: 5px;
+	font: bold 11px Verdana,Arial,Helvetica,sans-serif;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#trail_label.Novice 		{ background: #529c12; }
+#trail_label.Intermediate 	{ background: #1791a3; }
+#trail_label.Advanced 		{ background: #3e3e3e; }
+#trail_label.Expert			{ background: #000000; }
+
+#area_label { background: #b54141; }
+
+/************************************** Map Overlays ***************************************/	
+
+.infowindow h3 {
+	font-weight: bold;
+}
+
+.infowindow strong {
+	display: block;
+}
+
+.infowindow a {
+	display: block;
+}
+
+.infowindow img {
+	margin: 0 5px 0 0;
+}
+	
+/************************************** Map Tabs ***************************************/	
+		
+#map_tabs { list-style: none; margin-left: 5px; position: absolute; left: 17px; top: 135px; z-index: 9999; }
+#map_tabs li { 
+	display: inline;  
+ 	margin-right: 1px;  
+	float: left;
+	height: 29px;
+}
+	
+#map_tabs li a {
+	display: block;
+	height: 29px;
+	text-indent: -9999px;
+}
+	
+#area_tab 			{ width: 53px; background-image: url("../images/trails/map_tabs.gif"); background-position: -0 0; position: relative; }
+#facilities_tab 	{ width: 93px; background-image: url("../images/trails/map_tabs.gif"); background-position: -54px 0; position: relative; }
+#novice_tab 		{ width: 144px; background-image: url("../images/trails/map_tabs.gif"); background-position: -148px 0;}
+#intermediate_tab 	{ width: 197px; background-image: url("../images/trails/map_tabs.gif"); background-position: -293px 0;}
+#advanced_tab		{ width: 171px; background-image: url("../images/trails/map_tabs.gif"); background-position: -491px 0;}
+#expert_tab 		{ width: 154px; background-image: url("../images/trails/map_tabs.gif"); background-position: -663px 0;}
+	
+#map_tabs li .map_dropdown 			{ display: none; float: left; position: absolute; left: 0; top: 29px; width: 180px; z-index: 9999; }
+#map_tabs li:hover .map_dropdown	{ display: block; z-index: 999; }
+#map_tabs li .map_dropdown li 		{ margin: 0; height: 24px;}
+#map_tabs li .map_dropdown li a		{ font: 12px verdana; color: #fff; width: 165px; height: 15px; display: block; padding: 4px 0 4px 15px; margin: 0; text-indent: 0; }
+	
+#area_tab .map_dropdown 						{ background: #b54141; border-top: 5px solid #be5b5a; border-bottom: 5px solid #be5b5a; }
+#area_tab .map_dropdown li a 					{ border-bottom: 1px dotted #c66e6e;}
+#area_tab .map_dropdown li a:hover 				{ background: #be5b5a;}
+	
+#facilities_tab .map_dropdown 					{ background: #b56741; border-top: 5px solid #bf7d5c; border-bottom: 5px solid #bf7d5c; }
+#facilities_tab .map_dropdown li a 				{ border-bottom: 1px dotted #c68b6e;}
+#facilities_tab .map_dropdown li a:hover		{ background: #bf7d5c;}
+	
+#novice_tab .trail_dropdown 					{ background: #77b541; border-top: 5px solid #8abf5c; border-bottom: 5px solid #8abf5c; }
+#novice_tab .trail_dropdown li a 				{ border-bottom: 1px dotted #92c467;}
+#novice_tab .trail_dropdown li a:hover			{ background: #8abf5c;}
+	
+#intermediate_tab .trail_dropdown 				{ background: #41a6b5; border-top: 5px solid #5cb3bf; border-bottom: 5px solid #5cb3bf; }
+#intermediate_tab .trail_dropdown li a 			{ border-bottom: 1px dotted #67b8c4;}
+#intermediate_tab .trail_dropdown li a:hover	{ background: #5cb3bf;}
+	
+#advanced_tab .trail_dropdown 					{ background: #3e3e3e; border-top: 5px solid #5a5a5a; border-bottom: 5px solid #5a5a5a; }
+#advanced_tab .trail_dropdown li a 				{ border-bottom: 1px dotted #525252;}
+#advanced_tab .trail_dropdown li a:hover		{ background: #5a5a5a;}
+
+#expert_tab .trail_dropdown 					{ background: #000; border-top: 5px solid #222421; border-bottom: 5px solid #222421; }
+#expert_tab .trail_dropdown li a 				{ border-bottom: 1px dotted #252525;}
+#expert_tab .trail_dropdown li a:hover			{ background: #222421;}
+
+
+/* Trail Dropdown */
+
+.trail_dropdown {
+	display: none;
+	opacity: .95;
+	width: 948px;
+	height: 320px;
+	position: absolute;
+	top: 29px;
+	left: 0;
+	z-index: 9999;
+}
+
+#map_tabs li:hover .trail_dropdown	{ display: block; z-index: 9999; }
+
+#map_tabs .trail_dropdown li ul {
+	position: absolute;
+	top: 35px;
+	float: left;
+	width: 155px;
+	height: 280px;
+	margin: 2px 0 0 0;
+	overflow: hidden;
+	border-right: 1px solid #fff;
+	overflow-y: auto;
+}
+
+	#map_tabs .trail_dropdown li h3 {
+		margin: 0;
+	}
+
+	#map_tabs .trail_dropdown li h3 a {
+		color: #fff;
+		text-indent: 0;
+		font-weight: bold;
+		font-size: 1em;
+		padding: 10px 0 5px 10px;
+		width: 145px;
+		height: auto;
+		border-right: 1px solid #fff;
+		border-bottom: 0;
+	}
+	
+		#map_tabs .trail_dropdown li h3 a:hover, #map_tabs .trail_dropdown li h3 a:active, #map_tabs .trail_dropdown li h3 a:focus {
+			text-decoration: underline;
+			background-color: transparent;
+		}
+	
+	#map_tabs .trail_dropdown li ul li {
+		width: 150px;
+		height: auto;
+		color: #fff;
+	}
+	
+		#map_tabs .trail_dropdown li ul li a {
+			text-indent: 0;
+			font-size: 11px;
+			color: #fff;
+			display: block;
+			padding: 5px 5px 5px 10px;
+			border: 0;
+			width: 140px;
+			height: auto;
+		}
+		
+		#map_tabs .trail_dropdown li ul li strong {
+			display: block;
+			padding: 5px 10px;
+		}
+
+
+/* Scroll Bars */
+
+ul {
+    padding: 0;
+}
+
+.scrollbar-pane {
+    margin-right: 12px;
+}
+
+.scrollbar-handle-container {
+    background: #EEE;
+    width: 10px;
+	height: 260px !important;
+}
+
+.scrollbar-handle {
+    width: 10px;
+	background-color: #CCC;
+}
+
+	.scrollbar-handle:hover {
+		background-color: #c5c5c5;
+	}
+	
+	.scrollbar-handle.move {
+		background-color: #c5c5c5;
+	}
+
+.scrollbar-handle-up, .scrollbar-handle-down, .scrollbar-handle-up:hover, .scrollbar-handle-down:hover {
+    width: 10px;
+    height: 10px;
+	background-color: #666;
+	background-repeat: no-repeat;
+	background-image: url(http://www.whistler.com/images/trails/arrows.png);
+}
+
+	.scrollbar-handle-up {
+		background-position: 0 3px;
+	}
+
+	.scrollbar-handle-down {
+		background-position: -10px 3px;
+	}
+	
+
+.new-trail {
+	margin: 0 0 20px 0;
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #F1F1F1;
+}
+
+.new-trail h4 a {
+	font-size: 13px;
+	font-weight: bold;
+	background-repeat: no-repeat;
+}
+
+/************************************** Trail Info ***************************************/
+
+.Novice 		{ color: #529c12;}
+.Intermediate 	{ color: #1791a3;}
+.Advanced 		{ color: #3e3e3e;}
+.Expert			{ color: #000000;}
+
+h1 { margin-top: 0; background-position: 0 50%; background-repeat: no-repeat; }
+h1.Novice, h4 a.Novice 				{ background-image: url(../images/trails/novice.gif); padding-left: 25px; }
+h1.Intermediate, h4 a.Intermediate 	{ background-image: url(../images/trails/intermediate.gif); padding-left: 25px; }
+h1.Advanced, h4 a.Advanced 			{ background-image: url(../images/trails/advanced.gif); padding-left: 25px; }
+h1.Expert, h4 a.Expert	 			{ background-image: url(../images/trails/expert.gif); padding-left: 35px; }
+
+.comments { margin-top: -17px; }
+h3.comments { color: #336; font: 16px "Museo300", "Museo300-ie", Verdana, Arial; background: #fff; text-align: left; padding: 0; margin: 0 0 10px 0; }
+
+
+span.open 	{ color: #0bcf01;}
+span.closed { color: #db0202;}
+
+
+#trail-info	{ width: 697px; float: left;}
+
+#trail_stats 	{ width: 295px; float: right; margin: 40px 0 0 0; }
+#trail_stats table { width: 295px; padding: 0; }
+#trail_stats th { background: #fff; text-align: right; font-weight: normal; font-size: 0.8em; padding: 2px 5px; }
+#trail_stats td { background: #fff; font-weight: bold; font-size: 0.8em; padding: 2px 5px; }
+
+#trail_stats.Novice td			{ color: #529c12;}
+#trail_stats.Intermediate td	{ color: #1791a3;}
+#trail_stats.Advanced td		{ color: #3e3e3e;}
+#trail_stats.Expert td			{ color: #000000;}
+
+#stats {
+	float: left;
+	margin: 0 0 10px 0;
+	border-bottom: 1px solid #F1F1F1;
+}
+	#info dl {
+		display: block;
+		color: #666;
+	}
+	
+		#info dl dt {
+			display: inline;
+		}
+		
+		 #info dl dd {
+			 display: inline;
+			 clear: both;
+		 }
+	
+	#stats #graph {
+		float: left;
+		position: relative;
+		background: #fff;
+		width: 400px;
+		height: 200px;
+		margin: 40px 0 35px 0;
+	}
+	
+		#stats #graph canvas {
+			width: 400px;
+			height: 200px;
+			position: absolute;
+			top: 0;
+			left: 20px;
+		}
+		
+			#stats #graph canvas.shift {
+				left: 0;
+			}
+		
+		#stats #graph span {
+			position: absolute;
+			color: #545454;
+			font: bold 11px "DroidSans","DroidSans-ie",Arial;
+		}
+		
+			#stats .xaxis {
+				right: 0;
+				bottom: -30px;
+			}
+			
+			#stats .yaxis {
+				left: 0;
+				top: -20px;
+			}
+	
+	#stats a.view-poi {
+		font-weight: bold;
+	}
+	
+	#graph .tickLabel {
+		font: bold 13px "DroidSans","DroidSans-ie",Arial;
+	}
+
+/************************************** Popular Trails ***************************************/
+
+ul.popular-trails {
+	float: left;
+	width: 210px;
+	margin: 0 0 10px 0;
+	list-style: none;
+}
+
+	ul.popular-trails li {
+		border-bottom: 1px dotted #F3F3F3;
+		padding: 0 0 5px 0;
+		margin: 0 0 5px 0;
+	}
+	
+		ul.popular-trails li a {
+			display: block;
+			padding: 5px 0 5px 35px;
+			background-repeat: no-repeat;
+			background-position: 0 0;
+		}
+			
+			ul.popular-trails li a:hover {
+				text-decoration: underline;
+			}
+			
+		ul.popular-trails li a span {
+			display: block;
+		}
+
+	ul.popular-trails a.Novice {
+		background-image: url(../images/trails/marker-novice.png);
+	}
+	
+	ul.popular-trails a.Intermediate {
+		background-image: url(../images/trails/marker-intermediate.png);
+	}
+	
+	ul.popular-trails a.Advanced {
+		background-image: url(../images/trails/marker-advanced.png);
+	}
+	
+	ul.popular-trails a.Expert {
+		background-image: url(../images/trails/marker-expert.png);
+	}
+	
+ul.popular-trails li.active {
+	background-color: #D9FFA9;
+}
+
+/************************************** Trail Comments / Reports ***************************************/
+
+h3.trail_comment_title { color: #336; font: 15px "Museo300", "Museo300-ie", Verdana, Arial; background: #fff; text-align: left; padding: 0 0 10px 0;}
+
+.trail_comment {
+	float: left;
+	border-top: 1px solid #f2f2f2;
+	padding: 10px 0;}	
+
+.trail_comment img { float: left; margin-right: 5px; }
+.trail_comment_poster { float: left; width: 155px; font: bold 11px Verdana; color: #3b5998; display: block; margin: 0 0 2px 0; }
+.trail_comment_stamp  { float: left; width: 155px; font: 10px Verdana; color: #999; }
+.trail_comment_post   { float: left; width: 155px; font: 10px Verdana; color: #333; margin: 2px 0 0 0; }
+
+
+/************************************** Photos / Videos ***************************************/
+
+.email-button {
+	float: left;
+	margin: 0 0 10px 0;
+	width: 637px;
+}
+
+a.upload {
+	display: block;
+	background-color: #31A4B8;
+	color: #fff;
+	float: left;
+	margin: 5px 0 0;
+	padding: 10px;
+	font: 13px "FG-Demi","FG-Demi-ie",Arial;
+	text-transform: uppercase;
+}
+
+.gallery {
+	float: left;
+	clear: left;
+	width: 637px;
+	margin: 10px 0 0 0;
+}
+
+.gallery img {
+	margin: 0 10px 10px 0;
+}
+
+.gallery img.last {
+	margin-right: 0;
+}
+
+.warning {
+	background-color: #FFF9D8;
+	background-repeat: no-repeat;
+	background-position: 50% 10px;
+	padding: 10px;
+	margin: 0 0 20px 0;
+	border: 1px solid #c5c5c5;
+}
+
+	.warning h3 {
+		color: #666;
+		margin: 0;
+	}
+	
+a.mobile-warning {
+	display: block;
+	font-weight: bold;
+	background-color: #E6F8BA;
+	background-image: url(../images/trails/phone.png);
+	background-repeat: no-repeat;
+	background-position: 50% 10px;
+	padding: 35px 10px 10px 10px;
+	border: 1px solid #c5c5c5;
+	margin: 20px 0 0 0;
+	color: #000;
+	text-align: center;
+	font: 15px Verdana, Arial;
+	font-weight: bold;
+}
+
+.updates {
+	width: 677px;
+	float: left;
+	border: 1px solid #c5c5c5;
+	margin: 0 0 20px 0;
+	padding: 10px;
+	background: #e5e5e5;
+}
+
+	.updates h3 {
+		margin: 0;
+	}
+	
+	.updates h3 a {
+		display: block;
+		font: 15px "DroidSans","DroidSans-ie",Arial;
+		background: transparent url(../images/trails/bullet_arrow_down.png) no-repeat 100% 0;
+	}
+	
+	.updates h3 a.open {
+		background: transparent url(../images/trails/bullet_arrow_up.png) no-repeat 100% 0;
+	}
+	
+#content.trails .updates ul {
+	display: none;
+}
+
+#content.trails .updates ul li {
+	list-style: none;
+	margin: 0 0 5px 0;
+	background: none;
+}
+
+#content.trails .updates ul li a {
+	display: block;
+	height: 20px;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 5px 0 0 30px;
+	background-position: 0 5px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+}
+
+#content.trails .updates ul li.novice a {
+	background-image: url(../images/trails/updates/novice.png);
+}
+
+#content.trails .updates ul li.intermediate a {
+	background-image: url(../images/trails/updates/intermediate.png);
+}
+
+#content.trails .updates ul li.advanced a {
+	background-image: url(../images/trails/updates/advanced.png);
+}
+
+#content.trails .updates ul li.expert a {
+	background-position: 0 8px;
+	background-image: url(../images/trails/updates/expert.png);
+}
+
+#content.trails .updates ul li.photo {
+	font-weight: bold;
+	padding: 1px 0 0 30px;
+	background-repeat: no-repeat;
+	background-position: 1px 5px;
+	background-image: url(../images/trails/updates/picture_add.png);
+}
+
+#content.trails .updates ul li.text {
+	font-weight: bold;
+	padding: 1px 0 0 30px;
+	background-repeat: no-repeat;
+	background-position: 0 5px;
+	background-image: url(../images/trails/updates/page_white_text.png);
+}

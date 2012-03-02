@@ -1,0 +1,309 @@
+/* 
+Events Page
+Event Preview
+Event Search Form 
+*/
+
+/***************************************  Events Calendar ***************************************/
+
+.event_calendar {
+	background: #f5f5f5;
+	float: right; 
+	width: 294px;
+	position: relative;
+	border: 1px solid #e2e2e2;}
+	
+.event_calendar h2 {
+	padding: 0 10px 2px;
+	margin: 0;
+	float: left;
+	font: 16px "GeometricM", "GeometricM-ie", Verdana, Arial;}
+	
+.event_calendar .scrollable {
+	position: relative;
+	overflow: hidden;
+	float: left;
+	width: 294px; 
+	height: 204px;
+	background: #f00;}
+
+.event_calendar .scrollable .items {
+	width: 20000em;
+	position: absolute;}
+
+.event_calendar .leftArrow, 
+.event_calendar .rightArrow {
+	width: 19px;
+	height: 19px;
+	cursor: pointer;
+	position: absolute; 
+	z-index: 1000;
+	top: 29px;}	
+ 
+.event_calendar .leftArrow 			{ float: left; left: 10px; background: url("/css/images/event_scrollable_left.png") no-repeat;}	
+.event_calendar .leftArrow:hover 	{ background: url("/css/images/event_scrollable_left_over.png") no-repeat;}
+
+.event_calendar .rightArrow 		{ float: right; right: 10px; background: url("/css/images/event_scrollable_right.png") no-repeat;}	
+.event_calendar .rightArrow:hover 	{ background: url("/css/images/event_scrollable_right_over.png") no-repeat;}
+	
+.event_calendar .items .month {
+	float: left;
+	width: 294px;
+	background: #f5f5f5;}
+
+.event_calendar .items h3 {
+	background: #31a4b8; 
+	color: #fff; 
+	width: 294px; 
+	text-align: center; 
+	padding: 0 0 2px;
+	margin: 0;
+	float: left;
+	font: 16px "GeometricM", "GeometricM-ie", Verdana, Arial;}	
+	
+.month ul {
+	background: #fff;
+	display: block;
+	float: left;
+	position: relative;
+	margin: 0;
+	top: -10px;}
+	
+#content .event_calendar .items li {
+	width: 40px;
+	background: #bce5ec;
+	color: #fff;
+	float: left;
+	text-align: center;
+	margin: 1px;
+	list-style: none;
+	display: block;}
+	
+#content .event_calendar .items li:hover { background: #31a4b8;}
+	
+#content .event_calendar .items li a {
+	display: block;
+	font: bold 12px Verdana;
+	text-decoration: none;
+	color: #31a4b8;
+	padding: 5px 0;}
+	
+#content .event_calendar .items li span {
+	font: 12px Verdana;
+	display: block;
+	padding: 5px 0;
+	cursor: default;}
+	
+#content .event_calendar .items li:hover a { color: #fff;}
+	
+#content .event_calendar .items li.empty 	{ background: #f0f0f0;}	
+#content .event_calendar .items li.wknd 	{ background: #78cad8;}	
+#content .event_calendar .items .wknd:hover { background: #31a4b8;}
+
+#content .event_calendar .items .calendar_header { font-weight: bold; background: #C00; padding: 0; cursor: default;}
+#content .event_calendar .items .calendar_header:hover { background: #C00;}
+#content .event_calendar .items .calendar_header_wkend { font-weight: bold; background: #ac0101; padding: 0; cursor: default;}
+#content .event_calendar .items .calendar_header_wkend:hover { background: #ac0101;}
+	
+	
+	
+	
+/***************************************  Event Preview ***************************************/
+	
+	
+#event_preview { 
+	float: left;
+	width: 697px;
+	postion: relative;}
+	
+#event_preview li {
+	display: block;
+	position: relative;
+	margin: 0;}
+	
+#event_preview li a {
+	position: relative;
+	display: block;
+	float: right;
+	clear: right;
+	height: 45px;
+	width: 250px;
+	cursor: pointer;
+	padding: 0 0 1px 0;
+	margin: 0;
+	text-decoration: none;
+	z-index: 1}
+	
+#event_preview p {
+	height: 40px;
+	width: 217px;
+	color: #FFF;
+	font: 14px/17px "FG-Demi", "FG-Demi-ie", Arial;
+	background: url("/css/images/event_preview_bg.png") 0% 0% no-repeat;
+	padding: 5px 5px 0 25px;
+	z-index: 1000;
+	float: right;
+	display: block;}
+	
+#event_preview b { font: 10px Verdana; }
+	
+#event_preview img { border: 10px solid #e5e5e5;}
+	
+#event_preview span {
+	visibility: hidden;
+	position: relative;
+	float: left;
+	left: -447px; 
+	z-index: -1;}
+
+#event_preview li:hover p { background: url("/css/images/event_preview_arrow.png");}
+#event_preview ul li a p.active { background: url("/css/images/event_preview_arrow.png");}
+
+#event01 span 	{ top: -55px; visibility: visible;}
+#event02 span 	{ top: -101px;}
+#event03 span 	{ top: -147px;}
+#event04 span 	{ top: -193px;}
+#event05 span 	{ top: -239px;}
+#event06 span 	{ top: -285px;}
+
+#event_preview li:hover span { visibility: visible;}
+	
+#event_preview div { 
+	background: url("/css/images/event_preview_text_bg.png"); 
+	width: 425px; 
+	position: absolute; 
+	bottom: 10px; 
+	font: 10px/16px Verdana;
+	left: 10px;
+	color: #FFF;
+	Padding: 5px 10px;}	
+	
+/*************************************** Event Search Form ***************************************/        
+
+#event_search label { font: 12px/16px "FG-Demi", "FG-Demi-ie", Arial; color: #2b332e; }
+
+#event_search_wide fieldset label {
+	font: 12px/16px "FG-Demi", "FG-Demi-ie", Arial;
+	color: #2b332e;
+	float: left;
+	margin: 8px 9px 0 0;}
+       
+#event_search {
+	float: left;
+	padding: 0 0 10px 30px;
+	text-align: left;
+	width: 340px;}
+
+#event_search_wide {
+	position: relative;
+	float: left;
+	width: 697px;
+	padding: 15px 0;
+	margin: 20px 0;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+	#event_search_wide h2 {
+		float: left;
+		font: 20px "GeometricM", "GeometricM-ie", Verdana, Arial; 
+		color: #336; 
+		margin: 0 0 0 10px;
+	}
+	
+#event_search_wide fieldset {
+	float: right;
+}
+
+	#event_search_wide fieldset .field {
+		float: left;
+		clear: none;
+	}
+	
+	#event_search_wide fieldset .btn {
+		display: block;
+		width: auto;
+		margin: 2px 0 0 0;
+	}
+	
+#event_search div {
+	float: left;
+	margin: 5px 0;}
+
+#event_search input {
+	width: 120px;
+    padding: 6px 10px;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 0 4px #dad8d8; -webkit-box-shadow: 0 0 4px #dad8d8; -moz-box-shadow: 0 0 4px #dad8d8;
+    -webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-border-radius: 3px;
+    font: 12px "FG-Demi", "FG-Demi-ie", Arial;
+}
+
+.edatepicker1,
+.edatepicker2 {
+	background: #FFF url("/css/images/calander.gif") 95% 50% no-repeat; margin: 0 30px 0 0;}
+	
+#event_search_wide fieldset .ndatepicker1,
+#event_search_wide fieldset .ndatepicker2 {
+	font: 12px "FG-Demi", "FG-Demi-ie", Arial;
+	color: #333;
+	padding: 6px; 
+	border: solid 1px #dad8d8;
+	outline: 0;
+	box-shadow: 0 0 4px #dad8d8; -webkit-box-shadow: 0 0 4px #dad8d8; -moz-box-shadow: 0 0 4px #dad8d8;
+	-webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-border-radius: 3px;	
+	margin: 0 20px 0 5px;
+	width: 100px;
+	background: #FFF url("/css/images/calander.gif") 95% 50% no-repeat; margin: 0 30px 0 0;
+}
+              
+#event_search input.event_name {
+	width: 162px;
+	margin: 0 30px 0 0;}
+       
+#event_search select {
+	width: 160px;
+	height: 20px;
+	border: 1px solid #d1d1d1;
+	box-shadow: 0 0 4px #d0d0d0; -webkit-box-shadow: 0 0 4px #d0d0d0;  -moz-box-shadow: 0 0 4px #d0d0d0;
+	font: 11px "FG-Demi", "FG-Demi-ie", Arial;}
+       
+#event_search a {
+	float: left;
+	margin: 10px 0 0 0;
+}
+
+
+
+#event_search .button input { 
+	display: none;
+}
+	
+p.loading {
+	clear: both;
+	padding: 0 0 0 20px;
+	background: transparent url(../images/events/loading.gif) no-repeat 0 2px;
+}
+
+#search-results {
+	float: left;
+	width: 697px;
+}
+
+#search-results a.hide {
+	float: right;
+	margin: 0 10px 20px 0;
+	padding: 1px 0 0 0;
+	font-weight: bold;
+}
+
+	#search-results a.hide:hover, 
+	#search-results a.hide:active {
+		text-decoration: underline;
+	}
+	
+#search-results p.no-events {
+	clear: both;
+	font-weight: bold;
+	margin: 0 0 20px 0;
+}

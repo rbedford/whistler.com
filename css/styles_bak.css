@@ -1,0 +1,1061 @@
+/*CSS Tourism Whistler Style Sheet
+
+1. @font-face import
+2. Main layout
+3. Nav
+4. Footer
+
+*/
+
+*, body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,a,blockquote,th,td,image { 
+	margin:0;
+	padding:0;
+	text-decoration: none;
+	border: none;
+	font-style: normal;
+	letter-spacing: 0;
+	outline: none;}
+
+
+
+/*************************************** 1 @font-face ***************************************/
+
+
+@font-face { font-family: "FG-Book-ie"; src: url("fonts/itcfranklingothicstd-Book.eot");} /* for IE */
+@font-face { font-family: "FG-Demi-ie"; src: url("fonts/itcfranklingothicstd-Demi.eot");} /* for IE */
+@font-face { font-family: "Geometric-ie"; src: url("fonts/Geometric.eot");} /* for IE */
+@font-face { font-family: "GeometricM-ie"; src: url("fonts/GeometricM.eot");} /* for IE */
+@font-face { font-family: "NewsCycle-ie"; src: url("fonts/NewsCycle.eot")/* for IE */;} 
+
+@font-face { font-family: "FG-Book"; src: url("fonts/ITCFranklinGothicStd-Book.otf");}
+@font-face { font-family: "FG-Demi"; src: url("fonts/ITCFranklinGothicStd-Demi.otf");}
+@font-face { font-family: "Geometric"; src: url("fonts/Geometric.ttf");}
+@font-face { font-family: "GeometricM"; src: url("fonts/GeometricM.ttf");}
+@font-face { font-family: "NewsCycle"; src: url("fonts/NewsCycle.ttf"), url("fonts/NewsCycle.woff"), url("fonts/NewsCycle.svg");} 
+
+
+/*************************************** 2 Main Layout ***************************************/
+
+body { background: #000 url("images/bg/trees.jpg") no-repeat fixed; background-size: cover; }	
+body.anchored { position: relative;}
+
+/* alternate bg images */
+body#skier 		{ background: transparent url("images/bg/skier.jpg") no-repeat 0 0 fixed; background-size: cover;}
+body#sunset 	{ background: transparent url("images/bg/sunset.jpg") no-repeat 0 0 fixed; background-size: cover;}
+body#village 	{ background: transparent url("images/bg/village.jpg") no-repeat 0 0 fixed; background-size: cover;}
+
+#bg_switch {
+	width: 40px;
+	height: 40px;
+	background: url("images/bg_switch.png") no-repeat;
+	display: block;
+	right: 0px;
+	top: 50%;
+	z-index: 200;
+	position: fixed;
+	outline: none;}
+	
+#bg_switch.loading { background: #78cad8 url(images/loading.gif) no-repeat 50%;}
+	
+#headbar {
+	height: 20px;
+	background: #333;
+	width: 100%;
+	position: absolute;
+	left: 0;}
+
+#master_wrapper {
+	width: 992px;
+	margin: 0 auto;
+}
+		
+#wrapper {
+	width: 992px;
+	margin: 0 auto;
+	position: relative;
+	float: left;
+}
+
+*+html #wrapper {
+	z-index: 10;
+}
+	
+#header {
+	position: relative;
+	width: 992px;
+	height: 135px;
+	float: left;
+}
+
+*+html #header {
+	z-index: 1;
+}
+	
+#logo {
+	width: 230px;
+	height: 80px;
+	background: url("images/logo.png") no-repeat;
+	display: block;}
+	
+#content_wrapper {
+	width: 992px;
+	float: left;
+	position: relative;
+	margin-bottom: 45px;
+}
+	
+#sidebar_holder {
+	float: left;
+	width: 244px;
+}
+	
+#sidebar {
+	float: left;
+	width: 210px;
+	padding: 0 17px 20px;
+	background: #fff;
+}
+	
+#content {
+	position: relative;
+	float: right;
+	background: #fff;
+	width: 697px;
+	padding: 0 17px 17px;
+	margin: 0 0 0 0;
+}
+	
+#content_wide {
+	float: left;
+	background: #fff;
+	width: 958px;
+	padding: 0 17px 17px;
+	margin: 0 0 0 0;
+}
+	
+*+html #content_wide, *+html #content, *+html #sidebar, *+html #sidebar_holder, *+html #content_wrapper, *+html #master_wrapper {
+	/*z-index: -1;*/
+}
+		
+/*************************************** 3 Nav ***************************************/		
+
+#header_links {
+	width: 550px;
+	height: 18px;
+	position: absolute;
+	top: 2px;
+	right: 0;
+	color: #999;
+	font: 10px Verdana;
+	text-align: right;}
+	
+#header_links a {
+	color: #999;
+	font: 10px Verdana;
+	margin: 0 8px;}	
+	
+#header_links a:hover {
+	color: #fff;}
+	
+#nav {
+	width: 992px;
+	background: url("images/navbar.png");
+	position: absolute;
+	top: 90px;
+	left: 0;
+	text-align: center;
+	height: 45px;
+	z-index: 9999;}
+	
+#nav ul {	
+	float: left;
+	width: 992px;
+	position: relative;
+	left: -2px;}
+
+#nav ul li {	
+	position: relative;
+	float: left;
+	display: block;
+	background: url("images/nav-bg.png") no-repeat 0 50%;
+	padding: 0 10px;}
+	
+#nav ul li.about { background-image: none;}
+
+#nav ul li a {
+	float: left;
+	font: 13px 'NewsCycle','NewsCycle-ie';
+	color: #fff;
+	white-space: nowrap;
+	padding: 12px 0 16px 0;
+	height: 17px;
+	letter-spacing: 1px;}
+
+/* fixed sizes */
+#nav ul li.about a 		{ width: 130px;}
+#nav ul li.places a 	{ width: 122px;}
+#nav ul li.deals a 		{ width: 145px;}
+#nav ul li.things a 	{ width: 107px;}
+#nav ul li.getting a	{ width: 110px;}
+#nav ul li.groups a 	{ width: 70px;}
+#nav ul li.last a 		{ width: 168px;}	
+#nav ul li:hover 		{ left: 2px; z-index: 200; background: #78cad8; padding: 0 12px 0 8px;}
+	
+/* dropdowns */
+#nav ul li:hover .dropdown { visibility: visible;}
+
+#nav ul li ul.dropdown {
+	width: 203px;
+	visibility: hidden;
+	position: absolute;
+	top: 45px;
+	left: -9px;
+	z-index: 9999;
+	text-align: left;
+	padding: 9px 0;
+	background: url("images/dropdown_bg.png") no-repeat bottom;}
+	
+#nav ul li ul.dropdown li { padding: 0; background: none;}
+	
+#nav ul li ul.dropdown li:hover {
+	padding: 0;
+	left:0;}
+
+#nav ul li ul.dropdown li a {
+	width: 170px;
+	color: #336;
+	font: 11px Verdana;
+	background: #fff;
+	padding: 5px 0px 5px 15px;
+	float: left;
+	margin: 0 9px;}
+	
+#nav ul li ul.dropdown a:hover { background: #e3f2f5;}
+	
+	
+	
+/****************************************** 4 Footer *********************************************/	
+
+/******************************************  Booking Widget *********/
+
+#booking_widget_holder {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 75px;
+	float: left;
+	border-bottom: 5px solid #78cad8;
+	margin: 0;
+	z-index: 100;}
+	
+body.anchored #booking_widget_holder {
+	position: relative;
+	bottom: 0;}
+
+#booking_widget {
+	width: 992px;
+	margin: 0 auto;
+	position: relative;
+	height: 75px;}
+			
+#widget_closed {
+	width: 260px;
+	height: 102px;
+	position: absolute;
+	left: -8px;
+	top: -27px;
+	background: url("images/booking_widget/closed.png");
+	display: none;}
+	
+#widget {
+	width: 260px;
+	position: absolute;
+	left: -8px;
+	bottom: 0;
+	padding: 0 0 40px 0;
+	background: url("images/booking_widget/open_bg.png");}
+	
+#widget h2 {
+	margin: 0 8px;
+	padding: 5px 0 5px 10px;
+	background-color: #31A4B8;
+	text-transform: uppercase;
+	color: #fff; font: 15px "GeometricM", "GeometricM-ie";
+}
+
+#widget h2 a {
+	color: #fff;	
+}
+
+#widget h2.sales-message {
+	background-color: #f28d3f;
+	color: #fff;
+}
+
+#widget h2 small {
+	border-left: 1px solid #fff;
+	margin: 0 0 0 5px;
+	padding: 0 0 0 5px;
+}
+
+#widget h3 {
+	margin: 10px 18px 0;
+	padding: 0 0 5px;
+	border-bottom: 1px solid #BCE5EC;
+	color: #fff;
+	font: 18px "GeometricM","GeometricM-ie";
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#widget.closed {
+	padding: 0 0 63px 0;
+}
+
+#widget ul.links {
+	float: left;
+	overflow: hidden;
+	margin: 5px 10px 5px 27px;
+	list-style: none;
+	text-align: center;
+}
+
+#widget ul.links li {
+	display: block;
+	float: left;
+	margin: 0 4px 0 0;
+	border-right: 1px solid #fff;
+	color: #fff;
+	font: 10px Verdana;
+}
+
+#widget ul.links li a {
+	display: block;
+	color: #fff;
+	padding: 0 5px 0 0;
+}
+
+#widget ul.links li.last {
+	border: 0;
+}
+
+#widget ul.links li.last a {
+	padding: 0;
+}
+
+.booking {
+	display: none;
+	width: 224px;
+	margin: 10px 18px 0;
+}
+
+.booking .field.half {
+	width: 112px;
+}
+
+.booking .child {
+	width: 74px;
+}
+
+#widget .booking:first-child {
+	display: block;
+}
+
+#widget .buttons {
+	overflow: hidden;
+	clear: both;
+	border-top: 1px solid #BCE5EC;
+	border-bottom: 1px solid #BCE5EC;
+	padding: 10px 0;
+}
+
+#widget .buttons img {
+	float: left;
+	margin: 0 20px;
+}
+
+#widget .buttons .button {
+	float: left;
+}
+
+
+
+.booking th 	{ text-align: center;}
+.booking th h3	{ color: #fff; font: 18px "GeometricM", "GeometricM-ie"; padding: 0 0 5px 0; margin: 0; }
+.booking th p 	{ color: #fff; font: 10px Verdana; margin: 0 0 10px 0; border-top: 1px solid #bce5ec; padding: 5px 0 0 0;}
+.booking th a 	{ color: #fff; font: 10px Verdana; border-right: 1px solid #fff; padding: 0 5px 0 0; display: inline-block; }
+.booking th a.last 	{ border: 0; }
+.booking td  	{ padding: 0 0 5px 0;}
+.bpg_search 	{ border-top: 1px solid #bce5ec; border-bottom: 1px solid #bce5ec; width: 224px; margin: 5px 0 0 0; padding: 5px 0 0 0;}
+
+#toggle_booking_widget {
+	display: block;
+	width: 250px; 
+	margin: 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#widget #toggle_booking_widget {
+	height: 37px; 
+	background: url("images/booking_widget/close_arrow.gif") no-repeat 100% 0;
+}
+
+#widget.closed #toggle_booking_widget {
+	height: 63px; 
+	background: url("images/booking_widget/open-button.gif") no-repeat 10px 0;
+}
+
+.widget-loading {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 8px;
+	z-index: 9999;
+	width: 244px;
+	height: 100%;
+	background-image: url(images/trans.png);
+}
+
+.widget-loading img {
+	position: absolute;
+	top: 45%;
+	left: 25%;
+}
+
+#widget.simple-widget {
+	padding: 0 0 10px 0;
+}
+
+#widget .simple {
+	margin: 10px 20px;
+}
+
+#widget .simple legend {
+	display: none;
+}
+
+#widget .simple fieldset {
+	float: left;
+}
+
+#widget .simple .text {
+	height: 14px;
+	background-image: url(/images/calendar.gif);
+	background-repeat: no-repeat;
+	background-position: 95% 5px;
+}
+
+#widget .simple .field.last {
+	margin: 0;
+}
+
+#widget .simple fieldset.left {
+	width: 110px;
+	padding: 0 20px 0 0;
+}
+
+	#widget .simple fieldset.left .field {
+		width: 110px;
+	}
+
+#widget .simple fieldset.right {
+	padding: 0 0 0 20px;
+	border-left: 1px solid #a1dae4;
+}
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+.ui-menu {
+	border: 0;
+	list-style:none;
+	padding: 0;
+	margin: 0;
+	display:block;
+	float: left;
+	background: #31A4B8;
+}
+
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+
+.ui-menu .ui-menu-item a {
+	display:block;
+	height: 20px;
+	padding: 2px 4px;
+	text-decoration:none;
+	line-height:1.5;
+	zoom:1;
+	font-size: 10px;
+	color:#ffffff;
+	cursor: pointer;
+}
+
+#content .ui-menu li.ui-menu-item {
+	list-style-image: none;
+	margin: 0;
+}
+
+#content .ui-menu li.ui-menu-item a {
+	text-decoration: none;
+}
+
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	color:#ffffff;
+	background-color:#76c7c6;
+	border: 0;
+}
+
+
+/******************************************  End Booking Widget *********/
+	
+#footer {
+	height: 278px;
+	background: #333;
+	border-bottom: 20px solid #212121;
+	padding: 20px 0 0 0;
+	clear: both;
+	width: 100%;
+	z-index: 10;}
+	
+#column_holder { 
+	width: 992px; 
+	margin: 0 auto;}
+	
+.columns { 
+	float: left; 
+	height: 265px; 
+	border-right: 1px solid #515151; }
+	
+.column1 { width: 169px; padding: 0 45px 0 15px;}
+.column2 { width: 189px; padding: 0 45px 0 45px;}
+.column3 { width: 204px; padding: 0 45px 0 45px;}
+.column4 { width: 124px; padding: 0 0 0 45px; border-right: none;}
+
+#footer h3 	 { 
+	font: 14px "GeometricM", "GeometricM-ie";
+	letter-spacing: 0.5px;
+	text-transform: uppercase; 
+	color: #bebdbd; 
+	margin: 0 0 5px 0;}
+
+#footer p, 
+#footer a { 
+	font: 10px/22px Verdana; 
+	color: #8e8e8e;}
+
+#footer a:hover { color: #fff;}
+
+#footer a.footer_link { 
+	font: 10px "NewsCycle", "NewsCycle-ie";
+	letter-spacing: 1px; 
+	color: #bebdbd; 
+	padding: 2px 22px 2px 0; 
+	display: block; 
+	float: right; 
+	background: url(images/footer_link.png) no-repeat 100% 50%;}
+
+#weather { 
+	margin: 0 0 53px 0;}
+
+#weather_snippet {
+	 height: 40px; 
+	 border-top: solid 1px #515151; 
+	 border-bottom: solid 1px #515151; 
+	 margin: 0 0 5px 0;}
+	 
+#weather_snippet p { 
+	font: 15px "NewsCycle", "NewsCycle-ie";
+	letter-spacing: 1px; 	 
+	color: #999; 
+	margin: 7px 0 0 0;}
+	
+#weather_snippet #temp 	{ margin: 0 0 0 5px;}		
+#weather_snippet img 	{ float: right;}
+
+#insider { margin: 0 0 50px 0;}
+	 
+#insider p { font: 9px/14px Verdana;}
+		
+a.like { 
+	height: 22px; 
+	display: block; 
+	float: left; 
+	padding: 0 0 0 60px; 
+	background: url("images/social/like.gif") no-repeat 0 50%;
+	margin: 5px 0 10px 0;
+	width: 125px;}
+		
+a.social { 
+	width: 23px; 
+	height: 23px; 
+	display: block; 
+	float: left; 
+	margin-right: 7px;
+	background: url("images/social/icons.png");}
+	
+a.facebook			{ background-position: 0 0; clear: left;}
+a.facebook:hover	{ background-position: 0 23px;}
+a.twitter 			{ background-position: -23px 0;}
+a.twitter:hover 	{ background-position: -23px 23px;}
+a.youtube			{ background-position: -46px 0;}
+a.youtube:hover		{ background-position: -46px 23px;}
+a.flickr			{ background-position: -69px 0;}
+a.flickr:hover		{ background-position: -69px 23px;}
+a.mobile			{ background-position: -92px 0;}
+a.mobile:hover		{ background-position: -92px 23px;}
+a.blog				{ background-position: -115px 0;}
+a.blog:hover		{ background-position: -115px 23px;}
+
+p#trip {
+	height: 30px; 
+	display: block; 
+	float: left; 
+	padding: 40px 0 0; 
+	background: url("/images/social/trip-advisor.png") no-repeat;
+	margin: 10px 0 10px;
+	clear: left;
+	width: 185px;
+	font: 9px/14px verdana;
+}
+	
+#international { 
+	margin: 0 0 28px 0; 
+	float: left;}
+	
+a.flag { 
+	width: 100px; 
+	padding: 0 0 0 30px; 
+	display: block;
+	float: left;
+	clear: left;
+	margin-top: 3px;
+	background-position: 0 50%;
+	background-repeat: no-repeat;}
+	
+.uk 			{ background-image: url("images/flags/uk-grey.gif");}
+.uk:hover 		{ background-image: url("images/flags/uk.gif");}
+.germany 		{ background-image: url("images/flags/ger-grey.gif");}
+.germany:hover 	{ background-image: url("images/flags/ger.gif");}
+.japan 			{ background-image: url("images/flags/jap-grey.gif");}
+.japan:hover 	{ background-image: url("images/flags/jap.gif");}
+.korea 			{ background-image: url("images/flags/korea-grey.gif");}
+.korea:hover 	{ background-image: url("images/flags/korea.gif");}
+.australia 		{ background-image: url("images/flags/aus-grey.gif");}
+.australia:hover{ background-image: url("images/flags/aus.gif");}
+.gay 			{ background-image: url("images/flags/gay-grey.gif");}
+.gay:hover 		{ background-image: url("images/flags/gay.gif");}
+.access 		{ background-image: url("images/flags/disabled-grey.gif");}
+.access:hover 		{ background-image: url("images/flags/disabled.gif");}
+
+#quick_search { margin: 22px 0 0 0;}
+
+#quick_search input { 
+	background: #484848;
+	width: 85px; 
+	font: 12px/12px "NewsCycle", "NewsCycle-ie"; 
+	color: #8e8e8e; 
+	padding: 4px 6px 6px;
+	margin: 0; 
+	float: left; 
+	height: 14px;}
+	
+#quick_search #search_btn { 
+	width: 15px;
+	height: 16px;
+	padding: 4px 6px; }
+
+#footer #copyright { 
+	font: 9px Verdana; 
+	color: #666;
+	float: right;
+	margin: 15px 18px 0 0;}
+
+/******************************************  Date Picker *********/
+
+.ui-datepicker-div, 
+.ui-datepicker-inline, 
+#ui-datepicker-div {
+	font: 12px Verdana;
+	background: #fff;
+	width: 188px;
+	padding: 35px 10px 10px 10px;
+	position: relative;
+	border: 1px solid #d1d1d1;
+	box-shadow: 0 0 4px #dad8d8; -webkit-box-shadow: 0 0 4px #dad8d8; -moz-box-shadow: 0 0 4px #dad8d8;
+    -webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-border-radius: 3px;}
+	
+.ui-datepicker-div, #ui-datepicker-div { z-index: 9999 !important; display: none;}
+.ui-datepicker-inline 	{ float: left; display: block;}	
+.ui-datepicker-control 	{ display: none;}
+.ui-datepicker-current 	{ display: none;}
+	
+.ui-datepicker-next, 
+.ui-datepicker-prev {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	cursor: pointer;
+	color: #31A4B8;}
+	
+.ui-datepicker-next {
+	left: 170px;}
+	
+.ui-datepicker-next:hover, 
+.ui-datepicker-prev:hover {
+	color: #31A4B8;}
+	
+#ui-datepicker-div table {
+	width: 188px;
+	text-align: center;
+	margin-top: 5px;}
+	
+#ui-datepicker-div table td {
+	background: #f1f1f1;
+	cursor: pointer;}
+	
+#ui-datepicker-div table td a {
+	padding: .2em;
+	display: block;
+	color: #fff;
+	background: #31A4B8;
+	cursor: pointer;
+	border: 1px solid #ffffff;}
+	
+#ui-datepicker-div table td a:hover {
+	border: 1px solid #31A4B8;
+	color: #31A4B8;
+	background: #fff;}
+	
+ui-datepicker-div table .ui-datepicker-title-row td {
+	padding: .2em;
+	text-align: center;
+	color: #222;}
+
+/******************************************  In page widget *********/
+
+.page-widget {
+	float: left;
+	width: 240px;
+}
+
+.page-widget h3 {
+	margin: 0 0 10px;
+	padding: 5px 10px;
+	text-align: center;
+	background: #31A4B8;
+	font: 15px "GeometricM","GeometricM-ie";
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.page-widget h3 a {
+	display: block;
+	color: #fff;
+}
+
+.field {
+	clear: left;
+	margin: 0 0 10px 0;
+}
+
+.field.half {
+	float: left;
+	clear: none;
+	width: 120px;
+	height: 50px;
+}
+
+.field.third {
+	float: left;
+	clear: none;
+	width: 80px;
+}
+
+.field label {
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+.field input.text {
+	width: 100px;
+}
+
+.field.half input.text {
+	width: 80px;
+}
+
+.field.third input.text {
+	width: 50px;
+}
+
+.childAll {
+	display: none;
+	float: left;
+}
+
+.child {
+	float: left;
+	width: 80px;
+	margin: 0 0 10px 0;
+}
+
+#activities-page {
+	position: relative;
+}
+
+#activities-page #inpage-widget.widgetInPage {
+}
+
+.sectionPlacesToStay #inpage-widget.page-widget, 
+.sectionPlacesToStay #inpage-widget.widgetInPage {
+	top: 60px;
+}
+
+#rooms-widget, 
+#az-search, 
+#hotel-search, 
+#suite-search {
+	float: right;
+}
+
+#activity-widget {
+	float: right;
+	margin-left: 20px;
+}
+
+.short-intro {
+	margin: 0 10px 0 0;
+	width: 440px;
+	float: left;
+}
+
+#poll-widget {
+	background-color: #fff;
+	padding: 0 17px 20px;
+}
+
+#poll-widget.loading {
+	height: 100px;
+	background-repeat: no-repeat;
+	background-position: 50% 75%;
+	background-image: url(images/white-loading.gif);
+}
+
+ul.poll-result {
+	list-style: none;
+	margin: 0 0 0 10px;
+}
+
+ul.poll-result li {
+	color: #666;
+}
+
+ul.poll-result strong {
+	display: inline-block;
+	width: 35px;
+	color: #333366;
+	font: 16px GeometricM,GeometricM-ie,Verdana,Arial;
+}
+
+#poll-widget a.more {
+	display: inline-block;
+	margin: 10px 0 0 0;
+	color: #CC4400;
+	font: bold 12px Verdana,Arial;
+}
+
+/* Accommodation Special Offers */
+
+#content ul.special-offers {
+	overflow: hidden;
+}
+
+#content ul.special-offers li {
+	margin: 0 10px 10px 0;
+	float: left;
+	list-style: none;
+}
+
+/* Search User Control */
+
+#search-all {
+	clear: both;
+	margin: 0 0 20px 0;
+}
+
+#search-all .field {
+	overflow: hidden;
+	margin: 0 0 2px 0;
+}
+
+#search-all legend {
+	display: block;
+	width: 687px;
+	margin: 0 0 2px 0;
+	padding: 5px;
+	color: #333366;
+	background: #B7E0E7;
+}
+
+#search-all label {
+	float: left;
+	display: block;
+	width: 150px;
+	height: 15px;
+	margin: 0 2px 0 0;
+	padding: 10px;
+	background: #E5E5E5;
+}
+
+#search-all .input {
+	float: left;
+	width: 513px;
+	height: 23px;
+	padding: 6px;
+	background: #E5E5E5;
+}
+
+#search-all .search-datepicker {
+	background-repeat: no-repeat;
+	background-image: url(/css/images/calander.gif);
+	background-position: 95% 50%;
+}
+
+#search-all .input div.selector {
+	margin: -2px 0 0 0;
+}
+
+#search-all .field.submit {
+	padding: 10px 0;
+	margin: 2px 0 0 0;
+	text-align: center;
+	background: #E5E5E5;
+}
+
+/* Weather Widget */
+
+#weather-widget {
+	position: absolute;
+	right: 60px;
+	top: 20px;
+	width: 375px;
+	height: 40px;
+	padding: 5px 20px;
+	background-image: url(images/navbar.png);
+}
+
+#weather-widget ul.inner {
+	position: relative;
+	float: left;
+	width: 355px;
+	list-style: none;
+	background-color: #37393c;
+}
+
+#weather-widget ul.inner li {
+	float: left;
+}
+
+	#weather-widget ul li.snow {
+		width: 150px;
+		height: 35px;
+		overflow: hidden;
+		position: relative;
+		margin: 5px 0 0 0;
+		background-image: url(../images/weather-widget/snow-flake.gif);
+		background-position: 94% -5px;
+		background-repeat: no-repeat;
+	}
+	
+	#weather-widget ul li.snow-base {
+		width: 115px;
+		margin: 5px 0 0 0;
+	}
+
+#weather-widget dl {
+	float: left;
+	clear: left;
+	width: 150px;
+	font-family: 'NewsCycle','NewsCycle-ie';
+}
+
+#weather-widget dt {
+	float: left;
+	display: inline;
+	margin: 4px 10px 0 0;
+	text-align: right;
+}
+
+#weather-widget dd {
+	float: left;
+	display: inline;
+	margin: 0;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#weather-widget ul li.snow dt {
+	width: 40px;
+	margin-right: 5px;
+}
+
+#weather-widget li.snow dd {
+	min-width: 40px;
+	padding: 0 30px 0 0;
+}
+
+#weather-widget dl dt a {
+	font-size: 10px;
+	line-height: 10px;
+	text-transform: uppercase;
+	
+}
+
+#weather-widget dl a {
+	display: block;
+	height: 30px;
+	line-height: 24px;
+	color: #fff;
+}
+
+#weather-widget .live-webcams {
+	margin: 0 -15px 0 0;
+	position: absolute;
+	top: 0;
+	right: -10px;
+}
+
+#weather-widget .live-webcams a {
+	display: block;
+	width: 105px;
+	height: 40px;
+	text-indent: -9999px;
+	background-repeat: no-repeat;
+	background-image: url(../images/weather-widget/live-webcams.png);
+}
+
+#weather-widget .ticker {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	height: 40px;
+	list-style: none;
+	background-color: transparent;
+}

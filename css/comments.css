@@ -1,0 +1,96 @@
+/* comments css */
+
+#comments-box {
+	clear: both;
+	padding: 10px;
+	background: #e5e5e5;
+}
+
+/* loading */
+#comments-box .loading {
+	background: transparent url(./images/uploading.gif) no-repeat 0 3px;
+	padding: 0 0 0 25px;
+	margin: 0;
+}
+
+/* add comment form */
+
+#add-comment {
+	margin: 20px 0 0 0;
+}
+
+	#add-comment .field {
+		margin: 0 0 10px 0;
+	}
+	
+		#add-comment legend {
+			margin: 0 0 20px 0;
+			font: bold 11px Verdana;
+		}
+	
+		#add-comment label {
+			font-weight: normal;
+			display: block;
+			float: left;
+			width: 100px;
+		}
+		
+		#add-comment span {
+			font: 11px Verdana;
+		}
+		
+		#add-comment .btn {
+			padding: 5px 10px;
+			margin: 0 0 0 375px;
+			float: left;
+			width: auto;
+		}
+
+#add-comment p.error-message {
+	color: #ff0000;
+	font-weight: bold;
+	margin: 0 0 20px 0;
+}
+
+#add-comment p.success-message {
+	font-weight: bold;
+	color: #323366;
+}
+		
+/* comments */
+
+.comment {
+	position: relative;
+	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;
+	border-bottom: 1px solid #fff;
+}
+	
+	.comment .info {
+		padding: 5px;
+		color: #666;
+		font: 12px/20px Verdana,Arial;
+		background: #d8d8d8;
+	}
+
+			#comments .comment a.report {
+				float: right;
+				display: block;
+				color: #333;
+				text-decoration: none;
+				height: 17px;
+				font-size: 11px;
+				padding: 3px 0 0 25px;
+				outline: none;
+				background: transparent url(../images/comments/flag.png) no-repeat 0 0;
+			}
+				
+				#comments .comment a.report:hover {
+					text-decoration: underline;
+				}
+				
+	.comment p {
+		float: left;
+		width: 555px;
+		margin: 5px 0 0 5px;
+	}

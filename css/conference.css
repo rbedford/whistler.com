@@ -1,0 +1,11 @@
+ul#tabs-list li a {
+	outline: none;
+}
+
+ul#tabs-list .question {
+	float: left;
+	width: 667px;
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+	border-bottom: 1px solid #e5e5e5;
+}

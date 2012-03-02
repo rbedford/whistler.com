@@ -1,0 +1,25 @@
+div#content h1 {
+	clear:  both;
+	padding-top: 1em;
+}
+
+#secondary .search {
+	display: none;
+}
+
+#secondary h4 {
+	display: none;
+}
+
+#secondary h4.sub {
+	display: block;
+}
+
+div#content h1 {
+	clear:  both;
+	padding-top: 1em;
+}
+
+.ctcuk {
+	margin:0 0 3px;
+}

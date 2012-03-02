@@ -1,0 +1,35 @@
+#timelapse {
+	width: 800px;
+	height: 450px;
+	margin: 0 auto;
+	position: relative;
+	background-color: #c5c5c5;
+}
+
+#timelapse.loading {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-image: url(http://whistler.com/images/ajax-loader.gif);
+}
+
+	#timelapse img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	
+#timelapse a {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 800px;
+	height: 450px;
+	text-indent: -9999px;
+	z-index: 9999;
+	background-color: transparent;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-image: url(http://whistler.com/video/player/play_btn.png);
+}

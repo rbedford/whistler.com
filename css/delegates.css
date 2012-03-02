@@ -1,0 +1,73 @@
+#content_wrapper.delegates-page {
+	top: 99px;
+}
+
+/* Nav */
+
+#nav ul {
+	margin-left: 275px;
+	width: 737px;
+}
+
+/* Header */
+
+#delegate-header {
+	float: left;
+	margin: 20px 0;
+	width: 697px;
+}
+
+#delegate-header .image {
+	float: left;
+}
+
+#delegate-header .welcome {
+	float: left;
+	width: 260px;
+}
+
+#delegate-header .delegate-logo {
+	width: 150px;
+	height: 150px;
+	margin: 0 auto;
+	background: #666;
+}
+
+#delegate-header h2 {
+	text-align: center;
+	color: #333366;
+	font: 22px "Museo300","Museo300-ie",Verdana,Arial;
+	margin: 10px 0;
+}
+
+/* Content */
+
+#delegate-content {
+	float: left;
+	clear: left;
+	width: 697px;
+	color: #666;
+	font: 12px/20px Verdana,Arial;
+}
+
+#delegate-content h1 {
+	clear: none;
+	color: #3E4073;
+	margin: 10px 0;
+	font: 26px "Museo300","Museo300-ie",Verdana,Arial;
+}
+
+#delegate-content ul {
+	margin: 0 0 0 15px;
+}
+
+/* Inntopia Widget */
+
+#inntopia {
+	float: right;
+	width: 200px;
+	margin: 0 20px 20px 20px;
+}
+
+
+

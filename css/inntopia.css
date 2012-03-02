@@ -1,0 +1,640 @@
+
+/*
+General
+1. Search Widget
+2. Result Box
+3. Page Numeration Stuff
+4. Filter Results
+5. Info Pop-Ups
+6. Progress Buttons
+7. Error Messages
+8. Trip Summary (sidebar)
+9. Itinerary Pop-Up
+10.login/Payment Stuff
+11.Confirmation Page
+*/
+
+/******************************************************************** General ************/
+
+img { border: none;}
+
+#content {
+	min-height: 500px;
+	margin-bottom: 60px;}
+	
+#sidebar {
+	margin-bottom: 60px;}
+	
+#content table td {
+	color: #666;}
+	
+#content table th { 
+	text-align: left;
+	background: #31a4b8;
+	color: #fff;}
+
+#content table td.th { 
+	background: #31a4b8;
+	color: #fff;}
+
+.separator { 
+	background-color: #f1f1f1; 
+	width: 100%; 
+	height: 1px; 
+	float: left; 
+	clear: both; 
+	margin: 10px 0;}
+	
+.red, 
+.big_red { 
+	color: #ff9d3f; 
+	font-weight: bold;}
+	
+.cross { 
+	text-decoration: line-through;}
+	
+.purple_btn,	
+#content .purple_btn {
+	margin: 0; 
+	background: #336; 
+	color: #fff;
+	cursor: pointer;
+	border: 0;
+	padding: 5px;
+	text-decoration: none;
+	font: 11px verdana;
+	float: none;}
+	
+#results_h1 { 
+	margin: 0px; 
+	font: 20px "FG-Demi","FG-Demi-ie";}
+
+
+/******************************************************************** 1. Search Widget ************/
+
+#booking_search { 
+	position: relative; 
+	float: left; 
+	clear: left;}
+	
+#booking_tabs { 
+	position: absolute; 
+	left: 17px; 
+	z-index: 1000;}
+	
+#booking_chapters {
+	padding-top: 41px; 
+	clear: both; 
+	float: left; 
+	margin: 0 0 10px 0; 
+	overflow: hidden;}
+
+#booking_tabs li {
+	list-style: none;
+	display: inline;
+	float: left;
+	margin: 0 1px 0 0;}
+	
+#booking_tabs a {
+	float: left;
+	text-decoration: none;
+	outline: none;
+	height: 31px;
+	padding: 0 10px;
+	background: #78cad8;
+	text-align: center;}
+
+#booking_tabs a:hover, 
+#booking_tabs a.on {
+	background: #31a4b8;}
+
+.booking_toggle {
+	width: 697px;
+	float: left;
+	background: #31a4b8;}
+	
+#booking_chapters table { 
+	padding: 0; 
+	margin: 0 0 0 5px;}
+	
+#booking_chapters table td { 
+	background: #31a4b8;}
+	
+
+/******************************************************************** 2. Result Box ************/
+
+#placeholder {
+	text-align: center;
+	padding: 80px 0 0 0;
+	height: 132px;
+	width: 405px;
+	background: url("/images/booking_process/loading_bg.gif");
+	margin: 50px auto 70px;
+	position: relative;}
+	
+#loadingImg {
+	margin: 0 10px 0 0; 
+	position: relative; 
+	top: 4px;}
+	
+#whyLink {
+	width: 395px;
+	height: 65px;
+	display: block;
+	position: absolute;
+	bottom: 5px; 
+	left: 5px;}
+	
+#divResult { float: left;}
+	
+.result_box {
+	width: 697px;
+	float: left;
+	clear: both;
+	position: relative;
+	margin: 0 0 10px 0;}
+	
+.result_header {
+	padding: 10px;
+	width: 677px;
+	background: #78cad8;
+	float: left;
+	height: 75px;
+	position: relative;}
+	
+.result_header img {
+	float: left;}
+	
+.result_header_details { 
+	float: left; 
+	padding: 0 10px; 
+	color: #fff;}
+	
+.result_header_details h2 { 
+	margin: 0; 
+	color: #fff;}
+	
+.result_header_details img { 
+	margin: 5px 0;}
+	
+.result_header_details p { 
+	color: #fff;}
+	
+.result_header_details a { 
+	color: #fff; 
+	text-decoration: none;}	
+							
+.result_header_details .tripLogo { 
+	float: none; 
+	margin: 0;}
+		
+#content .result_box_offer { 
+	width: 150px; 
+	height: 105px; 
+	padding: 10px; 
+	background: #31a4b8; 
+	position: absolute; 
+	left: 547px; 
+	top: -5px; 
+	text-align: center;
+	margin: 0;}
+			
+#content .result_box_offer td { 
+	background: #31a4b8; 
+	padding: 0; 
+	text-align: center;}
+			
+#content .result_box_offer h1 { 
+	font: 24px "FG-Demi","FG-Demi-ie"; 
+	color: #ceeae9; 
+	margin: 0;}	
+	
+#content .result_box_offer p { 
+	font: 11px/14px Verdana; 
+	color: #fff;
+	margin: 0;}
+	
+.results_holder {
+	margin: 0 10px;
+	padding: 10px;
+	border-left: solid 10px #78cad8;
+	border-right: solid 10px #78cad8;
+	border-bottom: solid 10px #78cad8;
+	width: 637px;
+	float: left;}
+	
+#content .results_holder table 					{ margin: 10px 0 0 0;}	
+#content .results_holder table tr:hover td 		{ background: #f5f5f5;}
+#content .results_holder table tr:hover td.on 	{ background: #fff;}
+
+#content .results_holder table tr td table tr:hover td 		{ background: #f1f1f1;}
+#content .results_holder table tr td table tr.on:hover td 	{ background: #f5f5f5;}
+#content .results_holder table table tr.regular:hover td 	{ background: #fff;}
+
+#content .results_holder table th 					{ background: #fff; color: #336;}
+#content .results_holder table td 					{ background: #fff; border-top: 1px solid #f1f1f1;}
+#content .results_holder table td.on 				{ border-top: 1px solid #fff;}
+#content .results_holder table table td 			{ background: #f5f5f5; border-top: 3px solid #fff; padding: 8px 5px;}
+#content .results_holder table table tr.regular td 	{ background: #fff;}
+#content .results_holder table a 					{ text-decoration: none;}
+#content .results_holder table h2 					{ font: 15px "FG-Demi","FG-Demi-ie"; margin: 8px 0;}
+#content .results_holder table h3 					{ font: 15px "FG-Demi","FG-Demi-ie"; margin: 8px 0; color: #999;}
+
+
+/* Components */
+.components {
+	padding: 0 10px;
+	background: #f5f5f5;}
+
+#content .components p.package-description {
+	padding: 10px 0;
+	font: bold 11px Verdana;
+	border-bottom: 1px solid #e9e9e9;}
+
+.loading {
+	background: transparent url("http://www.whistler.com/css/images/uploading.gif") no-repeat 50% 25%;}
+
+.component {
+	float: left;
+	width: 557px;
+	padding: 10px;
+	border-bottom: 1px solid #f1f1f1;}
+
+.component.inactive .field, .component.inactive .item-price {
+	display: none;}
+
+.component fieldset {
+	clear: both;}
+
+.component strong {
+	display: block;
+	float: left;
+	margin: 0 10px 10px 0;}
+
+.component .field {
+	width: 110px;
+	float: left;
+	margin: 0 10px 0 0;}
+
+.component .field.short {
+	width: 50px;}
+
+.component.error {
+	background: #FAC5C0 url("http://www.whistler.com/images/icons/error.png") no-repeat 98% 10px;}
+
+.component .field.long {
+	width: 200px;}
+
+.component label {
+	display: block;}
+
+.component select.adults {
+	width: 50px}
+
+#content .component .add-remove {
+	float: left;
+	font-size: 10px;}
+
+#content .component fieldset .item-price {
+	float: left;
+	width: 165px;
+	margin: 0;
+	text-align: right;}
+
+.component fieldset .item-price p {
+	display: block;}
+
+#content .component fieldset .item-price.loading {
+	text-indent: -9999px;
+	text-align: left;
+	background-position: 50%;}
+
+.hidden {
+	display: block;
+	text-indent: -9999px;}
+
+#content .components .prices {
+	float: left;
+	clear: left;}
+
+#content .components .prices table {
+	float: left;
+	clear: left;
+	width: 577px;
+	padding: 0;
+	margin: 10px 0;}
+
+#content .components .prices table td {
+	border: 0;}
+
+#content .components .prices table td.add-package a.purple_btn {
+	display: block;
+	float: right;
+	margin: 0 0 20px 0;}
+
+.cross {
+	margin: 0 5px 0 0;}
+	
+#content .results_holder table td .total-price	{ color: #ff9d3f; font-weight: bold;}
+#content .results_holder table td .save-price	{ color: #f00; font-weight: bold;}
+
+#content .results_holder table td table td.savings		{ color: #f00; font-weight: bold;}
+#content .results_holder table td table td.package-price,
+#content .results_holder table td table td.total-price 	{ color: #ff9d3f; font-weight: bold;}
+
+/******************************************************************** 3. Page Numeration Stuff ************/
+
+#results_page_options {
+	background: #f8f7f7;
+	float: left;
+	clear: both;
+	width: 677px;
+	padding: 10px 10px 0;
+	margin: 0 0 10px 0;
+	position: relative;}
+	
+#results_page_options .sort_by { 
+	font: 10px verdana; 
+	color: #666;} 
+	
+#results_page_options .sort_by a { 
+	font: 10px verdana; 
+	text-decoration: none;}
+	
+#results_page_options .sort_by a:hover { 
+	text-decoration: underline;}
+	
+#results_page_footer {
+	background: #f8f7f7;
+	float: left;
+	clear: both;
+	width: 677px;
+	padding: 10px 10px 0;
+	text-align: center;
+	position: relative;}
+
+#results_page_footer td,
+#results_page_footer table a { font: 10px verdana; text-decoration: none; color: #666;}
+#results_page_footer table a:hover { text-decoration: underline;}
+
+.previous_next { 
+	margin: 0 3px; 
+	position: relative; 
+	top: 0;}
+	
+	
+/******************************************************************** 4. Filter Results ************/
+
+#filter_results p		{ clear: both;}
+#filter_results h2		{ margin: 0;}
+#filter_results ul 		{ list-style: none;}
+#filter_results li 		{ font: 11px verdana; color: #666; margin: 5px 0;}
+#filter_results p 		{ font: 11px verdana;}
+#filter_results td 		{ padding: 2px;}
+#filter_results label 	{ margin: 5px 0 0 0;}
+#filter_form			{ margin: 10px 0 0 0;}
+
+
+/******************************************************************** 5. Info Pop-Ups ************/	
+
+.xp-basic-popup {
+	display: none;
+	width: 320px;
+	position: absolute;
+	z-index: 100;
+    top: 270px;
+    left: 130px;
+	background: #fff;
+	padding: 10px;
+	border: 1px solid #ccc;
+	box-shadow: 3px 3px 8px #444; -moz-box-shadow: 3px 3px 8px #444; -webkit-box-shadow: 3px 3px 8px #444;}
+
+.xp-popup-close {
+	position: absolute;
+	top: 3px;
+	right: 8px;
+	font: bold 11px/18px Verdana, Arial;}
+	
+.xp-basic-popup p {
+	font: 10px/15px Verdana, Arial; 
+	color: #666;}
+
+		
+/******************************************************************** 6. Progress Buttons ************/	
+	
+#content .progress_btn {	
+	margin: 0; 
+	color: #fff;
+	cursor: pointer;
+	border: 0;
+	padding: 0 30px 2px 8px;
+	text-decoration: none;
+	font: 14px "NewsCycle", "NewsCycle-ie";
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	border-radius: 4px;
+	/*width hack for ie7*/	
+	width: auto;
+	overflow: visible;}
+	
+#content .progress_btn[class] {
+	width: auto;}/*undoes width fix for non ie7 browsers*/	
+	
+#content .progress_arrow 	{ background: #ff9d3f url("images/progress_arrow.png") no-repeat right;}
+#content .progress_circle 	{ background: #ff9d3f url("images/progress_circle.png") no-repeat right;}
+#content .grey_arrow  		{ background: #dadada url("images/progress_arrow.png") no-repeat right;}
+#content .grey_circle  		{ background: #dadada url("images/progress_circle.png") no-repeat right;}
+
+
+/******************************************************************** 7. Error Messages ************/
+
+div .val,
+div .valSummary {
+	font: 12px/20px Verdana, Arial; 
+	color: #f00;
+	font-weight: bold;}
+	
+.val ul,
+.valSummary ul { 
+	background: #fff8f8;
+	padding: 10px 0;}
+	
+#content .val ul li,
+#content .valSummary ul li { 
+	list-style: none;
+	color: #f00;
+	margin: 0 0 5px 40px;
+	list-style-image: url("/css/images/bullit_red.png");}
+	
+	
+/******************************************************************** 8. Trip Summary (sidebar) ************/
+
+#sidebar table a 	{ font-size: 11px; font-weight: bold;}
+#sidebar table td	{ color: #666;}
+#sidebar table th 	{ text-align: left; background: #31a4b8; color: #fff;}
+  
+#trip_summary { 
+	width: 210px;}
+	
+#sidebar #trip_summary td { 
+	font: 11px/18px verdana; 
+	color: #fff;
+	padding: 2px 10px; 
+	background: #78cad8; 
+	text-align: right;}
+	 
+#sidebar #trip_summary th { 
+	font: bold 11px verdana; 
+	padding: 5px 10px; 
+	text-align: left; 
+	background: #31a4b8; 
+	color: #fff;}
+	
+#trip_summary span { 
+	color: #336; 
+	font-weight: bold; 
+	float: left;
+	padding-right: 3px;}
+	
+#sidebar #trip_summary #summary_total { 
+	background: #31a4b8; 
+	padding: 5px 10px; 
+	color: #ffb03f; 
+	font: bold 12px verdana;}
+	
+#trip_summary #summary_total span { 
+	color: #fff;}
+
+
+/******************************************************************** 9. Itinerary Pop-Up ************/	
+
+@font-face { font-family: "NewsCycle"; src: url("/css/fonts/NewsCycle.ttf"), url("fonts/NewsCycle.woff"), url("fonts/NewsCycle.svg");}
+@font-face { font-family: "Geometric"; src: url("/css/fonts/Geometric.ttf");}
+
+@font-face { font-family: "NewsCycle-ie"; src: url("/css/fonts/NewsCycle.eot");}/* for IE */
+@font-face { font-family: "Geometric-ie"; src: url("/css/fonts/Geometric.eot");}/* for IE */
+
+#fancybox-close {
+	background: transparent url("/images/inntopia/close2.png") no-repeat;}
+		
+.itinerary-footer {
+	bottom: 0; 
+	width: 670px; 
+	background: #78cad8; 
+	border: 5px solid #b7dfe6; 
+	padding: 8px;
+	margin: 0 0 17px 0;
+
+}
+	
+#content #itinerary_table {
+	width: 697px;
+	padding: 0;}
+	
+#u1 { padding: 0 0 100px 0; position: relative;}
+
+#content #itinerary_table td span .confirmed { color: green;}
+#content #itinerary_table td span .cancelled { color: red;}
+
+#itinerary_search_btns 		{ display: block; margin: 10px 0 0 106px;}
+.itinerary_search_btn 		{ background: #78cad8; padding: 0 10px 3px; margin: 0 1px 0 0; width: 100px; float: left;}
+.itinerary_search_btn:hover { background: #31a4b8;}
+
+
+/******************************************************************** 10. login/Payment/confirmation Stuff ************/		
+				                    
+#content .itemDetails { 
+	width: 427px;}
+	
+#content .detailsLeft { 
+	text-align: right; 
+	padding: 2px; 
+	vertical-align: top;}
+	
+#content .detailsRight { 
+	color: #333; 
+	padding: 2px; 
+	vertical-align: top;}
+	
+#content #whoTravelling { 
+	margin: 0 auto;
+	width: 697px;}
+
+#content #whoTravelling td {
+	background: #fff;}
+	
+#content .detailsLink { 
+	color: #333; 
+	padding: 2px; 
+	vertical-align: top; 
+	text-align: right;}
+
+#content .login { 
+	margin: 0 auto;}
+	
+#content .login th { 
+	background: #31a4b8; 
+	padding: 5px 10px;}
+	
+#content .login td { 
+	padding: 10px;
+	color: #666;} 
+                
+.itemPrice { 
+	width: 240px; 
+	float: right;}
+	
+#content .priceLeft { 
+	width: 100px; 
+	background: #78cad8; 
+	border-bottom: 1px solid #a1dae4; 
+	color: #fff; 
+	font-weight: bold; 
+	text-align: right;}
+	
+#content .priceRight { 
+	background: #31a4b8; 
+	border-bottom: 1px solid #6fbfcd; 
+	color: #fff; 
+	font-weight: bold;}
+                    
+#content td.addInfoTD { 
+	text-align: right;
+	width: 340px;}
+
+#content .info { 
+	width: 348px; 
+	float: left;}
+	                    
+#content .info th { 
+	background: #78cad8; 
+	width: 430px;}
+
+#content table.insurance th { 
+	background: #78cad8;}
+									
+#content table.insurance td {
+	background: #d9eef2;
+	color: #333;
+	padding: 10px;}
+
+
+
+
+/******************************************************************** 11. Confirmation Page ************/
+
+
+
+
+.cancelled { color: #e70101; float: right; margin: 0 280px 0 0;}
+.confirmed { color: #01e70c; float: right; margin: 0 280px 0 0;}
+.unconfirmed {  float: right; margin: 0 280px 0 0;}
+
+.cancelledcart { color: #e70101; }
+.confirmedcart { color: #01e70c;}
+.unconfirmedcart {  }
+
+.field {
+	clear: none;
+	
+}
