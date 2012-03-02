@@ -1,3 +1,12 @@
+$(document).ready(function(){
+	$("#cart_link").click(function() {
+		var category = "Cart", 
+			action = "View Cart Header", 
+			label = "click";
+		_gaq.push(['_trackEvent', category, action, label]);
+	});
+});
+
 var path = window.location.pathname;
 /**
 
@@ -15,21 +24,6 @@ var path = window.location.pathname;
 	@return false
 	
 */
-$(document).ready(function(){
-	
-	$("#cart_link").click(function() {
-			
-		var category = "Cart", 
-			action = "View Cart Header", 
-			label = "click";
-		
-		_gaq.push(['_trackEvent', category, action, label]);
-		
-	});
-	
-
-	
-});
 function search_accommodation(widget_id, type_id, sort_code, sales_id, group_package_id) {
 	
 	widget_id = "#" + widget_id + " ";
@@ -53,6 +47,7 @@ function search_accommodation(widget_id, type_id, sort_code, sales_id, group_pac
 		location = $('#location').val();
 	
 	if($(widget_id + ".hname").val()) var hname = $(widget_id + ".hname").val();
+	if(adults == undefined) { adults = 1; }
 	
 	var params = [
 		1321967,
@@ -371,6 +366,29 @@ function search_product(parent_id, supplier_id, super_cat_id) {
 	if(product_id) { params[1].push(["productid", product_id]); }
 	
 	url = build_url(params, "product");
+}
+
+/**
+	This function searches Inntopia for packages.
+	
+	@param {String} parent_id	The ID attribute of the widget. Required.
+	
+	@example search_package("inline-widget");
+	
+	@return false
+*/
+function search_package(parent_id) {
+	var widget = $("#" + parent_id);
+	var package_id = widget.find(".package_id").val(), 
+		sales_id = widget.find(".sales_id").val();
+	
+	if(sales_id == undefined) { sales_id = 1321967; }
+	
+	if(package_id == "N/A") {
+		search_accommodation(parent_id);
+	} else {
+		search_accommodation(parent_id, null, false, sales_id, package_id);
+	}
 }
 
 /**
@@ -721,15 +739,6 @@ function widget_loading() {
 
 function search_site() {
 	window.location = "/sitesearch/?cx=007119222367310883562:-zhuzpyysp4&cof=FORID%3A11&ie=UTF-8&q=" + url_encode(document.getElementById('search_term').value) + "&sa=Search";
-}
-
-function search_package(parent_id) {
-	var package_id = $("#" + parent_id + " .package_id").val();
-	if(package_id == "N/A") {
-		search_accommodation(parent_id);
-	} else {
-		search_accommodation(parent_id, null, false, 1321967, package_id);
-	}
 }
 
 Array.prototype.inArray = function (value) {
