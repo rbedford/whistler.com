@@ -1,49 +1,32 @@
-var all_videos=[], playlists = [["Winter", "6084294A5D95E68A"], ["Summer", "9EC431ED03A07CC7"]];
-jQuery.support.cors = true;
+var all_videos=[], content=[];
+
 $(document).ready(function(){
 	
-	for(var i=0, len=playlists.length;i<len;i++) {
-		
-		var pl = playlists[i], 
-			url = "http://gdata.youtube.com/feeds/api/playlists/" + pl[1] + "?v=2&alt=json";
-
-		var get_videos = function (playlist, index){
-			
-			$.ajax({
-				url: url,
-				dataType: "json", 
-				crossDomain: true, 
-				success: function(json) {
-					var videos = json.feed.entry;
-					playlists[index][2] = videos;
-					load_playlist(playlist, videos);
-				}, 
-				error: function(jqXHR, textStatus, errorThrown) {}
-			});
-			
-		}
-		get_videos(pl, i);
+	for(var v=0, length=content.length;v<length;v++) {
+		$("#" + content[v][0]).html(content[v][1]);
 	}
-	
-	setTimeout("bind()", 2000);
+	bind();
 	
 });
 
-function load_playlist(playlist, videos) {
-	var html="";
-	for(var v=0;v<videos.length;v++) {
+function load_playlist(json){
+	var data = json.feed, 
+		videos = data.entry, 
+		category = data.title.$t.toLowerCase(), 
+		html="";
+	
+	for(var i=0, length=videos.length;i<length;i++) {
 		
-		var video = videos[v], 
+		var video = videos[i], 
 			title = video.title.$t, 
 			thumbnail = video.media$group.media$thumbnail[0].url, 
 			description= video.media$group.media$description.$t, 
 			url = video.media$group.media$content[0].url, 
-			keywords = video.media$group.media$keywords.$t, 
-			category = playlist[0].toLowerCase();
+			keywords = video.media$group.media$keywords.$t;
 		
 		html += "<div class='video'>";
-			html += "<a href='" + url + "'><img src='" + thumbnail + "' alt='" + title + "' /></a>";
-			html += "<a href='" + url + "'>" + title + "</a>";
+		html += "<a href='" + url + "'><img src='" + thumbnail + "' alt='" + title + "' /></a>";
+		html += "<a href='" + url + "'>" + title + "</a>";
 		html += "</div>";
 		
 		var vid = {
@@ -54,9 +37,9 @@ function load_playlist(playlist, videos) {
 			category: category
 		};
 		all_videos.push(vid);
-
+		
 	}
-	$(html).appendTo("#" + category);
+	content.push([category, html]);
 }
 
 function play_video(video, autoplay){
