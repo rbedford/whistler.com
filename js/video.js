@@ -1,23 +1,31 @@
 var all_videos=[], playlists = [["Winter", "6084294A5D95E68A"], ["Summer", "9EC431ED03A07CC7"]];
-
+jQuery.support.cors = true;
 $(document).ready(function(){
-	console.log("!");
+	
 	for(var i=0, len=playlists.length;i<len;i++) {
 		
 		var pl = playlists[i], 
 			url = "http://gdata.youtube.com/feeds/api/playlists/" + pl[1] + "?v=2&alt=json";
+
+		var get_videos = function (playlist, index){
 			
-		function get_videos(playlist, index){
-			$.getJSON(url, function(json) {
-				var videos = json.feed.entry;
-				playlists[index][2] = videos;
-				load_playlist(playlist, videos);
+			$.ajax({
+				url: url,
+				dataType: "json", 
+				crossDomain: true, 
+				success: function(json) {
+					var videos = json.feed.entry;
+					playlists[index][2] = videos;
+					load_playlist(playlist, videos);
+				}, 
+				error: function(jqXHR, textStatus, errorThrown) {}
 			});
-		};
+			
+		}
 		get_videos(pl, i);
 	}
 	
-	setTimeout("bind()", 5000);
+	setTimeout("bind()", 2000);
 	
 });
 
@@ -87,73 +95,6 @@ function bind(){
 		play_video(video, 1);
 		return false;
 	});
-	/*var first_video = find_first_video();
-	play_video(first_video, 0);*/
+	var first_video = find_first_video();
+	play_video(first_video, 0);
 }
-
-/*function list_videos(json) {
-
-	var all_videos = "";
-	var winter_videos = "";
-	var summer_videos = "";
-	
-	var entries = feed.entry || [];
-	
-	for (var i = 0; i < entries.length; i++) {
-		
-		var video_html = "";
-		
-		var entry = entries[i];
-		var title = entry.title.$t;
-		var thumbnail = entry.media$group.media$thumbnail[1].url;
-		var description= entry.media$group.media$description.$t;
-		var url = entries[i].media$group.media$content[0].url;
-		var keywords = entry.media$group.media$keywords.$t;
-		
-		var vid = [];
-		vid[0] = title;
-		vid[1] = thumbnail;
-		vid[2] = description;
-		vid[3] = url;
-		vid[4] = keywords;
-		
-		videos.push(vid);
-
-		video_html += "<div class='video'>";
-			video_html += "<a href='" + url + "'><img src='" + thumbnail + "' alt='" + title + "' /></a>";
-			video_html += "<a href='" + url + "'>" + title + "</a>";
-		video_html += "</div>";
-
-		if(keywords){
-			
-			if(keywords.search(/bike/i) > 0){
-				summer_videos += video_html;
-				vid[5] = "bike";
-			} else {
-				winter_videos += video_html;
-				vid[5] = "winter";
-			}
-			
-		}
-		
-		all_videos += video_html;
-		
-	}
-	
-	video_html += "</ul>";
-	$("#videos #winter").html(winter_videos);
-	$("#videos #summer").html(summer_videos);
-	$("#videos #all").html(all_videos);
-	
-	play_video(videos[0], 0);
-	
-	for(i in videos){
-		if(videos[i][5] == "winter"){
-			play_video(videos[i], 0);
-			break;
-		}
-	}
-	
-	bind();
-	
-}*/
