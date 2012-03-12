@@ -14,8 +14,8 @@ function init() {
 	load_map();
 	
 	$.ajax({
-		//url: "/json/trails/?" + stamp,
-		url: "http://www.whistler.com/json/trails/?" + stamp,
+		url: "/json/trails/?" + stamp,
+		//url: "http://www.whistler.com/json/trails/?" + stamp,
 		dataType: "json",
 		success: function (data) {
 			var path_coords = [];

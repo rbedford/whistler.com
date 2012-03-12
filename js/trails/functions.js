@@ -118,7 +118,7 @@ function load_trail(trail){
 	
 	/* Load trail coords */
 	var path = trail.Data;
-
+	
 	$.ajax({
 		url: "/trails/data/" + trail.Data + "?" + stamp,
 		dataType: "json",
@@ -306,24 +306,28 @@ function stats(trail){
 }
 
 function distance_between_two_points(current, next){
-
-	var lat1 = current[0];
-	var lon1 = current[1];
 	
-	var lat2 = next[0];
-	var lon2 = next[1];
-	
-	var R = 6371; // Radius of the earth in km
-	var dLat = toRad(lat2-lat1);  // Javascript functions in radians
-	var dLon = toRad(lon2-lon1); 
-	
-	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-			Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
-			Math.sin(dLon/2) * Math.sin(dLon/2); 
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-	var d = R * c; // Distance in km
-	
-	return d;
+	if(next) {
+		
+		var lat1 = current[0], 
+			lon1 = current[1], 
+			lat2 = next[0], 
+			lon2 = next[1], 
+			R = 6371, 
+			dLat = toRad(lat2-lat1), 
+			dLon = toRad(lon2-lon1); 
+		
+		var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+				Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
+				Math.sin(dLon/2) * Math.sin(dLon/2); 
+		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+		var d = R * c; // Distance in km
+		
+		return d;
+		
+	} else {
+		return 0;
+	}
 
 }
 
@@ -337,7 +341,8 @@ function load_pois(trail){
 		add_pois(trail);
 	} else {
 		$.ajax({
-			url: "http://www.whistler.com/json/marker/?id=" + trail.ID + "&amp;" + stamp,
+			url: "/json/marker/?id=" + trail.ID + "&amp;" + stamp,
+			//url: "http://www.whistler.com/json/marker/?id=" + trail.ID + "&amp;" + stamp,
 			dataType: "json",
 			success: function(data){
 				trail.pois = data;
@@ -357,17 +362,19 @@ function add_pois(trail){
 	trail.poi_markers = [];
 	for(i in trail.pois){
 		var poi = trail.pois[i];
-		var latlng = new google.maps.LatLng(poi.Coord[0], poi.Coord[1]);
-		var marker = new google.maps.Marker({
-			id: poi.ID,
-			map: map,
-			position: latlng,
-			html: poi.Desc,
-			title: poi.Marker,
-			icon: "http://www.whistler.com/images/trails/icons/" + trail.Rating + "/" + poi.Marker + ".png",
-			animation: google.maps.Animation.DROP
-		});
-		trail.poi_markers.push(marker);
+		if(poi.Coord) {
+			var latlng = new google.maps.LatLng(poi.Coord[0], poi.Coord[1]);
+			var marker = new google.maps.Marker({
+				id: poi.ID,
+				map: map,
+				position: latlng,
+				html: poi.Desc,
+				title: poi.Marker,
+				icon: "http://www.whistler.com/images/trails/icons/" + trail.Rating + "/" + poi.Marker + ".png",
+				animation: google.maps.Animation.DROP
+			});
+			trail.poi_markers.push(marker);
+		}
 	}
 	
 	for(i in trail.poi_markers){
@@ -465,22 +472,25 @@ function load_comments(url){
 			});
 		},
 		complete: function() {
-			var comments = json[0].data;
-			var html = "<h3 class='trail_comment_title'>Trail Reports</h3>";
 			
-			if(comments.length > 0){
-				$.each(comments, function(i, comment){
-					html +="<div class='trail_comment'>";
-						html += "<img src='http://graph.facebook.com/" + comment.from.id + "/picture' alt='" + comment.from.name + "' width='50' height='50' />";
-						html += "<strong class='trail_comment_poster'>" + comment.from.name + "</strong>";
-						html += "<span class='trail_comment_stamp'>" + Date.parse(comment.created_time).toString('MMMM d h:mm') + "</span>";
-						html += "<p class='trail_comment_post'>" + comment.message + "</p>";
-					html += "</div>";
-				});
-			} else {
-				html += "<p>Be the first to comment on this trail.</p>";
+			if(json){
+				var comments = json[0].data;
+				var html = "<h3 class='trail_comment_title'>Trail Reports</h3>";
+				
+				if(comments != undefined && comments.length > 0){
+					$.each(comments, function(i, comment){
+						html +="<div class='trail_comment'>";
+							html += "<img src='http://graph.facebook.com/" + comment.from.id + "/picture' alt='" + comment.from.name + "' width='50' height='50' />";
+							html += "<strong class='trail_comment_poster'>" + comment.from.name + "</strong>";
+							html += "<span class='trail_comment_stamp'>" + Date.parse(comment.created_time).toString('MMMM d h:mm') + "</span>";
+							html += "<p class='trail_comment_post'>" + comment.message + "</p>";
+						html += "</div>";
+					});
+				} else {
+					html += "<p>Be the first to comment on this trail.</p>";
+				}
+				$(html).appendTo("#sidebar");
 			}
-			$(html).appendTo("#sidebar");
 		}
 	});
 	
@@ -505,6 +515,7 @@ function load_area(area){
 				(function(trail){
 					/* Load trail coords */
 					var path = trail.Data;
+					
 					$.ajax({
 						url: "/trails/data/" + trail.Data + "?" + stamp,
 						dataType: "json",
@@ -543,12 +554,13 @@ function update_breadcrumb(links){
 		html += "<span class='nodeHome'><a href='http://www.whistler.com/trails/bike/'>Trails</a></span>";
 		html += "<span class='nodeArrow'>&nbsp;</span>";
 		for(i in links){
-			
-			if(i == links.length-1){
-				html +="<span class='nodeCurrent'>" + links[i][1] + "</span>";
-			} else {
-				html += "<span class='node'><a href='" + links[i][0] + "'>" + links[i][1] + "</a></span>";
-				html += "<span class='nodeArrow'>&nbsp;</span>";
+			if(links[i][0]){
+				if(i == links.length-1){
+					html +="<span class='nodeCurrent'>" + links[i][1] + "</span>";
+				} else {
+					html += "<span class='node'><a href='" + links[i][0] + "'>" + links[i][1] + "</a></span>";
+					html += "<span class='nodeArrow'>&nbsp;</span>";
+				}
 			}
 		}
 	html += "</p>";
@@ -580,7 +592,7 @@ function add_facility(fac_id){
 function get_media(trail){
 	var photos=[],videos=[];
 	$.ajax({
-		url: "http://www.whistler.com/json/media/index.aspx?id=" + trail.ID + "&type=1&amp;" + stamp,
+		url: "/json/media/index.aspx?id=" + trail.ID + "&type=1&amp;" + stamp,
 		dataType: "json",
 		success: function(data){
 			for(i in data){
@@ -630,8 +642,7 @@ function load_videos(videos){
 function get_areas() {
 
 	$.ajax({
-		//url: "/trails/json/areas.json",
-		url: "http://www.whistler.com/json/area/index.aspx?type=2&amp;" + stamp,
+		url: "/json/area/index.aspx?type=2&amp;" + stamp,
 		dataType: "json",
 		success: function (data) {
 			$.each(data, function (i, area) {
@@ -644,7 +655,6 @@ function get_areas() {
 }
 
 function show_all(){
-	
 	for(i in trails){
 		
 		var trail = trails[i];
@@ -654,14 +664,17 @@ function show_all(){
 			(function(trail){
 				/* Load trail coords */
 				var path = trail.Data;
-				$.ajax({
-					url: "/trails/data/" + trail.Data + "?" + stamp,
-					dataType: "json",
-					success: function(data){
-						trail.Coords = data.Coord;
-						trail.line = plot_line(trail);
-					}
-				});
+				
+				if(trail.Data) {
+					$.ajax({
+						url: "/trails/data/" + trail.Data + "?" + stamp,
+						dataType: "json",
+						success: function(data){
+							trail.Coords = data.Coord;
+							trail.line = plot_line(trail);
+						}
+					});
+				}
 			})(trail);
 			
 		}
@@ -803,7 +816,7 @@ function get_nearby(trail){
 
 	var from,to;
 	$.ajax({
-		url: "http://www.whistler.com/json/marker_head/?id=2&amp;" + stamp,
+		url: "/json/marker_head/?id=2&amp;" + stamp,
 		dataType: "json",
 		success: function(data) {
 			var all=[], from = [trail.Coords[0][0], trail.Coords[0][1]], html = "<h3 class='comments'>Trails near " + trail.Name + "</h3><ul class='popular-trails'>";
@@ -828,7 +841,7 @@ function list_nearest(all) {
 	var html = "<h3 class='comments'>Trails near " + trail.Name + "</h3><ul class='popular-trails'>",nearest = [], all_markers = [];
 	for(i=0; i < 5; i++){
 		var t = all[i], distance = Math.round(t.distance*100)/100;
-		html += "<li><a href='./' onclick='show_nearby(" + t.ID + "); return false;' id='load-link-" + t.ID + "' class='" + t.Rating + "'>" + t.Name + " <span>(" + distance + " km)</span></a></li>";
+		html += "<li><a href='/trails/bike/" + t.URL + "' onclick='show_nearby(" + t.ID + "); return false;' id='load-link-" + t.ID + "' class='" + t.Rating + "'>" + t.Name + " <span>(" + distance + " km)</span></a></li>";
 	}
 	html += "</ul>";
 	$(html).prependTo("#sidebar");
