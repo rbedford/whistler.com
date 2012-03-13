@@ -1,0 +1,417 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="accommodation.master.cs" Inherits="WhistlerNew.master.accommodation" %>
+<%@ Register Src="~/usercontrol/breadcrumb.ascx" TagPrefix="bread" TagName="b" %>
+<%@ Register Src="~/usercontrol/sidenav.ascx" TagPrefix="sidenav" TagName="n" %>
+<%@ Register Src="~/usercontrol/footer.ascx" TagPrefix="footer" TagName="f" %>
+<%@ Register Src="~/usercontrol/topnav.ascx" TagPrefix="topnav" TagName="t" %>
+<%@ Register Src="~/usercontrol/header.ascx" TagPrefix="header" TagName="h" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+	
+	<title></title>
+	<meta name="robots" content="index, follow"/>
+	<meta http-equiv="imagetoolbar" content="false"/>
+	<meta name="MSSmartTagsPreventParsing" content="true"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<link rel="Shortcut Icon" href="favicon.ico"/>
+	<link href="http://feeds.feedburner.com/gowhistler" rel="alternate" type="application/rss+xml" title="Whistler Photo Feed"/>
+	<link type="text/css" href="/css/whistler.css" rel="stylesheet"/>
+	<link type="text/css" href="/css/content.css" rel="stylesheet"/>
+	<link type="text/css" href="/css/sidebar.css" rel="stylesheet"/>
+	<link type="text/css" href="/css/datepicker.css" rel="stylesheet"/>
+	<link type="text/css" href="/css/gallery.css" rel="stylesheet"/>
+	<link href="http://feeds.feedburner.com/TourismWhistlerVideo-TopVideos" rel="alternate" type="application/rss+xml" title="Whistler Video Feed"/>
+	
+	<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAHrzm1tWlfPV4lNvacMNCyxRlCFVihEOaE1rUOYa8KidKPcJ-lBSlVkuQaOE6hxGWufvRLOvSfYcv8Q"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"> </script> 
+	<script type="text/javascript" src="/js/date.js"></script>
+	<script type="text/javascript" src="/js/jquery.vticker.js"></script>
+	<script type="text/javascript" src="/js/search_v2.js?<%#DateTime.Now.Ticks.ToString() %>"></script>
+	<script type="text/javascript" src="/js/flowplayer-3.2.4.min.js"></script>
+	<script type="text/javascript" src="/js/analytics.js"></script>
+	
+	<asp:ContentPlaceHolder ID="c1" runat="server"></asp:ContentPlaceHolder>
+
+	<script type="text/javascript">
+		var boolReview = false;
+		var resetTab = function () {
+			var tabContent = jQuery("#chapters div[class*='toggle']");
+			var tabButtons = jQuery("#tabs li a");
+			tabContent.hide();
+			tabButtons.attr("class", "");
+		};
+		
+		var tab_start = function () {
+			var tabContent = jQuery("#chapters div[class*='toggle']");
+			var tabButtons = jQuery("#tabs li a");
+			var chapters = jQuery("#chapters");
+			
+			tabContent.hide();
+			initTab();
+			chapters.prev().attr("id", "tabs");
+
+			tabButtons.bind('click', function () {
+				resetTab();
+				var e = jQuery(this).attr("href");
+				jQuery(this).attr("class", "on");
+				jQuery(e).show();
+			
+				if (e == "#map") {
+					showMap();
+					codeAddress();
+				}
+			
+				if (e == "#reviews") {
+					
+					if (!boolReview) {
+						var obj = document.getElementById('hidTA');
+						obj.value = document.getElementById('ta').value;
+						jQuery("#btnReview").click();
+						boolReview = true;
+					}
+				}
+		 		return false;
+			});
+		};
+		
+		var geocode;
+		var map;
+		var boolReview = false;
+
+		function showMap() {
+			geocoder = new google.maps.Geocoder();
+			var latlng = new google.maps.LatLng(50.1, 122.9);
+			var myOptions = { zoom: 15, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP };
+			map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		}
+		
+		jQuery("document").ready(function () {
+		
+			tab_start();
+			search_start();
+			
+			if (document.getElementById("ta") != null) {
+				if (document.getElementById("ta").value != "") {
+					jQuery("#reviews_tab").attr("style", "inline");
+				}
+			}
+			
+			if (document.getElementById("photo") != null) {
+			
+				if (document.getElementById("photo").value != "" && document.getElementById("photo").value != "0") {
+				
+					var i = document.getElementById("photo").value;
+					jQuery("#photos_tab").attr("style", "inline");
+					
+					if (i == "1") {
+						jQuery("#p1").attr("style", "inline");
+					}
+					else if (i == "2") {
+						jQuery("#p1").attr("style", "inline");
+						jQuery("#p2").attr("style", "inline");
+					}
+					else if (i == "3") {
+						jQuery("#p1").attr("style", "inline");
+						jQuery("#p2").attr("style", "inline");
+						jQuery("#p3").attr("style", "inline");
+					}
+					else if (i == "4") {
+						jQuery("#p1").attr("style", "inline");
+						jQuery("#p2").attr("style", "inline");
+						jQuery("#p3").attr("style", "inline");
+						jQuery("#p4").attr("style", "inline");
+					}
+					else if (i == "5") {
+						jQuery("#p1").attr("style", "inline");
+						jQuery("#p2").attr("style", "inline");
+						jQuery("#p3").attr("style", "inline");
+						jQuery("#p4").attr("style", "inline");
+						jQuery("#p5").attr("style", "inline");
+					}
+					else if (i == "6") {
+						jQuery("#p1").attr("style", "inline");
+						jQuery("#p2").attr("style", "inline");
+						jQuery("#p3").attr("style", "inline");
+						jQuery("#p4").attr("style", "inline");
+						jQuery("#p5").attr("style", "inline");
+						jQuery("#p6").attr("style", "inline");
+					}
+					else if (i == "7") {
+						jQuery("#p1").attr("style", "inline");
+						jQuery("#p2").attr("style", "inline");
+						jQuery("#p3").attr("style", "inline");
+						jQuery("#p4").attr("style", "inline");
+						jQuery("#p5").attr("style", "inline");
+						jQuery("#p6").attr("style", "inline");
+						jQuery("#p7").attr("style", "inline");
+					}
+					else if (i == "8") {
+						jQuery("#p1").attr("style", "inline");
+						jQuery("#p2").attr("style", "inline");
+						jQuery("#p3").attr("style", "inline");
+						jQuery("#p4").attr("style", "inline");
+						jQuery("#p5").attr("style", "inline");
+						jQuery("#p6").attr("style", "inline");
+						jQuery("#p7").attr("style", "inline");
+						jQuery("#p8").attr("style", "inline");
+					}
+					else if (i == "9") {
+						jQuery("#p1").attr("style", "inline");
+						jQuery("#p2").attr("style", "inline");
+						jQuery("#p3").attr("style", "inline");
+						jQuery("#p4").attr("style", "inline");
+						jQuery("#p5").attr("style", "inline");
+						jQuery("#p6").attr("style", "inline");
+						jQuery("#p7").attr("style", "inline");
+						jQuery("#p8").attr("style", "inline");
+						jQuery("#p9").attr("style", "inline");
+					}
+				}
+			}
+		});
+
+		function codeAddress() {
+			var address = document.getElementById("address").value;
+			geocoder.geocode({ 'address': address }, function (results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				map.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+					map: map,
+					position: results[0].geometry.location
+				});
+				} else {
+					alert("Geocode was not successful for the following reason: " + status);
+				}
+			});
+		}
+		
+		function showReview(i) {
+			document.getElementById('sa_' + i.toString()).style.display = "none";
+			document.getElementById('sb_' + i.toString()).style.display = "inline";
+		}
+		function hideReview(i) {
+			document.getElementById('sa_' + i.toString()).style.display = "inline";
+			document.getElementById('sb_' + i.toString()).style.display = "none";
+		}
+	</script>
+</head>
+
+<body id="body" runat="server"    class="sectionAbout">
+
+<form id="form1" runat="server">
+
+	<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager> 
+	<asp:HiddenField runat="server" ID="admin" Value="" />
+	
+	<div id="wrapper">
+	
+		<div id="content_wrapper">
+			
+			<div id="content">
+				
+				<div id="breadcrumbs">
+					<bread:b ID="b1" runat="server" />
+				</div>
+				<!-- / breadcrumbs -->
+
+				<div class="widget" id="widget_booking">
+				
+					<a class="widget_booking_tab">ACCOMMODATION SEARCH</a>
+					
+                    <div id="widget_booking_div">
+						<div>
+							<label>Arrival</label><br />
+							<input class="datepicker1" id="arrival" name="arrival" type="text" value="(mm/dd/yyyy)" />
+						</div>
+						
+						<div>
+							<label>Adults</label><br />
+							<input id="adults" name="adults" type="text" />
+						</div>
+						
+						<div>
+							<label>Departure</label><br />
+							<input class="datepicker2" id="departure" name="departure" type="text" value="(mm/dd/yyyy)" />
+						</div>
+						
+						<div>
+							<label>Kids</label><br />
+							<input id="children" name="children" onkeyup="showChildAges($(this).val())" type="text" />
+						</div>
+						
+						<div class="ChildAges">
+							<label id="ChildrenAges" style="width: 135px">Child ages:</label>
+                            <select class="ChildAge" id="Child1Age" name="Child1Age">
+								<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+							
+                            <select class="ChildAge" id="Child2Age" name="Child2Age">
+								<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+								
+                            <select class="ChildAge" id="Child3Age" name="Child3Age">
+								<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+							
+                            <select class="ChildAge" id="Child4Age" name="Child4Age">
+								<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+								
+                            <select class="ChildAge" id="Child5Age" name="Child5Age"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+							
+                            <select class="ChildAge" id="Child6Age" name="Child6Age">
+								<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+							
+                            <select class="ChildAge" id="Child7Age" name="Child7Age">
+								<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+							
+                            <select class="ChildAge" id="Child8Age" name="Child8Age">
+								<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+							
+                            <select class="ChildAge" id="Child9Age" name="Child9Age">
+								<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option>
+							</select>
+							
+						</div>
+						
+						<div>
+							<label>Nights</label><br />
+							<input class="nights" id="nights" name="nights" onkeyup="calculateDepartureDate()" type="text" value="2" />
+						</div>
+						
+						<a href="#"><img alt="Price Guarantee" height="41" src="/images/btns/best_price_guarantee-trans.png" width="119" /></a>
+					</div>
+					<!-- end of widget_booking_div div-->
+					
+					<input id="check" onclick="openSearchAccom();return false" type="submit" value="Check Availability &raquo;" />
+					
+				</div>
+				
+				<asp:PlaceHolder ID="ph1_1" runat="server"></asp:PlaceHolder>
+				<asp:ContentPlaceHolder ID="c2" runat="server"></asp:ContentPlaceHolder>
+				<asp:PlaceHolder ID="ph1_2" runat="server"></asp:PlaceHolder>
+				
+				<div class="tab_holder">
+					<ul id="tabs">
+						<li><a  href="#specials" title="" <%=showSpecial %>   >SPECIALS</a></li>
+						<li><a href="#amenities" title="" <%=showAmenities %> >AMENITIES</a></li>
+						<li><a id="reviews_tab" href="#reviews" title="" style="display:none;" >REVIEWS</a></li>
+						<li><a id="photos_tab" href="#photos" title="" style="display:none;">PHOTOS</a></li>
+						<li><a href="#videos" title="" style="display:none;">VIDEOS</a></li>
+						<li><a href="#map" title="" >MAP</a></li>
+					</ul>
+					
+                	<div class="text" id="chapters">
+					
+						<div class="toggle" id="specials">
+							<asp:PlaceHolder ID="ph3_1" runat="server"></asp:PlaceHolder>
+							<asp:ContentPlaceHolder ID="c4" runat="server"></asp:ContentPlaceHolder>
+							<asp:PlaceHolder ID="ph3_2" runat="server"></asp:PlaceHolder>
+						</div>
+						<!-- / specials -->
+						
+						<div class="toggle" id="amenities">
+							<h2>Building Amenities</h2>
+							<asp:PlaceHolder ID="ph2_1" runat="server"></asp:PlaceHolder>
+							<asp:ContentPlaceHolder ID="c3" runat="server"></asp:ContentPlaceHolder>
+							<asp:PlaceHolder ID="ph2_2" runat="server"></asp:PlaceHolder>
+						</div>
+						<!-- / amenities -->
+						
+						<div class="toggle" id="reviews">
+						
+							<asp:UpdatePanel ID="u1" runat="server" UpdateMode="Conditional"    >
+								<Triggers><asp:AsyncPostBackTrigger ControlID="ctl00$btnReview"  EventName="Click"   /></Triggers>
+								<ContentTemplate>
+									<span><asp:PlaceHolder ID="phTA" runat="server"></asp:PlaceHolder></span>
+								</ContentTemplate>
+							</asp:UpdatePanel>
+							
+							<asp:UpdateProgress runat="server" id="up1" >
+								<ProgressTemplate>
+									<p><img src="http://secure.whistler.com/css/images/uploading.gif" alt="loading" /> Loading ...</p>
+								</ProgressTemplate>
+							</asp:UpdateProgress>
+							
+						</div>
+						<!-- / reviews -->
+						
+						<div class="toggle" id="photos">
+						
+							<div id="accom_gallery">
+								<a id="p1" rel="nofollow" class="gallery slide01 left" style="display:none"><img class="image_thumb" alt="" src="/images/properties/<%=strURL %>/gallery/1s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/1.jpg"></span></a>
+								<a id="p2" rel="nofollow" class="gallery slide02" style="display:none"><img class="image_thumb" alt="" src="/images/properties/<%=strURL %>/gallery/2s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/2.jpg" /></span></a>
+								<a id="p3" rel="nofollow" class="gallery slide03" style="display:none"><img class="image_thumb"  alt="" src="/images/properties/<%=strURL %>/gallery/3s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/3.jpg"/></span></a>
+								<a id="p4" rel="nofollow" class="gallery slide04" style="display:none"><img class="image_thumb" alt="" src="/images/properties/<%=strURL %>/gallery/4s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/4.jpg"/></span></a>
+								<a id="p5" rel="nofollow" class="gallery slide05" style="display:none"><img class="image_thumb" alt="" src="/images/properties/<%=strURL %>/gallery/5s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/5.jpg"/></span></a>
+								<a id="p6" rel="nofollow" class="gallery slide06" style="display:none"><img class="image_thumb" alt="" src="/images/properties/<%=strURL %>/gallery/6s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/6.jpg"/></span></a>
+								<a id="p7" rel="nofollow" class="gallery slide07" style="display:none"><img class="image_thumb" alt="" src="/images/properties/<%=strURL %>/gallery/7s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/7.jpg"/></span></a>
+								<a id="p8" rel="nofollow" class="gallery slide08" style="display:none"><img class="image_thumb" alt="" src="/images/properties/<%=strURL %>/gallery/8s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/8.jpg"/></span></a>
+								<a id="p9" rel="nofollow" class="gallery slide09" style="display:none"><img class="image_thumb" alt="" src="/images/properties/<%=strURL %>/gallery/9s.jpg"/><span><img alt=""  src="/images/properties/<%=strURL %>/gallery/9.jpg"/></span></a>
+							</div>
+							<!-- / accom_gallery -->
+							
+						</div>
+						<!-- / photos -->
+						
+						<div class="toggle" id="videos">
+							<h2>Video</h2>
+						</div>
+						
+						<div class="toggle" id="map">
+							<div id="map_canvas" style="height:500px; width:100%;"></div> 
+						</div>
+						<!-- / map -->
+              
+					</div>
+					<!-- end of chapters div-->
+					
+				</div>
+				<!-- end of tab_holder div-->
+				
+				<asp:Button  id="btnReview" runat="server" Text="" style="display:none;" onclick="btnReview_Click"  />
+				<asp:HiddenField ID="hidTA" runat="server" Value="" />
+				
+			</div><!-- end of content div-->
+                   
+			<div id="sidebar_holder">
+     
+				<div id="sidebar">
+					<sidenav:n  ID="n1" runat="server"  />
+					<asp:PlaceHolder ID="phSide" runat="server"></asp:PlaceHolder>
+					<asp:PlaceHolder ID="ph4_1" runat="server"></asp:PlaceHolder>
+					<asp:ContentPlaceHolder ID="c5" runat="server"></asp:ContentPlaceHolder>
+					<asp:PlaceHolder ID="ph4_2" runat="server"></asp:PlaceHolder>
+				</div>
+				<!-- / sidebar -->
+				
+				<asp:PlaceHolder ID="ph5_1" runat="server"></asp:PlaceHolder>
+ 
+				<asp:ContentPlaceHolder ID="c6" runat="server"></asp:ContentPlaceHolder>
+				<asp:PlaceHolder ID="ph5_2" runat="server"></asp:PlaceHolder>
+				
+			</div>
+			<!-- / sidebar_holder -->
+			
+			<footer:f ID="f" runat="server"  />
+			
+		</div>
+		<!-- / content_wrapper -->
+		
+		<header:h ID="h" runat="server" />
+		<topnav:t id="t" runat="server"/>
+		
+	</div><!-- end of wrapper div-->
+	
+</form>
+<asp:ContentPlaceHolder ID="c7" runat="server"></asp:ContentPlaceHolder>
+</body>
+</html>

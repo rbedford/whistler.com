@@ -1,0 +1,221 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="rich2.master.cs" Inherits="WhistlerNew.master.rich2" %>
+
+<%@ Register Src="~/usercontrol/footer.ascx" TagPrefix="footer" TagName="f" %>
+<%@ Register Src="~/usercontrol/topnav.ascx" TagPrefix="topnav" TagName="t" %>
+<%@ Register Src="~/usercontrol/header.ascx" TagPrefix="header" TagName="h" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+<head id="Head1" runat="server">
+
+<meta name="robots" content="index, follow"/>
+<link rel="Shortcut Icon" href="/favicon.ico"/>
+<link href="http://feeds.feedburner.com/gowhistler" rel="alternate" type="application/rss+xml" title="Whistler Photo Feed"/>
+<link href="http://feeds.feedburner.com/TourismWhistlerVideo-TopVideos" rel="alternate" type="application/rss+xml" title="Whistler Video Feed"/>
+<meta http-equiv="imagetoolbar" content="false"/>
+<meta name="MSSmartTagsPreventParsing" content="true"/>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <!--<script src="http://www.google.com/jsapi?key=ABQIAAAAHrzm1tWlfPV4lNvacMNCyxSGoB7uShg-val9jbUCshncyv_K4hRQHfCqTmTeD7JNc8lL4T_hVZRMaQ" type="text/javascript"></script>-->
+ <script src="http://www.google.com/jsapi?key=ABQIAAAAHrzm1tWlfPV4lNvacMNCyxRlCFVihEOaE1rUOYa8KidKPcJ-lBSlVkuQaOE6hxGWufvRLOvSfYcv8Q" type="text/javascript"></script>
+ 
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script type="text/javascript" src="/js/flowplayer-3.2.4.min.js"></script>
+<script type="text/javascript" src="/js/analytics.js"></script>
+<link type="text/css" href="/css/whistler-2.css" rel="stylesheet"/>
+<link type="text/css" href="/css/content.css" rel="stylesheet"/>
+<link type="text/css" href="/css/sidebar.css" rel="stylesheet"/>
+<link type="text/css" href="/css/fader.css" rel="stylesheet"/>
+<link type="text/css" href="/css/datepicker.css" rel="stylesheet"/>
+<title></title>
+ <asp:ContentPlaceHolder ID="c1" runat="server">
+ </asp:ContentPlaceHolder>
+ 
+
+<script type="text/javascript" src="/js/slider.js"></script>
+<script type="text/javascript"src="/js/feature.js"></script>
+<script type="text/javascript">
+
+    /*** 
+    Simple jQuery Slideshow Script
+    Released by Jon Raasch (jonraasch.com) under FreeBSD license: free to use or modify, not responsible for anything, etc.  Please link out to me if you like it :)
+    ***/
+
+    function slideSwitch() {
+        var $active = $('#slideshow IMG.active');
+
+        if ($active.length == 0) $active = $('#slideshow IMG:last');
+
+        // use this to pull the images in the order they appear in the markup
+        var $next = $active.next().length ? $active.next()
+        : $('#slideshow IMG:first');
+
+        // uncomment the 3 lines below to pull the images in random order
+
+        // var $sibs  = $active.siblings();
+        // var rndNum = Math.floor(Math.random() * $sibs.length );
+        // var $next  = $( $sibs[ rndNum ] );
+
+
+        $active.addClass('last-active');
+
+        $next.css({ opacity: 0.0 })
+        .addClass('active')
+        .animate({ opacity: 1.0 }, 1000, function () {
+            $active.removeClass('active last-active');
+        });
+    }
+
+    $(function () {
+        setInterval("slideSwitch()", 4000);
+    });
+
+</script>
+</head>
+
+<body id="body" runat="server"  class="sectionIndex">
+<form id="form1" runat="server">
+<asp:HiddenField runat="server" ID="admin" Value="" />
+<div id="wrapper">
+
+
+    <div id="content_wrapper">
+        
+		<div id="content">
+                  <asp:PlaceHolder ID="ph1_1" runat="server"></asp:PlaceHolder>
+                   <asp:ContentPlaceHolder ID="c2" runat="server"></asp:ContentPlaceHolder>
+                    <asp:PlaceHolder ID="ph1_2" runat="server"></asp:PlaceHolder>
+        </div><!-- end of content div-->
+      
+	<div id="sidebar_holder">
+     
+		<div id="sidebar">
+        <asp:PlaceHolder ID="ph2_1" runat="server"></asp:PlaceHolder>
+     <asp:ContentPlaceHolder ID="c3" runat="server"></asp:ContentPlaceHolder>
+		         
+                <asp:PlaceHolder ID="ph2_2" runat="server"></asp:PlaceHolder>
+            
+			</div><!-- end of sidebar div-->
+            
+
+		  
+
+            
+      </div><!-- end of sidebar_holder div-->
+                    
+            
+ <footer:f ID="f" runat="server" />
+         
+        
+	</div><!-- end of content_wrapper div-->  
+    <header:h ID="h" runat="server" />
+    <div id="slideshow">
+        
+		<img id="slide-img-1" src="/css/images/slider/slider_image_01.jpg" class="active" alt=""/>
+        <img id="slide-img-2" src="/css/images/slider/slider_image_02.jpg" alt=""/>
+        <img id="slide-img-3" src="/css/images/slider/slider_image_03.jpg" alt=""/>
+        <img id="slide-img-4" src="/css/images/slider/slider_image_04.jpg" alt=""/>
+        <img id="slide-img-5" src="/css/images/slider/slider_image_05.jpg" alt=""/>		
+                
+	</div>
+
+
+<div id="nav">
+        <ul>
+            <li class="nav_list A_list"><a href="/about/" class="nav_link nav_link_left A_link">About Whistler</a>
+                <ul class="nav_pop_up"> 
+                    <li class="top"><a href="/village/">Whistler</a></li>
+                    <li><a href="/stats/">Stats &amp; Facts</a></li>
+                    <li><a href="/whistler_history/">Whistler History</a></li>
+                    <li><a href="/olympics/">Olympics/Paralympics</a></li>
+                    <li><a href="/nature/">Nature</a></li>
+                    <li><a href="/environment/">Environment</a></li>
+                    <li class="btm"><a href="/maps/">Whistler Maps</a></li>
+                </ul><!-- end of pop_up_h1 div-->
+            </li>
+    
+            <li class="nav_list PTS_list"><a href="/accommodation/" class="nav_link PTS_link">Places To Stay</a>
+                <ul class="nav_pop_up">
+                    <li class="top"><a href="/hotels/">Hotels</a></li>
+                    <li><a href="/condos/">Condo Lodges</a></li>
+                    <li><a href="/townhomes/">Condo/Townhomes</a></li>
+                    <li><a href="/chalets/">Homes</a></li>
+                    <li><a href="/a-z/">A-Z Listing</a></li>
+                    <li><a href="/peak_ratings/">Peak Rating System</a></li>
+                    <li class="btm"><a href="/map/">Map</a></li>
+                </ul><!-- end of pop_up_h1 div-->
+            </li>
+            
+            <li class="nav_list PD_list"><a href="/packages/" class="nav_link PD_link">Packages &amp; Deals</a>
+                <ul class="nav_pop_up"> 
+                    <li class="top"><a href="/winter_packages/">Winter Packages</a></li>
+                    <li><a href="/summer_packages">Summer Packages</a></li>
+                    <li class="btm"><a href="/deals/">Last Minute Deals</a></li>
+                </ul><!-- end of pop_up_h1 div-->
+            </li>
+    
+            <li class="nav_list TTD_list"><a href="/activities/" class="nav_link TTD_link">Things To Do</a>
+                <ul class="nav_pop_up">
+                    <li class="top"><a href="/activities/winter/">Winter Activities</a></li>
+                    <li><a href="/activities/summer/">Summer Activities</a></li>
+                    <li><a href="/events/">Events</a></li>
+                    <li><a href="/activities/indoor/">Indoor Activities</a></li>
+                    <li><a href="/arts/">Arts &amp; Culture</a></li>
+                    <li><a href="/wellness/">Health &amp; Wellness</a></li>
+                    <li><a href="/dining/">Dining</a></li>
+                    <li><a href="/shopping/">Shopping</a></li>
+                    <li class="btm"><a href="/nightlife/">Nightlife</a></li>
+                </ul><!-- end of pop_up_h1 div-->
+            </li>
+    
+            <li class="nav_list GH_list"><a href="/transportation/" class="nav_link GH_link">Getting Here</a>
+                <ul class="nav_pop_up">
+                    <li class="top"><a href="/aerial/">By Air</a></li>
+                    <li><a href="/road/">By Road</a></li>
+                    <li><a href="/train/">By Rail</a></li>
+                    <li class="btm"><a href="/passport_requirements/">Passport Requirements</a></li>
+                </ul><!-- end of pop_up_h1 div-->
+            </li>
+    
+            <li class="nav_list G_list"><a href="/groups/" class="nav_link G_link">Groups</a>
+                <ul class="nav_pop_up">
+                    <li class="top"><a href="/meetings/">Meetings &amp; Conventions</a></li>
+                    <li><a href="/groups/conference_centre/">Conference Centre</a></li>
+                    <li><a href="/groups/teambuilding/">Teambuilding</a></li>
+                    <li><a href="/sport_groups/">Sport Groups</a></li>
+                    <li><a href="/groups/youth_groups/">Youth &amp; School</a></li>
+                    <li><a href="/family_groups/">Family, Church &amp; Social</a></li>
+                    <li><a href="/weddings/">Weddings</a></li>
+                    <li><a href="/groups/properties/">Properties</a></li>
+                    <li class="btm"><a href="/groups/contact/">Contact Us</a></li> 
+                </ul><!-- end of pop_up_h1 div-->
+            </li>
+    
+            <li class="nav_list nav_list_right SE_list"><a href="/experience/" class="nav_link SE_link">Share &amp; Experience</a>
+                <ul class="nav_pop_up">
+                    <li class="top"><a href="/social/">Your Whistler</a></li>
+                    <li><a href="/weather/">Weather</a></li>
+                    <li><a href="/webcam/">Webcams</a></li>
+                    <li><a href="/contests/">Contest</a></li>
+                    <li><a href="/gallery/">Photo Gallery</a></li>
+                    <li><a href="/video/">Video Gallery</a></li>
+                    <li class="btm"><a href="/itineraries/">Itineraries</a> </li>
+                </ul><!-- end of pop_up_h1 div-->
+            </li>
+        </ul>
+    
+    </div><!-- end of nav div--> 
+  
+</div>
+<!-- end of wrapper div-->
+</form>
+ <asp:ContentPlaceHolder ID="c4" runat="server"></asp:ContentPlaceHolder>
+ 
+</body>
+</html>

@@ -1,0 +1,135 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="event_monthly.master.cs" Inherits="WhistlerNew.master.event_monthly" %>
+
+<%@ Register Src="~/usercontrol/breadcrumb.ascx" TagPrefix="bread" TagName="b" %>
+<%@ Register Src="~/usercontrol/sidenav.ascx" TagPrefix="sidenav" TagName="n" %>
+<%@ Register Src="~/usercontrol/footer.ascx" TagPrefix="footer" TagName="f" %>
+<%@ Register Src="~/usercontrol/book_now.ascx" TagPrefix="book" TagName="bk" %>
+<%@ Register Src="~/usercontrol/header.ascx" TagPrefix="header" TagName="h" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+<head id="Head1" runat="server">
+	<title></title>
+	<meta name="robots" content="index, follow"/>
+	<meta http-equiv="imagetoolbar" content="false"/>
+	<meta name="MSSmartTagsPreventParsing" content="true"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<link rel="Shortcut Icon" href="/favicon.ico"/>
+	<link href="http://feeds.feedburner.com/gowhistler" rel="alternate" type="application/rss+xml" title="Whistler Photo Feed"/>
+	<link href="http://feeds.feedburner.com/TourismWhistlerVideo-TopVideos" rel="alternate" type="application/rss+xml" title="Whistler Video Feed"/>
+	<link type="text/css" href="/css/styles.css" rel="stylesheet"/>
+	<link type="text/css" href="/css/content.css" rel="stylesheet"/>
+	<link type="text/css" href="/css/sidebar.css" rel="stylesheet"/>
+	<link type="text/css" href="/css/uniform.css" rel="stylesheet"/>
+	<link type="text/css" href="/css/js.css" rel="stylesheet"/>
+	
+	<script src="http://www.google.com/jsapi?key=ABQIAAAAHrzm1tWlfPV4lNvacMNCyxRlCFVihEOaE1rUOYa8KidKPcJ-lBSlVkuQaOE6hxGWufvRLOvSfYcv8Q" type="text/javascript"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="/js/jquery.vticker.js"></script>
+	<script type="text/javascript" src="/js/date.js"></script>
+	<script type="text/javascript" src="/js/flowplayer-3.2.4.min.js"></script>
+	<script type="text/javascript" src="/js/analytics.js"></script>
+	<script type="text/javascript" src="/js/jquery.uniform.js"></script>
+	<script type="text/javascript" src="/js/functions.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/search_v2.js?<%#DateTime.Now.Ticks.ToString() %>"></script>
+	<script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+ <link type="text/css" rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" />
+	<asp:ContentPlaceHolder ID="c1" runat="server"></asp:ContentPlaceHolder>
+
+</head>
+
+<body id="body" runat="server"  class="sectionAbout">
+<form id="form1" runat="server">
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId  : '226659570693732',
+      status : true, // check login status
+      cookie : true, // enable cookies to allow the server to access the session
+      xfbml  : true  // parse XFBML
+    });
+  };
+
+  (function() {
+    var e = document.createElement('script');
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
+<asp:HiddenField runat="server" ID="admin" Value="" />
+	<div id="headbar"></div>
+<div id="master_wrapper">
+
+    <div id="wrapper">
+        
+		<div id="content_wrapper">
+               <header:h ID="h" runat="server" />
+<div id="content">
+				<div id="breadcrumbs">
+					<bread:b ID="b1" runat="server" />
+				</div>
+			 
+                  <asp:PlaceHolder ID="ph1_1" runat="server"></asp:PlaceHolder>
+   
+                   <asp:ContentPlaceHolder ID="c2" runat="server"></asp:ContentPlaceHolder>
+
+
+                   <asp:PlaceHolder ID="phEvent" runat="server"></asp:PlaceHolder>
+                
+
+
+                    <asp:PlaceHolder ID="ph1_2" runat="server"></asp:PlaceHolder>
+   
+            	<!-- end of content_block div-->
+                
+                
+
+            </div><!-- end of content div-->
+      
+	<div id="sidebar_holder">
+     
+		<div id="sidebar" class="block">
+        <sidenav:n ID="n1" runat="server" />
+       
+        <asp:PlaceHolder ID="phSide" runat="server"></asp:PlaceHolder>
+        <asp:PlaceHolder ID="ph2_1" runat="server"></asp:PlaceHolder>
+     <asp:ContentPlaceHolder ID="c3" runat="server"></asp:ContentPlaceHolder>
+		         
+                <asp:PlaceHolder ID="ph2_2" runat="server"></asp:PlaceHolder>
+            
+			</div><!-- end of sidebar div-->
+            
+
+		        <asp:PlaceHolder ID="ph3_1" runat="server"></asp:PlaceHolder>
+     <asp:ContentPlaceHolder ID="c4" runat="server"></asp:ContentPlaceHolder>
+		         
+                <asp:PlaceHolder ID="ph3_2" runat="server"></asp:PlaceHolder>
+ 
+
+     </div><!-- end of sidebar_holder div-->
+        
+        </div><!-- end of content_wrapper div-->
+
+    </div><!-- end of wrapperr div-->
+    
+</div><!-- end of master_wrapper div-->  
+
+
+<!-- booking widget -->
+      <book:bk ID="b2" runat="server" />
+                 
+				
+<footer:f ID="f" runat="server" />
+
+</form>
+ <asp:ContentPlaceHolder ID="c5" runat="server"></asp:ContentPlaceHolder>
+</body>
+
+</html>

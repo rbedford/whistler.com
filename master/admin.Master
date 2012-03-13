@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="WhistlerNew.master.admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <link href="/admin/css/admin_master.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    <script language="javascript" type="text/javascript"></script>
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="container">
+				
+
+<div id="header">
+	<div id="utilityNavs">
+	<img alt="" src="/admin/images/logo_whistlercanada.gif" style="margin: 5px 0 8px 50px;" /><br /><!--span class="navPipe">Logged in as Tourism Whistler:</span><a href="login.aspx?logout=1" title="Log out of your account">Logout</a-->
+	
+	</div>
+	<h1>Whistler.com CMS</h1>
+	
+	<div id="Tabs">
+		<ul id="MainTabs">
+		
+
+			<li><a href="/admin/" title="Home"  class='<%=tab1 %>'>Home</a></li>
+			<li><a href="/admin/edit/add/" title="CMS"   class='<%=tab2 %>'>CMS</a></li>
+			<li><a href="/admin/uc/add/" title="User Controls"   class='<%=tab3 %>'>Controls</a></li>
+            <li><a href="/admin/search/" title="Search"   class='<%=tab6 %>'>Search</a></li>
+              <li><a href="/admin/business/" title="Business Directory"   class='<%=tab7 %>'>Business</a></li>
+   
+		<li><a href="/admin/accommodation/" title="Accommodation"   class='<%=tab4 %>'>Accommodation</a></li>
+       	<li><a href="/admin/trail/" title="Trails"   class='<%=tab8 %>'>Trails</a></li>
+         	<li><a href="/admin/comments/" title="Trail"   class='<%=tab9 %>'>Comments</a></li>
+     <li><a href="/admin/logout/" title="Logout"   class='<%=tab5 %>'>Logout</a></li>
+
+		
+		</ul>
+	</div>
+	
+</div>
+    <div id="primaryContent">
+				<div id="pContent">
+        <asp:ContentPlaceHolder ID="admin1" runat="server">
+        </asp:ContentPlaceHolder></div>
+    </div>
+</div>
+<div id="footer">
+    <div style="text-align:right">User: <asp:Label ID="lblUser" runat="server"></asp:Label></div>
+</div>
+
+    </form>
+</body>
+</html>
