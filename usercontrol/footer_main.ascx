@@ -85,13 +85,13 @@
 			
 				<h3>MORE</h3>
 				<ul>
+					<li><a href="/contact/" onclick="_gaq.push(['_trackEvent', 'homepage', 'footer', 'contact'])">Contact Us</a></li>
 					<li><a href="/about/">About Us</a></li>
 					<li><a href="#" class="show-info" onclick="_gaq.push(['_trackEvent', 'homepage', 'footer', 'whistler.com'])">WHISTLER.COM</a></li>
 					<li><a href="/directory/accommodations/" onclick="_gaq.push(['_trackEvent', 'homepage', 'footer', 'directory'])">Business Directory</a></li>
 					<li><a href="/partners/" onclick="_gaq.push(['_trackEvent', 'homepage', 'footer', 'partners'])">Partners &amp; Sponsors</a></li>
 					<li><a href="/careers/" onclick="_gaq.push(['_trackEvent', 'homepage', 'footer', 'careers'])">Careers</a></li>
 					<li><a href="/privacy/" onclick="_gaq.push(['_trackEvent', 'homepage', 'footer', 'privacy'])">Privacy Policies</a></li>
-					<li><a href="/contact/" onclick="_gaq.push(['_trackEvent', 'homepage', 'footer', 'contact'])">Contact Us</a></li>
 					<li><a href="/sitemap/" onclick="_gaq.push(['_trackEvent', 'homepage', 'footer', 'sitemap'])">Site Map</a></li>
 				</ul>
 				
