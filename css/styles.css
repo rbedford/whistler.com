@@ -537,29 +537,32 @@ body.anchored #booking_widget_holder {
 /******************************************  End Booking Widget *********/
 	
 #footer {
-	height: 278px;
+	height: 280px;
 	background: #333;
 	border-bottom: 20px solid #212121;
 	padding: 20px 0 0 0;
 	clear: both;
 	width: 100%;
-	z-index: 10;}
+	z-index: 10;
+}
 	
 #column_holder { 
 	width: 992px; 
-	margin: 0 auto;}
+	margin: 0 auto;
+}
 	
 .columns { 
 	float: left; 
 	height: 265px; 
-	border-right: 1px solid #515151; }
+	border-right: 1px solid #515151;
+}
 	
-.column1 { width: 169px; padding: 0 45px 0 15px;}
-.column2 { width: 189px; padding: 0 45px 0 45px;}
-.column3 { width: 204px; padding: 0 45px 0 45px;}
-.column4 { width: 124px; padding: 0 0 0 45px; border-right: none;}
+.online-reservations { width: 169px; padding: 0 45px 0 15px; }
+.whistler-insider { width: 189px; padding: 0 45px 0 45px; }
+.international-visitors { width: 204px; padding: 0 45px 0 45px; }
+.more-links { width: 124px; padding: 0 0 0 45px; border-right: none; }
 
-#footer h3 	 { 
+#footer h3 {
 	font: 14px "GeometricM", "GeometricM-ie";
 	letter-spacing: 0.5px;
 	text-transform: uppercase; 
@@ -577,72 +580,88 @@ body.anchored #booking_widget_holder {
 
 #footer li {
 	list-style: none;
-	margin: 0 0 10px 0;
+	margin: 0 0 5px 0;
 }
-
 
 #footer a:hover { color: #fff;}
 
-#footer a.footer_link { 
+#footer a.footer_link {
 	font: 10px "NewsCycle", "NewsCycle-ie";
 	letter-spacing: 1px; 
 	color: #bebdbd; 
 	padding: 2px 22px 2px 0; 
 	display: block; 
 	float: right; 
-	background: url(images/footer_link.png) no-repeat 100% 50%;}
+	background: url(images/footer_link.png) no-repeat 100% 50%;
+}
 
-#weather { 
-	margin: 0 0 53px 0;}
+/* Reservations / Weather */
+#reservations {
+	margin: 0 0 20px 0;
+}
+
+	#reservations li {
+		margin: 0 0 10px 0;
+	}
+
+#weather {
+	margin: 0 0 53px 0;
+}
 
 #weather_snippet {
 	 height: 40px; 
 	 border-top: solid 1px #515151; 
 	 border-bottom: solid 1px #515151; 
-	 margin: 0 0 5px 0;}
+	 margin: 0 0 5px 0;
+}
 	 
-#weather_snippet p { 
-	font: 15px "NewsCycle", "NewsCycle-ie";
-	letter-spacing: 1px; 	 
-	color: #999; 
-	margin: 7px 0 0 0;}
+	#weather_snippet p {
+		font: 15px "NewsCycle", "NewsCycle-ie";
+		letter-spacing: 1px; 	 
+		color: #999; 
+		margin: 7px 0 0 0;
+	}
 	
-#weather_snippet #temp 	{ margin: 0 0 0 5px;}		
-#weather_snippet img 	{ float: right;}
+	#weather_snippet #temp 	{ margin: 0 0 0 5px;}		
+	#weather_snippet img 	{ float: right;}
 
-#insider { margin: 0 0 50px 0;}
-	 
-#insider p { margin: 0 0 10px 0; }
+/* Whistler Insider / Follow Us */
+
+#insider { margin: 0 0 50px 0; }
+	
+	#insider p { margin: 0 0 10px 0; }
 		
-a.like { 
+a.like {
 	height: 22px; 
 	display: block; 
 	float: left; 
 	padding: 0 0 0 60px; 
 	background: url("images/social/like.gif") no-repeat 0 50%;
 	margin: 5px 0 10px 0;
-	width: 125px;}
+	width: 125px
+}
 		
-a.social { 
+a.social {
 	width: 23px; 
 	height: 23px; 
 	display: block; 
 	float: left; 
 	margin-right: 7px;
-	background: url("images/social/icons.png");}
+	background: url("images/social/icons.png");
+}
 	
-a.facebook			{ background-position: 0 0; clear: left;}
-a.facebook:hover	{ background-position: 0 23px;}
-a.twitter 			{ background-position: -23px 0;}
-a.twitter:hover 	{ background-position: -23px 23px;}
-a.youtube			{ background-position: -46px 0;}
-a.youtube:hover		{ background-position: -46px 23px;}
-a.flickr			{ background-position: -69px 0;}
-a.flickr:hover		{ background-position: -69px 23px;}
-a.mobile			{ background-position: -92px 0;}
-a.mobile:hover		{ background-position: -92px 23px;}
-a.blog				{ background-position: -115px 0;}
-a.blog:hover		{ background-position: -115px 23px;}
+a.facebook			{ background-position: 0 0; clear: left; }
+a.facebook:hover	{ background-position: 0 23px; }
+a.twitter 			{ background-position: -23px 0; }
+a.twitter:hover 	{ background-position: -23px 23px; }
+a.youtube			{ background-position: -46px 0; }
+a.youtube:hover		{ background-position: -46px 23px; }
+a.flickr			{ background-position: -69px 0; }
+a.flickr:hover		{ background-position: -69px 23px; }
+a.mobile			{ background-position: -92px 0; }
+a.mobile:hover		{ background-position: -92px 23px; }
+a.blog				{ background-position: -115px 0; }
+a.blog:hover		{ background-position: -115px 23px; }
 
 p#trip {
 	height: 30px; 
@@ -655,39 +674,52 @@ p#trip {
 	width: 185px;
 	font: 9px/14px verdana;
 }
-	
-#international { 
+
+/* International Visitors */
+
+#international, #interest { 
 	margin: 0 0 28px 0; 
-	float: left;}
+	float: left;
+}
+
+	.international-visitors li {
+		overflow: hidden;
+	}
 	
-a.flag { 
+a.flag {
 	width: 100px; 
 	padding: 0 0 0 30px; 
 	display: block;
 	float: left;
 	clear: left;
 	margin-top: 3px;
-	background-position: 0 50%;
-	background-repeat: no-repeat;}
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
 	
-.uk 			{ background-image: url("images/flags/uk-grey.gif");}
-.uk:hover 		{ background-image: url("images/flags/uk.gif");}
-.germany 		{ background-image: url("images/flags/ger-grey.gif");}
-.germany:hover 	{ background-image: url("images/flags/ger.gif");}
-.japan 			{ background-image: url("images/flags/jap-grey.gif");}
-.japan:hover 	{ background-image: url("images/flags/jap.gif");}
-.korea 			{ background-image: url("images/flags/korea-grey.gif");}
-.korea:hover 	{ background-image: url("images/flags/korea.gif");}
-.australia 		{ background-image: url("images/flags/aus-grey.gif");}
-.australia:hover{ background-image: url("images/flags/aus.gif");}
-.gay 			{ background-image: url("images/flags/gay-grey.gif");}
-.gay:hover 		{ background-image: url("images/flags/gay.gif");}
-.access 		{ background-image: url("images/flags/disabled-grey.gif");}
-.access:hover 		{ background-image: url("images/flags/disabled.gif");}
+.uk 			{ background-image: url("images/flags/uk.gif"); }
+.germany 		{ background-image: url("images/flags/ger.gif"); }
+.japan 			{ background-image: url("images/flags/jap.gif"); }
+.korea 			{ background-image: url("images/flags/korea.gif"); }
+.australia 		{ background-image: url("images/flags/aus.gif"); }
+.gay 			{ background-image: url("images/flags/gay.gif"); }
+.access 		{ background-image: url("images/flags/disabled.gif"); }
 
-#quick_search { margin: 22px 0 0 0;}
+	a.flag:hover {
+		background-position: 0 -17px;
+	}
+	
+	a.gay:hover, a.access:hover {
+		background-position: 0 -18px;
+	}
+	
+#interest a {
+	height: 18px;
+}
 
-#quick_search input { 
+#quick_search { margin: 22px 0 0 0; }
+
+#quick_search input {
 	background: #484848;
 	width: 85px; 
 	font: 12px/12px "NewsCycle", "NewsCycle-ie"; 
@@ -696,18 +728,21 @@ a.flag {
 	margin: 0; 
 	float: left; 
 	height: 14px;
-	border: none;}
+	border: none;
+}
 	
-#quick_search #search_btn { 
+#quick_search #search_btn {
 	width: 15px;
 	height: 16px;
-	padding: 4px 6px; }
+	padding: 4px 6px;
+}
 
-#footer #copyright { 
+#footer #copyright {
 	font: 9px Verdana; 
 	color: #666;
 	float: right;
-	margin: 15px 18px 0 0;}
+	margin: 20px 20px 0 0;
+}
 
 /******************************************  Date Picker *********/
 
