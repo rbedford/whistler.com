@@ -114,13 +114,13 @@ function search_accommodation(widget_id, type_id, sort_code, sales_id, group_pac
 	
 	if(sort_code == true) params[1].push(["sortcode", "p"]);
 	
-if(group_package_id) {
-	url = build_url(params, "package");
-}
-else
-{
-	url = build_url(params);
-}
+	if(group_package_id) {
+		url = build_url(params, "package");
+	}
+	else
+	{
+		url = build_url(params);
+	}
 	
 	if($(widget_id).attr("id") == "widget") {
 		var action = "search main accomm";
