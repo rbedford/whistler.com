@@ -16,7 +16,19 @@
 	letter-spacing: 0;
 	outline: none;}
 
+/* Clearfix */
 
+.cf:before,
+.cf:after{
+	content:"";
+	display:table;
+}
+.cf:after{
+	clear:both;
+}
+.cf{
+	zoom:1;
+}
 
 /*************************************** 1 @font-face ***************************************/
 
