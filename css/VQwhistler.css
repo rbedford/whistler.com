@@ -13,27 +13,14 @@
 
 
 /*************************************** DEVO:::::::  Activity Search Widget Styles ***************************************/ 	
-	
-        
-
-
-
-.widget_booking_tab {
-	background: #809b34;
-	color: #FFF;
-	font: 14px "DroidSans", "DroidSans-ie", Arial;
-	display: block;
-	width: 190px;
-	padding: 5px 10px;
-	text-align: center;
-	float: left;
-	margin:0 0 10px 0;}
        
 #activity_booking_div {
 	float: left;
 	padding: 0 0 10px;
 	text-align: left;
-position:relative; z-index:100;}
+	position:relative;
+	z-index:100;
+}
 
 	
 #activity_search label { font: 12px/18px "DroidSans", "DroidSans-ie", Arial; color: #2b332e;}  
@@ -44,11 +31,12 @@ position:relative; z-index:100;}
 
 #activity_booking_div input {
 	width: 78px;
-   }
+}
        
 #activity_booking_div select {
 	width: 210px;
-	}
+}
+	
 #check  { 
 	margin: 5px 0; 
 	background: #336;
@@ -57,24 +45,21 @@ position:relative; z-index:100;}
 	font: bold 12px Verdana;
  	color: #fff;
   	letter-spacing: 0.5px;
-	padding: 5px 8px; }
-
-
-
-
+	padding: 5px 8px;
+}
 
 /*48 Hour Sale Page*/
 
 
-.LightBlueButton a{
-    
-    background: none repeat scroll 0 0 #333366;
-    color: #ffffff;
+.LightBlueButton a {
+	background: none repeat scroll 0 0 #333366;
+	color: #ffffff;
 	width: 150px;
-    display: block;
-    font: bold 13px "DroidSans","DroidSans-ie",Arial;
-    margin: 10px 0 0 0;
-    padding: 10px;}
+	display: block;
+	font: bold 13px "DroidSans","DroidSans-ie",Arial;
+	margin: 10px 0 0 0;
+	padding: 10px;
+}
 	
 		.LightBlueButton a:hover{
     color: #ffffff;
@@ -467,6 +452,3 @@ a.videolightbox span {display:none;  z-index:-1;  width:100px; height:100px; bac
 }
 
 /* -------------- END COUNTER ---------------------*/
-
-
-
