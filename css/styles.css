@@ -30,6 +30,12 @@
 	zoom:1;
 }
 
+.hide-text {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 /*************************************** 1 @font-face ***************************************/
 
 
@@ -563,7 +569,8 @@ body.anchored #booking_widget_holder {
 	margin: 0 auto;
 }
 	
-.columns { 
+.columns {
+	position: relative;
 	float: left; 
 	height: 265px; 
 	border-right: 1px solid #515151;
@@ -617,7 +624,11 @@ body.anchored #booking_widget_holder {
 	}
 
 #weather {
-	margin: 0 0 53px 0;
+	position: absolute;
+	left: 15px;
+	bottom: 0;
+	width: 170px;
+	margin: 0;
 }
 
 #weather_snippet {
@@ -697,7 +708,14 @@ p#trip {
 	.international-visitors li {
 		overflow: hidden;
 	}
-	
+
+#interest {
+	position: absolute;
+	left: 45px;
+	bottom: 0;
+	margin: 0;
+}
+
 a.flag {
 	width: 100px; 
 	padding: 0 0 0 30px; 
@@ -729,7 +747,12 @@ a.flag {
 	height: 18px;
 }
 
-#quick_search { margin: 22px 0 0 0; }
+#quick_search {
+	position: absolute;
+	bottom: 0;
+	left: 45px;
+	margin: 22px 0 0 0;
+}
 
 #quick_search input {
 	background: #484848;

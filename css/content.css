@@ -213,14 +213,71 @@ h4 		{ font: 15px "FG-Demi", "FG-Demi-ie", Arial; color: #336; margin-bottom: 10
 	
 .tile:hover span{ opacity: 1; filter: alpha(opacity=100);}	
 
-.tile3 span { width: 190px;}
-.tile2 span { width: 305px;}
+.tile3 span { width: 190px; }
+.tile2 span { width: 305px; }
 
 
 /*************************************** 7. Video Player Styles (index page) ***************************************/	
 
+.video-player {
+	position: relative;
+	height: 350px;
+}
 
-.headerVP #player_skiing 				{ background: url('/resources/video/whistler_skiing.jpg');}
+.video-player img, .video-player .title {
+	position: absolute;
+}
+
+.video-player img {
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.video-player .title {
+	width: 677px;
+	padding: 10px;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+	background: rgb(120, 202, 216);
+	background: rgba(120, 202, 216, 0.8);
+}
+
+.video-player h3 {
+	margin: 0;
+	font: 20px "Geometric","Geometric-ie",Verdana,Arial;
+	color: #fff;
+}
+
+#content .video-player .title p {
+	margin: 0;
+	font: 14px "GeometricM","GeometricM-ie",Verdana,Arial;
+	color: #fff;
+}
+
+.video-player .play {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	width: 697px;
+	height: 350px;
+	background-image: url(/images/video/play.png);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.video-player video {
+	position: absolute;
+}
+
+.video-player video {
+	
+}
+
+/*.headerVP #player_skiing 			{ background: url('/resources/video/whistler_skiing.jpg');}
 .headerVP #player_terrain 			{ background: url('/resources/video/B20110930_Snowboard_Park03.jpg');}
 .headerVP #player_scandinave 		{ background: url('/images/spa/scandinave.jpg');}
 .headerVP #player_about 			{ background: url('/resources/video/about.jpg');}
@@ -270,7 +327,7 @@ h4 		{ font: 15px "FG-Demi", "FG-Demi-ie", Arial; color: #336; margin-bottom: 10
 .video_player span.h2 { font: 20px "Geometric","Geometric-ie",Verdana,Arial; letter-spacing: 0.5px;}
 .video_player span.h3 { font: 14px "GeometricM","GeometricM-ie",Verdana,Arial; letter-spacing: 0.5px;}
 
-#your-videos #player { clear: both;}
+#your-videos #player { clear: both;}*/
 	
 	
 	
