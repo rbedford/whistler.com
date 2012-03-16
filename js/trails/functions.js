@@ -44,8 +44,8 @@ function load_ui(){
 		}
 	}
 	
-	for(i in menus){
-		for(l in menus[i][1]){
+	for(var i=0;i<menus.length;i++) {
+		for(var l=0;l<menus[i][1].length;l++) {
 			var t = menus[i][1][l];
 			var html = "<li><a href='http://www.whistler.com/trails/bike/" + t.URL + "'>" + t.Name + "</a></li>";
 			
@@ -82,7 +82,8 @@ function load_ui(){
 		return (a.Name < b.Name) ? -1 :  1;
 	});
 	
-	for(i in areas){
+	//for(i in areas){
+	for(var i=0;i<areas.length;i++) {
 		$("<li><a href='http://www.whistler.com/trails/bike/" + areas[i].URL + "'>" + areas[i].Name + "</a></li>").appendTo("#area_tab ul.map_dropdown");
 	}
 	
@@ -270,7 +271,7 @@ function stats(trail){
 		options.yaxis = { min: min, max: max }
 	}
 	
-    var plot = $.plot( $("#graph"), 
+	var plot = $.plot( $("#graph"), 
 			[ {data: points } ],
 			options);
 	
@@ -342,7 +343,6 @@ function load_pois(trail){
 	} else {
 		$.ajax({
 			url: "/json/marker/?id=" + trail.ID + "&amp;" + stamp,
-			//url: "http://www.whistler.com/json/marker/?id=" + trail.ID + "&amp;" + stamp,
 			dataType: "json",
 			success: function(data){
 				trail.pois = data;
@@ -377,7 +377,7 @@ function add_pois(trail){
 		}
 	}
 	
-	for(i in trail.poi_markers){
+	for(var i=0;i<trail.poi_markers.length;i++) {
 		google.maps.event.addListener(trail.poi_markers[i], "click", function(){
 			infowindow.setContent("<div class='infowindow'><h3>" + this.title + "</h3>" + this.html + "</div>");
 			infowindow.open(map, this);
@@ -392,9 +392,9 @@ function add_pois(trail){
 }
 
 function clear_pois(){
-	for(i in trails){
+	for(var i=0, len=trails.length;i<len;i++){
 		if(trails[i].poi_markers != undefined){
-			for(x in trails[i].poi_markers){
+			for(var x=0; x < trails[i].length; x++) {
 				trails[i].poi_markers[x].setMap(null);
 			}
 		}
@@ -473,7 +473,7 @@ function load_comments(url){
 		},
 		complete: function() {
 			
-			if(json){
+			if(json[0]){
 				var comments = json[0].data;
 				var html = "<h3 class='trail_comment_title'>Trail Reports</h3>";
 				
