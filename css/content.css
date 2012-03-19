@@ -299,7 +299,9 @@ h4 		{ font: 15px "FG-Demi", "FG-Demi-ie", Arial; color: #336; margin-bottom: 10
 
 .video_player {	
 	float: left;
-	position: relative;}
+	position: relative;
+	z-index: 9999;
+}
 	
 #player, .player { display: block; text-align: center; text-decoration: none;}
 
