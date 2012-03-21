@@ -256,6 +256,8 @@ function build_url(params, action) {
 		base_url = "http://www.whistler.com/cart/spa-search/index.aspx";
 	} else if (action=="product") {
 		base_url = "http://www.whistler.com/cart/product-search/index.aspx";
+	} else if (action == "air") {
+		base_url = "http://inntopia.travel/aspnet/09/air_availability.aspx";
 	}
 	
 	url = base_url + "?salesid=" + params[0] + "&";
@@ -267,6 +269,7 @@ function build_url(params, action) {
 	}
 	return url;
 }
+
 /**
 	
 	Used to search Inntopia DB for available flights
@@ -322,9 +325,7 @@ function search_flights(parent_id) {
 				]
 			];
 			
-			//if ($(parent_id).hasClass("booking")) { widget_loading(); }
-			
-			url = build_url_air(params, "http://inntopia.travel/aspnet/09/air_availability.aspx")
+			url = build_url(params, "air");
 			
 			var action = "search flight";
 			if ($(parent_id).hasClass("booking")) action = "search main flight";		
@@ -389,6 +390,33 @@ function search_package(parent_id) {
 	} else {
 		search_accommodation(parent_id, null, false, sales_id, package_id);
 	}
+}
+
+/**
+	This function searches specifically for transport packages.
+	
+	@example 
+	
+	@return false
+*/
+function search_transport(parent_id) {
+	var widget = $("#"+parent_id), 
+		arrival = widget.find(".arrival").val(), 
+		departure = widget.find(".departure").val(), 
+		supplier_id = widget.find(".supplier_id").val(), 
+		super_cat_id = widget.find(".super_cat_id").val();
+	
+	var params = [
+		1321967,
+		[
+			["arrivaldate", arrival], 
+			["departuredate", departure], 
+			["supplierid", supplier_id], 
+			["productsupercategoryid", super_cat_id]
+		]
+	];
+	url = build_url(params, "transfer");
+	window.location = url;
 }
 
 /**
@@ -563,38 +591,6 @@ function add_to_today(num_days) {
 }
 
 /**
-	Builds a url string from a given array of parameters
-	
-	@param	{Array}		params		This is an array of key/value pairs of params and values to append to the url string. Required.
-	@param	{String}	base_url	
-	
-	@example
-		var params = [
-			1321967,
-			[
-				["arrivaldate", "01/20/2011"], 
-				["departuredate", "02/01/2011"], 
-				["adultcount", 4]
-			]
-		];
-		build_url(params);
-		
-	@return String
-*/
-function build_url_air(params, base_url) {
-	
-	if(!base_url) base_url = "http://www.inntopia.travel/aspnet/09/search.aspx";
-	url = base_url + "?salesid=" + params[0];
-	
-	if(params[1]) {
-		for(a=0;a<params[1].length;a++) {
-			url = url + "&" + params[1][a][0] + "=" + params[1][a][1];
-		}
-	}
-	return url;
-}
-
-/**
 	Usercontrol function that searches for accommodation. 
 	
 	@param {String} parent_id ID attribute of the usercontrol. Required.
@@ -724,7 +720,6 @@ function url_encode(clear_string) {
 	@return false
 */
 function widget_loading() {
-	//$("#widget .widget-loading").css({height: $("#widget").height()+15});
 	$("#widget .widget-loading").toggle();
 }
 
