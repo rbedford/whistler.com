@@ -326,7 +326,7 @@ function search_flights(parent_id) {
 			];
 			
 			url = build_url(params, "air");
-			
+
 			var action = "search flight";
 			if ($(parent_id).hasClass("booking")) action = "search main flight";		
 			_gaq.push(['_trackEvent', action, path, airname], ['_link', url]);
@@ -476,7 +476,6 @@ function calculate_departure_date(parent_id) {
 		end_date = new Date();
 	
 	start_date.setTime(Date.parse($(parent_id + ".arrival").val()));
-	
 	end_date = Date.parse($(parent_id + ".arrival").val()).add({ days: 1 });
 	
 	var end_day = end_date.getDate(), 
