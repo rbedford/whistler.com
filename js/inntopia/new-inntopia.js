@@ -1,22 +1,142 @@
 var _packages = [], _package = {}, _booking_str = "", l_id, p_id, package1_id, s_id;
+function load_package_2(location_id, product_id, package_id) {
+    package1_id = package_id;
+    l_id = location_id;
+    p_id = product_id;
+
+
+    var imgDetails = document.getElementById("img_" + l_id + "_" + p_id + "_" + package_id);
+    var _package_row = ".package-" + l_id + "-" + p_id + "-" + package_id,
+		_components_row = "#components-" + l_id + "-" + p_id + "-" + package_id;
+
+    if ($(_components_row).length > 0) {
+        remove_package(package_id);
+        //   imgDetails.src = "/css/images/btns/show.png";
+    } else {
+
+        //   imgDetails.src = "/css/images/btns/hide.png";
+
+        /* Insert loading template */
+        var loading_html = $("#loading-template").html();
+        var loading_template = Handlebars.compile(loading_html);
+        loading_html = loading_template({
+            location_id: l_id,
+            product_id: p_id,
+            package_id: package_id
+        });
+
+        $(loading_html).insertAfter(_package_row);
+        $(_components_row + " .components").slideDown();
+
+
+        /* Get package data */
+
+
+        var url2 = "";
+        if (document.getElementById("c2_ddlChild").value.toString() == "0") {
+            url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtPA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtPA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlPAdult").value.toString() + "&childcount=0&sessionid=" + strSession;
+        }
+        else {
+            url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtPA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtPA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlPAdult").value.toString() + "&childcount=" + document.getElementById("c2_ddlPChild").value.toString() + "&childagearray=" + CreateChildArray_Inntopia_Package(document.getElementById("c2_ddlPChild").value.toString()) + "&sessionid=" + strSession;
+        }
+
+        $.ajax({
+            // check url
+            url: url2,
+            dataType: "json",
+            cache: false,
+
+            success: function (data) {
+
+                _package = {
+                    id: package_id,
+                    supplier_id: data.supplierID,
+                    sales_id: data.salesID,
+                    location_id: l_id,
+                    product_id: p_id,
+                    name: data.name,
+                    description: data.description,
+                    arrival_date: format_date(data.arrivalDate),
+                    departure_date: format_date(data.departureDate),
+                    nights: data.nights,
+                    adult_count: data.adultCount,
+                    child_count: data.childCount,
+                    regular_price: $("#regular-price-" + l_id + "-" + p_id).html().substring(1),
+                    package_total: $("#components-" + l_id + "-" + p_id + "-" + package_id).prev().children(".total-price").html().substring(1),
+                    package_savings: $("#td2_" + l_id + p_id + package_id).text().substring(1),
+                    components: []
+                };
+
+                $(_components_row + " .package-description").html(data.description);
+                $.each(data.component, function (k, product) {
+                    _package.components.push(product);
+                });
+
+                save_package(_package);
+                calculate_base_price(_package);
+
+            },
+            complete: function (jqXHR, status) {
+
+                if (status == "success") {
+
+                    /* Package loaded, Load components */
+
+                    var html = "", component;
+
+                    for (i = 0; i < _package.components.length; i++) {
+
+                        component = _package.components[i];
+                        component.per = ((component.defaultQuantityType == 2) || (component.defaultQuantityType == 3)) ? "person" : "itinery";
+                        
+                        if (component.per == "person") {
+                            for (l = 0; l < _package.adult_count; l++) {
+                                insert_component(package_id, component, true);
+                            }
+                        } else {
+                            insert_component(package_id, component);
+                        }
+
+                    }
+
+                    if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") _package.no_saving = true;
+                    if ((_package.components.length == 0) || (_package.no_saving == true)) _package.basic = true;
+
+                    /* Load price table template */
+                    var html = $("#components-price-table").html();
+                    var prices_template = Handlebars.compile(html);
+
+                    prices_template = prices_template(_package);
+                    $(prices_template).appendTo("#components-" + l_id + "-" + p_id + "-" + package_id + " .components");
+
+                    update_prices(package_id);
+
+                    $("#components-" + l_id + "-" + p_id + "-" + package_id + " .components").removeClass("loading");
+                    $("#components-" + l_id + "-" + p_id + "-" + package_id + " select").uniform();
+                }
+
+            },
+            error: function () { }
+        });
+
+    }
+
+}
 
 function load_package(location_id, product_id, package_id) {
+	
 	package1_id = package_id;
-    l_id = location_id;
- 	p_id = product_id;
-
-
- 	var imgDetails =  document.getElementById("img_" + l_id + "_" + p_id + "_" + package_id);
+	l_id = location_id;
+	p_id = product_id;
+	
+ 	var imgDetails =  $("#img_" + l_id + "_" + p_id + "_" + package_id);
 	var _package_row = ".package-" + l_id + "-" + p_id + "-" + package_id, 
 		_components_row = "#components-" + l_id + "-" + p_id + "-" + package_id;
 	
 	if ($(_components_row).length > 0) {
 		remove_package(package_id);
-		//   imgDetails.src = "/css/images/btns/show.png";
 	} else {
-
-     //   imgDetails.src = "/css/images/btns/hide.png";
-   
+		
 		/* Insert loading template */
 		var loading_html = $("#loading-template").html();
 		var loading_template = Handlebars.compile(loading_html);
@@ -31,102 +151,95 @@ function load_package(location_id, product_id, package_id) {
       
 
 	    /* Get package data */
+		var url2 = "";
+		if (document.getElementById("c2_ddlChild").value.toString() == "0") {
+			url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlAdult").value.toString() + "&childcount=0&sessionid=" + strSession;
+		} else {
+			url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlAdult").value.toString() + "&childcount=" + document.getElementById("c2_ddlChild").value.toString() + "&childagearray=" + CreateChildArray_Inntopia(document.getElementById("c2_ddlChild").value.toString()) + "&sessionid=" + strSession;
+		}
+		
+		$.ajax({
+			// check url
+			url: url2,
+			dataType: "json",
+			cache: false,
+			
+			success: function (data) {
 
-	 
-   var url2 = "";
-	    if (document.getElementById("c2_ddlChild").value.toString() == "0") {
-	        url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlAdult").value.toString() + "&childcount=0&sessionid=" + strSession;
-	    }
-	    else {
-	         url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlAdult").value.toString() + "&childcount=" + document.getElementById("c2_ddlChild").value.toString() + "&childagearray=" + CreateChildArray_Inntopia(document.getElementById("c2_ddlChild").value.toString()) + "&sessionid=" + strSession;
-	    }
-
-	    $.ajax({
-	        // check url
-	        url: url2,
-	        dataType: "json",
-	        cache: false,
-
-	        success: function (data) {
-
-	            _package = {
-	                id: package_id,
-	                supplier_id: data.supplierID,
-	                sales_id: data.salesID,
-	                location_id: l_id,
-	                product_id: p_id,
-	                name: data.name,
-	                description: data.description,
-	                arrival_date: format_date(data.arrivalDate),
-	                departure_date: format_date(data.departureDate),
-	                nights: data.nights,
-	                adult_count: data.adultCount,
-	                child_count: data.childCount,
-	                regular_price: $("#regular-price-" + l_id + "-" + p_id).html().substring(1),
-	                package_total: $("#components-" + l_id + "-" + p_id + "-" + package_id).prev().children(".total-price").html().substring(1),
-	                package_savings: $("#td2_" + l_id + p_id + package_id).text().substring(1),
-	                components: []
-	            };
+				_package = {
+					id: package_id,
+					supplier_id: data.supplierID,
+					sales_id: data.salesID,
+					location_id: l_id,
+					product_id: p_id,
+					name: data.name,
+					description: data.description,
+					arrival_date: format_date(data.arrivalDate),
+					departure_date: format_date(data.departureDate),
+					nights: data.nights,
+					adult_count: data.adultCount,
+					child_count: data.childCount,
+					regular_price: $("#regular-price-" + l_id + "-" + p_id).html().substring(1),
+					package_total: $("#components-" + l_id + "-" + p_id + "-" + package_id).prev().children(".total-price").html().substring(1),
+					package_savings: $("#td2_" + l_id + p_id + package_id).text().substring(1),
+					components: []
+				};
 				
-	            $(_components_row + " .package-description").html(data.description);
-	            $.each(data.component, function (k, product) {
-	                _package.components.push(product);
+				$(_components_row + " .package-description").html(data.description);
+				$.each(data.component, function (k, product) {
+					_package.components.push(product);
 	            });
 				
-	            save_package(_package);
-	            calculate_base_price(_package);
+				save_package(_package);
+				calculate_base_price(_package);
 				
-	        },
-	        complete: function (jqXHR, status) {
-
-	            if (status == "success") {
-
-	                /* Package loaded, Load components */
-
-	                var html = "", component;
-
-	                for (i = 0; i < _package.components.length; i++) {
+			},
+			complete: function (jqXHR, status) {
+				
+				if (status == "success") {
+					
+					/* Package loaded, Load components */
+					var html = "", component;
+					
+					for (i = 0; i < _package.components.length; i++) {
 						
-	                    component = _package.components[i];
-	                    component.per = ((component.defaultQuantityType == 2) || (component.defaultQuantityType == 3)) ? "person" : "itinery";
-						//console.log(component);
-	                    if (component.per == "person") {
-	                        for (l = 0; l < _package.adult_count; l++) {
-	                            insert_component(package_id, component, true);
-	                        }
-	                    } else {
-	                        insert_component(package_id, component);
-	                    }
+						component = _package.components[i];
+						component.per = ((component.defaultQuantityType == 2) || (component.defaultQuantityType == 3)) ? "person" : "itinery";
+						
+						/*if (component.per == "person") {
+							for (l = 0; l < _package.adult_count; l++) {
+								insert_component(package_id, component, true);
+							}
+						} else {*/
+							insert_component(package_id, component);
+						/*}*/
 
-	                }
+					}
 					
-	                if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") _package.no_saving = true;
-	                if ((_package.components.length == 0) || (_package.no_saving == true)) _package.basic = true;
+					if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") _package.no_saving = true;
+					if ((_package.components.length == 0) || (_package.no_saving == true)) _package.basic = true;
 					
-	                /* Load price table template */
-	                var html = $("#components-price-table").html();
-	                var prices_template = Handlebars.compile(html);
+					/* Load price table template */
+					var html = $("#components-price-table").html();
+					var prices_template = Handlebars.compile(html);
 					
-	                prices_template = prices_template(_package);
-	                $(prices_template).appendTo("#components-" + l_id + "-" + p_id + "-" + package_id + " .components");
+					prices_template = prices_template(_package);
+					$(prices_template).appendTo("#components-" + l_id + "-" + p_id + "-" + package_id + " .components");
 					
-	                update_prices(package_id);
+					update_prices(package_id);
 					
-	                $("#components-" + l_id + "-" + p_id + "-" + package_id + " .components").removeClass("loading");
-	                $("#components-" + l_id + "-" + p_id + "-" + package_id + " select").uniform();
-	            }
+					$("#components-" + l_id + "-" + p_id + "-" + package_id + " .components").removeClass("loading");
+					$("#components-" + l_id + "-" + p_id + "-" + package_id + " select").uniform();
+				}
 
-	        },
-	        error: function () {}
-	    });
-	
+			},
+			error: function () {}
+		});
 	}
 	
 }
 
 function insert_component(package_id, component, is_duplicate) {
-	
-	/* Products */
 	
 	/* Group products by name */
 	var prods = [], adults = [], dates = [], products = [], d;
@@ -165,10 +278,11 @@ function insert_component(package_id, component, is_duplicate) {
 	if(component.required) required = true;
 	
 	if(products.length > 0) {
+		
 		/* Load components template */
-		html = $("#new-components").html();
+		html = $("#components-holder").html();
 		var component_template = Handlebars.compile(html);
-		var component_data = { 
+		var component_data = {
 			location_id: l_id, 
 			product_id: p_id,
 			package_id: package_id,
@@ -183,6 +297,19 @@ function insert_component(package_id, component, is_duplicate) {
 		
 		component_template = component_template(component_data);
 		$(component_template).appendTo("#components-" + l_id + "-" + p_id + "-" + package_id + " .components");
+		
+		var c_html = $("#new-component").html();
+		var c_template = Handlebars.compile(c_html);
+		c_template = c_template(component_data);
+		
+		if(component.per == "person") {
+			for(var c=0;c<_package.adult_count;c++) {
+				$(c_template).appendTo("#component-"+ l_id +"-"+ p_id +"-"+ package_id +"-"+ component.componentID);
+			}
+		} else {
+			$(c_template).appendTo("#component-"+ l_id +"-"+ p_id +"-"+ package_id +"-"+ component.componentID);
+		}
+		
 	}
 	
 }
@@ -201,7 +328,7 @@ function show_component(location_id, product_id, package_id, component_id) {
 	update_prices(package_id);
 }
 
-function update_prices(package_id) {
+function update_prices(package_id, s_box) {
 	
 	_package = get_package_by_id(package_id);
 	_package.cart = [];
@@ -209,74 +336,79 @@ function update_prices(package_id) {
 		id_str_dash = l_id + "-" + p_id + "-" + package_id;
 	
 	/* Update single component prices */
-	var total_components_price=0, component_divs=[], component_div, component_id, selects=[], dates=[], products=[], package_savings=0, default_savings=0;
+	var total_components_price=0, component_divs=[], component_id, selects=[], dates=[], products=[], package_savings=0, default_savings=0, saving=0;
 	
 	$("#components-" + id_str_dash + " .component").not(".inactive").each(function() {
 		
-		//component_div = "#" + $(this).attr("id");
 		component_div = $(this);
 		component_id = $(this).attr("id").replace("component-" + id_str_dash + "-", "");
 		
-		selects.push(component_div.find(".adults")), 
-			dates.push(component_div.find("select.dates option:selected").val()), 
+		var selects = component_div.find(".adults");
+		dates.push(component_div.find("select.dates option:selected").val()), 
 			product_id = (component_div.find("select.products option:selected").val()), 
 			products.push(get_product(_package.id, component_id, product_id)), 
-			component_divs.push(component_div);
+			product = get_product(_package.id, component_id, product_id);
+		
+		if(selects){
+			for(s=0;s<selects.length;s++) {
+				var select_box = $(selects[s]);
+				
+				var adults = select_box.val(), 
+					sale_price = product.specialDay[0].salePrice,
+					price = product.specialDay[0].price, 
+					total = (sale_price * adults),
+					normal_total = (price * adults), 
+					default_qty = parseFloat(component_div.attr("data-default-qty")), 
+					fieldset = select_box.parents("fieldset");
+					
+				// sale price
+				total_components_price = total_components_price + total;
+				total = round_number(total, 2);
+				
+				var product_saving = product.specialDay[0].price - product.specialDay[0].salePrice;
+				default_savings = default_savings + (default_qty * product_saving);
+				package_savings = package_savings + (product_saving * adults);
+				
+				fieldset.find(".item-price .q").html(adults);
+				fieldset.find(".item-price .i").html(round_number(price, 2));
+				fieldset.find(".item-price .t").html(round_number(normal_total, 2));
+				fieldset.find(".item-price").removeClass("loading");
+				
+				// add component to cart
+				_package.cart.push([
+					["supplier_id", product.supplierID],
+					["product_id", product.productID],
+					["quantity", adults],
+					["arrival_date", dates[s]],
+					["departure_date", dates[s]],
+					["adult_count", _package.adult_count],
+					["child_count", _package.child_count]
+				]);
+				
+				saving = (package_savings - default_savings) + parseFloat(_package.package_savings);
+				if(isNaN(saving)) { saving = 0; }
+				
+			}
+		}
 		
 	});
 	
-	if(selects){
-		for(s=0;s<selects.length;s++) {
-			var adults = $(selects[s]).val(), 
-				sale_price = products[s].specialDay[0].salePrice,
-				price = products[s].specialDay[0].price, 
-				total = (sale_price * adults),
-				normal_total = (price * adults), 
-				default_qty = parseFloat(component_divs[s].attr("data-default-qty"));
-			
-			/* sale price */
-			total_components_price = total_components_price + total;
-			total = round_number(total, 2);
-			
-			var product_saving = products[s].specialDay[0].price - products[s].specialDay[0].salePrice;
-			default_savings = default_savings + (default_qty * product_saving);
-			package_savings = package_savings + (product_saving * adults);
-			
-			component_divs[s].find(".item-price .q").html(adults);
-			component_divs[s].find(".item-price .i").html(round_number(price, 2));
-			component_divs[s].find(".item-price .t").html(round_number(normal_total, 2));
-			component_divs[s].find(".item-price").removeClass("loading");
-			
-			/* add component to cart */
-			_package.cart.push([
-				["supplier_id", products[s].supplierID],
-				["product_id", products[s].productID],
-				["quantity", adults],
-				["arrival_date", dates[s]],
-				["departure_date", dates[s]],
-				["adult_count", _package.adult_count],
-				["child_count", _package.child_count]
-			]);
-		}
-		var saving = (package_savings - default_savings) + parseFloat(_package.package_savings);
-	}
+	// Update price table
 	
-	/* Update price table */
-	
-	/* package separately */
+	// package separately
 	var packaged_separate = (parseFloat(total_components_price) + parseFloat(_package.regular_price));
-	//$("#components-" + l_id + "-" + p_id + "-" + package_id + " #separate-price").html("&#36;" + round_number(packaged_separate, 2));
 	
 	// package price
 	var package_total = (parseFloat(_package.base_price) + parseFloat(total_components_price));
 	$("#components-" + id_str_dash + " #package-price, #td1_" + id_str).html("&#36;" + round_number(package_total, 2));
 	
 	// package savings
-	$("#td2_" + id_str + ", " + "#components-" + id_str_dash + " #savings").html("&#36;" + round_number(saving, 2));
+	if(!_package.no_saving) {
+		//$("#td2_" + id_str + ", " + "#components-" + id_str_dash + " #savings").html("&#36;" + round_number(saving, 2));
+	}
 	
 	/// Animate
 	$("#prices-" + id_str_dash + " td.updateable-price, #td1_" + id_str + ", " + "#td2_" + id_str).stop().css("background-color", "#FFFF9C").animate({ backgroundColor: "#F8F7F7" }, 1000);
-	
 	
 }
 
@@ -355,35 +487,33 @@ function book_now() {
 }
 
 function format_date(jsonDate) {
-//	var d = new Date(), unix = date_stamp.substring(6,19);
-//	d.setTime(unix);
-//	str = d.toString("MM/dd/yyyy");
-//	return str;
 	var d = parseDate(jsonDate);
 	str = d.toString("MM/dd/yyyy");
 	return str;
 }
+
 function parseDate(input) {
-    var parts = input.match(/(\d+)/g);
-    // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
-    return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
+	var parts = input.match(/(\d+)/g);
+	return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
 }
 
 function merge_dates(input) {
-	var array=[], dates=[];
-	for(d=0;d<input.length;d++) {
+	var array=[], dates=[], length = input.length;
+	for(var d=length; d--;) {
 		var date = {date: input[d][0], selected: input[d][1]};
 		if(!array.inArray(input[d][0])) {
 			array.push(input[d][0]);
 			dates.push(date);
 		}
 	}
-	return dates.sort_dates();
+	return dates.reverse().sort_dates();
 }
 
 function get_package_by_id(id){
-	var package=false;
-	for(y=0;y<_packages.length;y++) {
+	var package=false, 
+		length = _packages.length;
+		
+	for(var y=length;y--;) {
 		if(_packages[y].id == id) {
 			package = _packages[y];
 			break;
@@ -393,30 +523,39 @@ function get_package_by_id(id){
 }
 
 function get_component_by_id(package_id, component_id) {
-	var p = get_package_by_id(package_id), comp = false;
-	for(l=0;l<p.components.length;l++) {
-		if(p.components[l].componentID == component_id) {
-			comp = p.components[l];
+	var p = get_package_by_id(package_id), 
+		length = p.components.length, 
+		c = false;
+		
+	for(var l=length; l--;) {
+		var component = p.components[l];
+		if(component.componentID == component_id) {
+			c = component;
 			break;
 		}
 	}
-	return comp;
+	return c;
 }
 
 function get_product(package_id, component_id, product_id) {
-	var c = get_component_by_id(package_id, component_id), products = get_component_products(c.location), product = false;
-	
-	for(g=0;g<products.length;g++) {
-		if(products[g].productID == product_id) {
-			product = products[g];
+	var c = get_component_by_id(package_id, component_id), 
+		products = get_component_products(c.location), 
+		length = products.length, 
+		p = false;
+		
+	for(var g=length; g--;) {
+		var product = products[g];
+		if(product.productID == product_id) {
+			p = product;
 			break;
 		}
 	};
-	return product;
+	return p;
 }
 
 function get_component_products(array) {
-	var output = [];
+	var output = [], 
+		length = array.length;
 	for(e=0;e<array.length;e++) {
 		output = output.concat(array[e].product);
 	}
@@ -437,9 +576,9 @@ function calculate_base_price(package) {
 	
 	/* calculate cost */
 	for(r=0;r<req.length;r++) {
-	    var q = req[r].defaultQuantity, 
+		var q = req[r].defaultQuantity, 
 			p = req[r].location[0].product[0].specialDay[0].salePrice;
-		cost = cost + (q * p);
+			cost = cost + (q * p);
 	}
 	
 	package.base_price = package.package_total - cost;
