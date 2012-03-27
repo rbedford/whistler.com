@@ -89,18 +89,12 @@ function load_package_2(location_id, product_id, package_id) {
                         component = _package.components[i];
                         component.per = ((component.defaultQuantityType == 2) || (component.defaultQuantityType == 3)) ? "person" : "itinery";
                         
-                        if (component.per == "person") {
-                            for (l = 0; l < _package.adult_count; l++) {
-                                insert_component(package_id, component, true);
-                            }
-                        } else {
-                            insert_component(package_id, component);
-                        }
+						insert_component(package_id, component);
 
                     }
 
-                    if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") _package.no_saving = true;
-                    if ((_package.components.length == 0) || (_package.no_saving == true)) _package.basic = true;
+                    if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") { _package.no_saving = true; }
+					if (_package.components.length == 0) { _package.basic = true; }
 
                     /* Load price table template */
                     var html = $("#components-price-table").html();
@@ -206,18 +200,12 @@ function load_package(location_id, product_id, package_id) {
 						component = _package.components[i];
 						component.per = ((component.defaultQuantityType == 2) || (component.defaultQuantityType == 3)) ? "person" : "itinery";
 						
-						/*if (component.per == "person") {
-							for (l = 0; l < _package.adult_count; l++) {
-								insert_component(package_id, component, true);
-							}
-						} else {*/
-							insert_component(package_id, component);
-						/*}*/
+						insert_component(package_id, component);
 
 					}
 					
-					if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") _package.no_saving = true;
-					if ((_package.components.length == 0) || (_package.no_saving == true)) _package.basic = true;
+					if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") { _package.no_saving = true; }
+					if (_package.components.length == 0) { _package.basic = true; }
 					
 					/* Load price table template */
 					var html = $("#components-price-table").html();
