@@ -1,120 +1,109 @@
 var _packages = [], _package = {}, _booking_str = "", l_id, p_id, package1_id, s_id;
 function load_package_2(location_id, product_id, package_id) {
-    package1_id = package_id;
-    l_id = location_id;
-    p_id = product_id;
-
-
-    var imgDetails = document.getElementById("img_" + l_id + "_" + p_id + "_" + package_id);
-    var _package_row = ".package-" + l_id + "-" + p_id + "-" + package_id,
+	
+	package1_id = package_id;
+	l_id = location_id;
+	p_id = product_id;
+	
+	var imgDetails = document.getElementById("img_" + l_id + "_" + p_id + "_" + package_id);
+	var _package_row = ".package-" + l_id + "-" + p_id + "-" + package_id,
 		_components_row = "#components-" + l_id + "-" + p_id + "-" + package_id;
-
-    if ($(_components_row).length > 0) {
-        remove_package(package_id);
-        //   imgDetails.src = "/css/images/btns/show.png";
-    } else {
-
-        //   imgDetails.src = "/css/images/btns/hide.png";
-
-        /* Insert loading template */
-        var loading_html = $("#loading-template").html();
-        var loading_template = Handlebars.compile(loading_html);
-        loading_html = loading_template({
-            location_id: l_id,
-            product_id: p_id,
-            package_id: package_id
-        });
-
-        $(loading_html).insertAfter(_package_row);
-        $(_components_row + " .components").slideDown();
-
-
+		
+	if ($(_components_row).length > 0) {
+		remove_package(package_id);
+	} else {
+		
+		/* Insert loading template */
+		var loading_html = $("#loading-template").html();
+		var loading_template = Handlebars.compile(loading_html);
+		loading_html = loading_template({
+			location_id: l_id,
+			product_id: p_id,
+			package_id: package_id
+		});
+		
+		$(loading_html).insertAfter(_package_row);
+		$(_components_row + " .components").slideDown();
+		
         /* Get package data */
-
-
-        var url2 = "";
-        if (document.getElementById("c2_ddlChild").value.toString() == "0") {
-            url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtPA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtPA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlPAdult").value.toString() + "&childcount=0&sessionid=" + strSession;
-        }
-        else {
-            url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtPA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtPA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlPAdult").value.toString() + "&childcount=" + document.getElementById("c2_ddlPChild").value.toString() + "&childagearray=" + CreateChildArray_Inntopia_Package(document.getElementById("c2_ddlPChild").value.toString()) + "&sessionid=" + strSession;
-        }
-
-        $.ajax({
-            // check url
-            url: url2,
-            dataType: "json",
-            cache: false,
-
+		var url2 = "";
+		if (document.getElementById("c2_ddlChild").value.toString() == "0") {
+			url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtPA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtPA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlPAdult").value.toString() + "&childcount=0&sessionid=" + strSession;
+		} else {
+			url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtPA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtPA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlPAdult").value.toString() + "&childcount=" + document.getElementById("c2_ddlPChild").value.toString() + "&childagearray=" + CreateChildArray_Inntopia_Package(document.getElementById("c2_ddlPChild").value.toString()) + "&sessionid=" + strSession;
+		}
+		
+		$.ajax({
+			// check url
+			url: url2,
+			dataType: "json",
+			cache: false,
             success: function (data) {
-
-                _package = {
-                    id: package_id,
-                    supplier_id: data.supplierID,
-                    sales_id: data.salesID,
-                    location_id: l_id,
-                    product_id: p_id,
-                    name: data.name,
-                    description: data.description,
-                    arrival_date: format_date(data.arrivalDate),
-                    departure_date: format_date(data.departureDate),
-                    nights: data.nights,
-                    adult_count: data.adultCount,
-                    child_count: data.childCount,
-                    regular_price: $("#regular-price-" + l_id + "-" + p_id).html().substring(1),
-                    package_total: $("#components-" + l_id + "-" + p_id + "-" + package_id).prev().children(".total-price").html().substring(1),
-                    package_savings: $("#td2_" + l_id + p_id + package_id).text().substring(1),
-                    components: []
-                };
-
-                $(_components_row + " .package-description").html(data.description);
-                $.each(data.component, function (k, product) {
-                    _package.components.push(product);
-                });
-
-                save_package(_package);
-                calculate_base_price(_package);
-
-            },
-            complete: function (jqXHR, status) {
-
-                if (status == "success") {
-
-                    /* Package loaded, Load components */
-
+				
+				_package = {
+					id: package_id,
+					supplier_id: data.supplierID,
+					sales_id: data.salesID,
+					location_id: l_id,
+					product_id: p_id,
+					name: data.name,
+					description: data.description,
+					arrival_date: format_date(data.arrivalDate),
+					departure_date: format_date(data.departureDate),
+					nights: data.nights,
+					adult_count: data.adultCount,
+					child_count: data.childCount,
+					regular_price: $("#regular-price-" + l_id + "-" + p_id).html().substring(1),
+					package_total: $("#components-" + l_id + "-" + p_id + "-" + package_id).prev().children(".total-price").html().substring(1),
+					package_savings: $("#td2_" + l_id + p_id + package_id).text().substring(1),
+					components: []
+				};
+				
+				$(_components_row + " .package-description").html(data.description);
+				$.each(data.component, function (k, product) {
+					_package.components.push(product);
+				});
+				
+				save_package(_package);
+				calculate_base_price(_package);
+				
+			},
+			complete: function (jqXHR, status) {
+				
+				if (status == "success") {
+					
+					/* Package loaded, Load components */
                     var html = "", component;
-
-                    for (i = 0; i < _package.components.length; i++) {
-
-                        component = _package.components[i];
-                        component.per = ((component.defaultQuantityType == 2) || (component.defaultQuantityType == 3)) ? "person" : "itinery";
-                        
+					
+					for (i = 0; i < _package.components.length; i++) {
+						component = _package.components[i];
+						component.per = ((component.defaultQuantityType == 2) || (component.defaultQuantityType == 3)) ? "person" : "itinery";
+						
 						insert_component(package_id, component);
-
-                    }
-
-                    if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") { _package.no_saving = true; }
+					}
+					
+					if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") { _package.no_saving = true; }
 					if (_package.components.length == 0) { _package.basic = true; }
-
-                    /* Load price table template */
-                    var html = $("#components-price-table").html();
-                    var prices_template = Handlebars.compile(html);
-
-                    prices_template = prices_template(_package);
-                    $(prices_template).appendTo("#components-" + l_id + "-" + p_id + "-" + package_id + " .components");
-
-                    update_prices(package_id);
-
-                    $("#components-" + l_id + "-" + p_id + "-" + package_id + " .components").removeClass("loading");
-                    $("#components-" + l_id + "-" + p_id + "-" + package_id + " select").uniform();
-                }
-
-            },
-            error: function () { }
-        });
-
-    }
-
+					
+					/* Load price table template */
+					var html = $("#components-price-table").html();
+					var prices_template = Handlebars.compile(html);
+					
+					prices_template = prices_template(_package);
+					$(prices_template).appendTo("#components-" + l_id + "-" + p_id + "-" + package_id + " .components");
+					
+					update_prices(package_id);
+					
+					$("#components-" + l_id + "-" + p_id + "-" + package_id + " .components").removeClass("loading");
+					$("#components-" + l_id + "-" + p_id + "-" + package_id + " select").uniform();
+				}
+				
+			},
+			error: function () { }
+		});
+		
+	}
+	
 }
 
 function load_package(location_id, product_id, package_id) {
@@ -141,10 +130,9 @@ function load_package(location_id, product_id, package_id) {
 		});
 		
 		$(loading_html).insertAfter(_package_row);
-	    $(_components_row + " .components").slideDown();
+		$(_components_row + " .components").slideDown();
       
-
-	    /* Get package data */
+		/* Get package data */
 		var url2 = "";
 		if (document.getElementById("c2_ddlChild").value.toString() == "0") {
 			url2 = "/json/inntopia/package2/index.aspx?packageid=" + package_id + "&arrivaldate=" + document.getElementById("c2_txtA1").value.toString() + "&departuredate=" + document.getElementById("c2_txtA2").value.toString() + "&adultcount=" + document.getElementById("c2_ddlAdult").value.toString() + "&childcount=0&sessionid=" + strSession;
@@ -182,7 +170,7 @@ function load_package(location_id, product_id, package_id) {
 				$(_components_row + " .package-description").html(data.description);
 				$.each(data.component, function (k, product) {
 					_package.components.push(product);
-	            });
+				});
 				
 				save_package(_package);
 				calculate_base_price(_package);
@@ -196,12 +184,10 @@ function load_package(location_id, product_id, package_id) {
 					var html = "", component;
 					
 					for (i = 0; i < _package.components.length; i++) {
-						
 						component = _package.components[i];
 						component.per = ((component.defaultQuantityType == 2) || (component.defaultQuantityType == 3)) ? "person" : "itinery";
 						
 						insert_component(package_id, component);
-
 					}
 					
 					if ($("#td2_" + l_id + p_id + package_id).text().substring(1) == "") { _package.no_saving = true; }
@@ -381,8 +367,6 @@ function update_prices(package_id, s_box) {
 		
 	});
 	
-	// Update price table
-	
 	// package separately
 	var packaged_separate = (parseFloat(total_components_price) + parseFloat(_package.regular_price));
 	
@@ -395,7 +379,7 @@ function update_prices(package_id, s_box) {
 		//$("#td2_" + id_str + ", " + "#components-" + id_str_dash + " #savings").html("&#36;" + round_number(saving, 2));
 	}
 	
-	/// Animate
+	// Animate
 	$("#prices-" + id_str_dash + " td.updateable-price, #td1_" + id_str + ", " + "#td2_" + id_str).stop().css("background-color", "#FFFF9C").animate({ backgroundColor: "#F8F7F7" }, 1000);
 	
 }
@@ -449,7 +433,6 @@ function add_package_to_cart(id, is_single_component) {
 		}
 		
 		var s = '/cart/index.aspx?actioncode=15&sessionid=' + strSession + '&itineraryarray=' + str + '&packageid=' + package1_id;
-		
 		_booking_str = str;
 		
 		$.fancybox({
