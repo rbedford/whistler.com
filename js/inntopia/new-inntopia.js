@@ -318,7 +318,7 @@ function update_prices(package_id, s_box) {
 		component_id = $(this).attr("id").replace("component-" + id_str_dash + "-", "");
 		
 		var selects = component_div.find(".adults");
-		dates.push(component_div.find("select.dates option:selected").val()), 
+		dates.push(component_div.find("select.dates option:selected")), 
 			product_id = (component_div.find("select.products option:selected").val()), 
 			products.push(get_product(_package.id, component_id, product_id)), 
 			product = get_product(_package.id, component_id, product_id);
@@ -353,8 +353,8 @@ function update_prices(package_id, s_box) {
 					["supplier_id", product.supplierID],
 					["product_id", product.productID],
 					["quantity", adults],
-					["arrival_date", dates[s]],
-					["departure_date", dates[s]],
+					["arrival_date", $(dates[0][s]).val()],
+					["departure_date", $(dates[0][s]).val()],
 					["adult_count", _package.adult_count],
 					["child_count", _package.child_count]
 				]);
