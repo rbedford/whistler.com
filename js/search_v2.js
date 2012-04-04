@@ -249,7 +249,7 @@ function build_url(params, action) {
 	} else if (action=="rental") {
 		base_url = "http://www.whistler.com/cart/rental-search/index.aspx";
 	} else if (action=="package") {
-		base_url = "http://www.whistler.com/cart/lodging-search/index.aspx";
+		base_url = "http://www.whistler.com/cart/package-search/index.aspx";
 	} else if (action=="golf") {
 		base_url = "http://www.whistler.com/cart/golf-search/index.aspx";
 	} else if (action=="spa") {
