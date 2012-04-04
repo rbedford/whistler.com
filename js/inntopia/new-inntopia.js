@@ -339,9 +339,11 @@ function update_prices(package_id, s_box) {
 				total_components_price = total_components_price + total;
 				total = round_number(total, 2);
 				
-				var product_saving = product.specialDay[0].price - product.specialDay[0].salePrice;
-				default_savings = default_savings + (default_qty * product_saving);
-				package_savings = package_savings + (product_saving * adults);
+				var num_to_add = adults - default_qty,  
+						product_savings = price - sale_price
+						
+				default_savings = default_savings + (default_qty * product_savings)
+				package_savings = package_savings + (product_savings * adults)
 				
 				fieldset.find(".item-price .q").html(adults);
 				fieldset.find(".item-price .i").html(round_number(price, 2));
@@ -359,7 +361,9 @@ function update_prices(package_id, s_box) {
 					["child_count", _package.child_count]
 				]);
 				
-				saving = (package_savings - default_savings) + parseFloat(_package.package_savings);
+				_package.package_savings = parseFloat(_package.package_savings);
+				saving = (package_savings - default_savings);
+				if(product_savings > 0) saving = saving + _package.package_savings;
 				if(isNaN(saving)) { saving = 0; }
 				
 			}
@@ -375,8 +379,8 @@ function update_prices(package_id, s_box) {
 	$("#components-" + id_str_dash + " #package-price, #td1_" + id_str).html("&#36;" + round_number(package_total, 2));
 	
 	// package savings
-	if(!_package.no_saving) {
-		//$("#td2_" + id_str + ", " + "#components-" + id_str_dash + " #savings").html("&#36;" + round_number(saving, 2));
+	if(saving > 0) {
+		$("#td2_" + id_str + ", " + "#components-" + id_str_dash + " #savings").html("&#36;" + round_number(saving, 2));
 	}
 	
 	// Animate
